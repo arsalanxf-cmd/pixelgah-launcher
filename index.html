@@ -1046,6 +1046,329 @@ kbd { font-family: var(--f-tech); font-size: 11px; font-weight: 600; color: var(
 @keyframes dotPulse { 0% { box-shadow: 0 0 0 0 currentColor; } 100% { box-shadow: 0 0 0 7px transparent; } }
 .calm .pd-stage[data-v="4"] .pd-obj, .calm .pd-sweep, .calm .pb-stock i { animation: none !important; }
 
+/* ================= v3 · forms ================= */
+.form { display: flex; flex-direction: column; gap: 14px; }
+.fld { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.fld > label { font-size: 13px; font-weight: 700; color: var(--fg-2); }
+.inp { width: 100%; min-height: 48px; padding: 0 14px; border-radius: 13px; border: 1px solid var(--line-2); background: var(--ink-3); color: var(--fg); font: 500 15px/1.6 var(--f-body); outline: none; transition: border-color .2s, box-shadow .25s, background .2s; }
+.inp::placeholder { color: var(--fg-3); opacity: .8; }
+.inp:hover { border-color: var(--fg-3); }
+.inp:focus { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent); }
+.inp:disabled { opacity: .6; cursor: not-allowed; }
+.inp[aria-invalid="true"] { border-color: var(--bad); box-shadow: 0 0 0 4px color-mix(in srgb, var(--bad) 14%, transparent); }
+textarea.inp { min-height: 104px; padding: 12px 14px; resize: vertical; }
+select.inp { appearance: none; padding-left: 38px; background-image: linear-gradient(45deg, transparent 50%, var(--fg-3) 50%), linear-gradient(135deg, var(--fg-3) 50%, transparent 50%); background-position: 18px 50%, 23px 50%; background-size: 5px 5px; background-repeat: no-repeat; cursor: pointer; }
+.inp.file { padding: 10px 14px; min-height: 0; font-size: 13px; }
+.inp.file::file-selector-button { margin-left: 12px; padding: 6px 14px; border: 0; border-radius: 9px; background: var(--ink-5); color: var(--fg); font: 700 13px var(--f-body); cursor: pointer; }
+.err { min-height: 0; font-size: 12.5px; color: var(--bad); font-weight: 600; }
+.err:empty { display: none; }
+.hint { font-size: 12px; color: var(--fg-3); }
+.row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.row3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.check { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--fg-2); cursor: pointer; line-height: 1.8; }
+.check input { appearance: none; flex: none; width: 22px; height: 22px; margin: 2px 0 0; border-radius: 7px; border: 2px solid var(--line-2); background: var(--ink-3); cursor: pointer; display: grid; place-items: center; transition: background .2s, border-color .2s; }
+.check input::after { content: ""; width: 10px; height: 6px; border: solid var(--accent-ink); border-width: 0 0 2.5px 2.5px; transform: translateY(-1px) rotate(-45deg) scale(0); transition: transform .3s var(--spring); }
+.check input:checked { background: var(--accent); border-color: var(--accent); }
+.check input:checked::after { transform: translateY(-1px) rotate(-45deg) scale(1); }
+.check.demo { margin-top: 6px; padding-top: 12px; border-top: 1px dashed var(--line-2); font-size: 13px; color: var(--fg-3); }
+.check.box-c { align-items: center; padding: 8px 10px; border-radius: 14px; background: var(--ink-3); border: 1px solid var(--line); }
+.check.box-c .mini { position: relative; width: 44px; height: 44px; flex: none; border-radius: 10px; overflow: hidden; background: radial-gradient(circle, color-mix(in srgb, var(--tint) 45%, transparent), transparent 70%), var(--ink-4); }
+.check.box-c .mini svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.check.box-c .mini .illu { inset: 8%; width: 84%; height: 84%; }
+.linkb { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0; border: 0; background: none; color: var(--accent); font: 700 13px var(--f-body); cursor: pointer; }
+.linkb:hover { text-decoration: underline; text-underline-offset: 4px; }
+.linkb:disabled { color: var(--fg-3); cursor: default; text-decoration: none; }
+.linkb .i { width: 15px; height: 15px; }
+.btn.danger { background: color-mix(in srgb, var(--bad) 22%, var(--ink-4)); color: #fff; }
+.pill { display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 0 11px; border-radius: 14px; font-size: 12px; font-weight: 700; white-space: nowrap; flex: none; }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 4px; background: currentColor; }
+.pill.ok { color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, transparent); }
+.pill.go { color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.pill.go::before { animation: dotPulse 1.6s ease-out infinite; }
+.pill.mute { color: var(--fg-2); background: var(--ink-4); }
+.spinner { width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid currentColor; border-left-color: transparent; animation: spin .7s linear infinite; }
+.card-p { display: flex; flex-direction: column; gap: 14px; padding: 22px; border-radius: 22px; background: var(--ink-2); border: 1px solid var(--line); min-width: 0; }
+.card-p > h3, .card-p .sec-h2 h3 { margin: 0; font-family: var(--f-display); font-size: 17px; font-weight: 800; }
+.thumbs-up { display: flex; flex-wrap: wrap; gap: 8px; }
+.thumbs-up:empty { display: none; }
+.thumbs-up img { width: 64px; height: 64px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line-2); animation: popIn .4s var(--spring) backwards; }
+.empty.wall .ek { background: color-mix(in srgb, var(--accent) 16%, var(--ink-3)); color: var(--accent); }
+.vc b { display: flex; align-items: center; gap: 8px; }
+.vc b .i { width: 17px; height: 17px; color: var(--accent); }
+.vc.dis { opacity: .55; cursor: not-allowed; }
+.vc.dis:hover { border-color: var(--line-2); }
+
+/* ================= v3 · login ================= */
+.login-btn { min-height: 40px; }
+.auth { padding: 34px 28px 28px; display: flex; flex-direction: column; gap: 20px; min-height: 360px; }
+.auth-h { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.auth-h .mark { width: 60px; height: 60px; animation: markGlow 3s ease-in-out infinite; }
+.auth-h .mark svg { width: 52px; height: 52px; }
+.auth-h h2 { margin: 6px 0 0; font-family: var(--f-display); font-size: 22px; font-weight: 800; }
+.auth-h p { margin: 0; color: var(--fg-2); font-size: 14px; max-width: 34ch; }
+.auth-h p b { color: var(--fg); font-family: var(--f-tech); letter-spacing: .04em; }
+.auth-step { display: flex; flex-direction: column; gap: 14px; animation: stepIn .5s var(--ease) backwards; }
+.auth-step #aTel { font-family: var(--f-tech); font-size: 18px; letter-spacing: .08em; text-align: center; min-height: 54px; }
+.auth-note { margin: 0; text-align: center; font-size: 12.5px; color: var(--fg-3); }
+.auth-row { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.auth-row .tech, .auth-row #aTime { font-family: var(--f-tech); direction: ltr; }
+.otp { display: flex; justify-content: center; gap: 10px; direction: ltr; }
+.otp input { width: 54px; height: 62px; border-radius: 15px; border: 1.5px solid var(--line-2); background: var(--ink-3); color: var(--fg); text-align: center; font: 700 24px var(--f-tech); outline: none; caret-color: var(--accent); transition: border-color .2s, transform .3s var(--spring), box-shadow .25s, background .2s; }
+.otp input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent); transform: translateY(-3px); }
+.otp input.fill { border-color: color-mix(in srgb, var(--accent) 60%, var(--line-2)); background: color-mix(in srgb, var(--accent) 8%, var(--ink-3)); animation: otpPop .3s var(--spring); }
+.otp input:disabled { opacity: .7; }
+.otp.shake { animation: shake .45s; }
+.otp.shake input { border-color: var(--bad); }
+
+/* ================= v3 · account ================= */
+.acc, .od { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 22px; align-items: start; margin-top: -36px; }
+.od { grid-template-columns: minmax(0, 1fr) 340px; }
+.acc-side { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 12px; min-width: 0; }
+.acc-main { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.acc-user { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 22px 18px 16px; border-radius: 22px; background: radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%), var(--ink-2); border: 1px solid var(--line); text-align: center; }
+.acc-user > b { margin-top: 8px; font-family: var(--f-display); font-size: 17px; }
+.acc-user > span { font-family: var(--f-tech); font-size: 13px; color: var(--fg-3); }
+.acc-w { display: flex; align-items: center; gap: 8px; width: 100%; margin-top: 12px; padding: 10px 12px; border-radius: 14px; background: var(--ink-3); font-size: 13.5px; font-weight: 700; }
+.acc-w .i { color: var(--accent); }
+.acc-w span { flex: 1; text-align: right; }
+.acc-nav { display: flex; flex-direction: column; gap: 4px; padding: 8px; border-radius: 20px; background: var(--ink-2); border: 1px solid var(--line); }
+.acc-nav button { position: relative; display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 14px; border: 0; border-radius: 13px; background: none; color: var(--fg-2); font-size: 14px; font-weight: 600; cursor: pointer; text-align: right; transition: background .2s, color .2s; }
+.acc-nav button:hover { background: var(--ink-3); color: var(--fg); }
+.acc-nav button[aria-current="page"] { background: color-mix(in srgb, var(--accent) 13%, var(--ink-3)); color: var(--fg); }
+.acc-nav button[aria-current="page"]::before { content: ""; position: absolute; right: -8px; top: 12px; bottom: 12px; width: 4px; border-radius: 2px; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+.acc-nav button[aria-current="page"] .i { color: var(--accent); }
+.acc-nav .lo, .set-btn.lo { color: var(--bad); }
+.acc-main > * { animation: stepIn .5s var(--ease) backwards; }
+.acc-main > *:nth-child(2) { animation-delay: .06s; }
+.acc-main > *:nth-child(3) { animation-delay: .12s; }
+.stat4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.stt { display: flex; flex-direction: column; gap: 4px; padding: 18px; border-radius: 20px; background: var(--ink-2); border: 1px solid var(--line); animation: rise .6s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 70ms); min-width: 0; }
+.stt .i { width: 24px; height: 24px; color: var(--accent); margin-bottom: 6px; }
+.stt b { font-family: var(--f-display); font-size: 22px; font-weight: 900; line-height: 1.4; }
+.stt b.vt { font-size: 16px; }
+.stt span { font-size: 12.5px; color: var(--fg-3); line-height: 1.7; }
+.olist { display: flex; flex-direction: column; gap: 10px; }
+.oc { display: flex; align-items: center; gap: 14px; width: 100%; padding: 12px 14px; border-radius: 18px; border: 1px solid var(--line); background: var(--ink-3); cursor: pointer; text-align: right; animation: linkIn .45s var(--ease) backwards; animation-delay: calc(var(--i) * 50ms); transition: border-color .2s, transform .35s var(--spring), background .2s; }
+.oc:hover { border-color: var(--line-2); background: var(--ink-4); transform: translateX(-3px); }
+.oc-th { display: flex; flex: none; }
+.oc-th > span { position: relative; width: 52px; height: 52px; border-radius: 13px; overflow: hidden; border: 2px solid var(--ink-3); background: radial-gradient(circle, color-mix(in srgb, var(--tint) 45%, transparent), transparent 70%), var(--ink-4); }
+.oc-th > span + span { margin-right: -22px; }
+.oc-th svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.oc-th .illu { inset: 8%; width: 84%; height: 84%; }
+.oc-tx { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.oc-tx b { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.oc-tx span { font-size: 12.5px; color: var(--fg-3); }
+.oc-go { color: var(--fg-3); transition: transform .3s var(--spring); }
+.oc:hover .oc-go { transform: translateX(-4px); color: var(--fg); }
+.quick3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.quick3 button { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 18px; border-radius: 20px; border: 1px solid var(--line); background: var(--ink-2); cursor: pointer; text-align: right; transition: border-color .2s, transform .35s var(--spring); }
+.quick3 button:hover { border-color: var(--line-2); transform: translateY(-3px); }
+.quick3 .i { width: 24px; height: 24px; color: var(--accent); margin-bottom: 8px; }
+.quick3 b { font-size: 14.5px; }
+.quick3 span { font-size: 12.5px; color: var(--fg-3); }
+.addrs { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.addr { display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border-radius: 18px; background: var(--ink-3); border: 1px solid var(--line); animation: linkIn .45s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 60ms); }
+.addr.def { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+.addr h4 { margin: 0; display: flex; align-items: center; gap: 8px; font-size: 15px; }
+.addr h4 .i { color: var(--accent); }
+.addr h4 .pill { margin-right: auto; }
+.addr p { margin: 0; font-size: 13.5px; color: var(--fg-2); line-height: 1.9; }
+.addr .meta { font-size: 12.5px; color: var(--fg-3); }
+.addr-acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+.addr-acts .btn { min-height: 36px; padding: 0 12px; font-size: 13px; }
+.add-tile { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 160px; border-radius: 18px; border: 1.5px dashed var(--line-2); background: none; color: var(--fg-2); font-size: 14px; font-weight: 700; cursor: pointer; transition: border-color .2s, color .2s, background .2s; }
+.add-tile:hover { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.add-tile .i { width: 26px; height: 26px; }
+
+/* ================= v3 · checkout ================= */
+.stepper { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 6px 0 0; }
+.stepper::before, .sp-fill { content: ""; position: absolute; top: 25px; right: 12.5%; height: 3px; border-radius: 2px; background: var(--ink-5); width: 75%; }
+.sp-fill { background: var(--accent); width: var(--w); box-shadow: 0 0 12px var(--accent); transition: width .7s var(--ease); z-index: 1; }
+.sp { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; border: 0; background: none; color: var(--fg-3); font-size: 13px; font-weight: 700; cursor: default; padding: 0; }
+.sp i { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 13px; background: var(--ink-3); border: 2px solid var(--line-2); font-style: normal; font-family: var(--f-display); font-size: 15px; transition: background .3s, border-color .3s, transform .4s var(--spring), color .3s; }
+.sp i .i { width: 18px; height: 18px; stroke-width: 2.6; }
+.sp.done { color: var(--fg-2); cursor: pointer; }
+.sp.done i { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.sp.done:hover i { transform: scale(1.08); }
+.sp.cur { color: var(--fg); }
+.sp.cur i { border-color: var(--accent); color: var(--accent); transform: scale(1.12); box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 16%, transparent); }
+.co { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 22px; align-items: start; margin-top: -30px; }
+.co-main { min-width: 0; }
+.co-step { display: flex; flex-direction: column; gap: 18px; animation: stepIn .5s var(--ease) backwards; }
+.co-sum { position: sticky; top: 12px; display: flex; flex-direction: column; gap: 12px; padding: 22px; border-radius: 24px; background: var(--ink-2); border: 1px solid var(--line-2); box-shadow: 0 30px 80px -40px rgba(0, 0, 0, .8); }
+.co-sum h3 { margin: 0 0 4px; font-family: var(--f-display); font-size: 17px; }
+.co-sum .sum.tot { padding-top: 12px; border-top: 1px dashed var(--line-2); }
+.co-sum .btn.primary { margin-top: 6px; min-height: 54px; font-size: 16px; }
+.ret-items { display: flex; flex-direction: column; gap: 10px; }
+.line .vl { font-size: 12px; color: var(--fg-3); line-height: 1.6; }
+.code-in { display: flex; gap: 8px; }
+.code-in .inp { font-family: var(--f-tech); letter-spacing: .1em; text-transform: uppercase; }
+.code-in .btn { min-height: 48px; }
+.pd-note.ok { color: var(--ok); }
+.note-big { display: flex; align-items: flex-start; gap: 14px; padding: 18px; border-radius: 18px; background: color-mix(in srgb, var(--accent) 9%, var(--ink-3)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
+.note-big > .i { width: 28px; height: 28px; color: var(--accent); }
+.note-big b { display: block; font-size: 15px; margin-bottom: 2px; }
+.note-big span { font-size: 13.5px; color: var(--fg-2); line-height: 1.9; }
+.payov { position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; background: rgba(3, 4, 7, .82); backdrop-filter: blur(10px); animation: fadeIn .3s; }
+.payov-box { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 34px 40px; border-radius: 26px; background: var(--ink-2); border: 1px solid var(--line-2); text-align: center; animation: popIn .5s var(--spring); }
+.payov-box b { font-size: 16px; }
+.payov-box span { font-family: var(--f-display); font-size: 20px; color: var(--accent); }
+.bars { display: flex; align-items: flex-end; gap: 6px; height: 40px; }
+.bars i { width: 8px; height: 100%; border-radius: 4px; background: var(--accent); animation: eq 1s ease-in-out infinite; transform-origin: bottom; }
+.bars i:nth-child(2) { animation-delay: .12s; } .bars i:nth-child(3) { animation-delay: .24s; } .bars i:nth-child(4) { animation-delay: .36s; } .bars i:nth-child(5) { animation-delay: .48s; }
+.result { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 720px; margin: 0 auto; padding: 40px 24px; border-radius: 28px; background: radial-gradient(90% 70% at 50% 0%, color-mix(in srgb, var(--ok) 14%, transparent), transparent 70%), var(--ink-2); border: 1px solid var(--line); text-align: center; animation: rise .7s var(--ease) backwards; }
+.result.bad { background: radial-gradient(90% 70% at 50% 0%, color-mix(in srgb, var(--bad) 16%, transparent), transparent 70%), var(--ink-2); }
+.result .success { padding: 0; }
+.result h2 { margin: 0; font-family: var(--f-display); font-size: clamp(22px, 3vw, 30px); font-weight: 900; }
+.result p { margin: 0; max-width: 52ch; color: var(--fg-2); font-size: 14.5px; line-height: 1.9; }
+.result .qv-ctas { justify-content: center; margin-top: 6px; }
+.ono { font-family: var(--f-tech); font-size: 26px; font-weight: 700; letter-spacing: .12em; color: var(--accent); direction: ltr; }
+.xmark { width: 96px; height: 96px; }
+.xmark circle { stroke: var(--bad); stroke-width: 4; fill: none; stroke-dasharray: 290; stroke-dashoffset: 290; animation: draw .8s var(--ease) forwards; }
+.xmark path { stroke: var(--bad); stroke-width: 6; fill: none; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw .5s var(--ease) .6s forwards; }
+.next3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; margin-top: 14px; }
+.next3 > div { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 16px 10px; border-radius: 18px; background: var(--ink-3); border: 1px solid var(--line); animation: rise .6s var(--ease) backwards; }
+.next3 > div:nth-child(1) { animation-delay: 1.1s; } .next3 > div:nth-child(2) { animation-delay: 1.25s; } .next3 > div:nth-child(3) { animation-delay: 1.4s; }
+.next3 .i { width: 24px; height: 24px; color: var(--accent); }
+.next3 b { font-size: 13.5px; }
+.next3 span { font-size: 12px; color: var(--fg-3); }
+.confetti { position: fixed; inset: 0; z-index: 130; width: 100%; height: 100%; pointer-events: none; }
+
+/* ================= v3 · order detail ================= */
+.od-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.od-head h1 { margin: 0; font-family: var(--f-display); font-size: clamp(24px, 3vw, 34px); font-weight: 900; }
+.od-head .pill { min-height: 34px; padding: 0 14px; font-size: 13px; }
+.od .acc-side .btn { align-self: flex-start; }
+.route-card { border-radius: 18px; background: radial-gradient(60% 120% at 80% 50%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%), var(--ink-1); border: 1px solid var(--line); overflow: hidden; }
+.route-card svg { display: block; width: 100%; height: auto; direction: ltr; }
+.route-card .rt { fill: var(--fg-3); font: 600 11px var(--f-body); }
+@media (max-width: 620px) { #trk { font-size: 14px; letter-spacing: .06em; } .route-card .rt { font-size: 16px; } }
+.od-prog { transition: stroke-dashoffset 2.4s var(--ease); }
+.tr-l { font-size: 12.5px; color: var(--fg-3); white-space: nowrap; padding-inline: 6px; }
+.tl { position: relative; display: flex; flex-direction: column; gap: 0; padding-right: 8px; }
+.tl-i { position: relative; display: flex; justify-content: space-between; gap: 12px; padding: 10px 26px 10px 0; font-size: 14px; animation: linkIn .45s var(--ease) backwards; animation-delay: calc(var(--i) * 70ms); }
+.tl-i::before { content: ""; position: absolute; right: 0; top: 17px; width: 12px; height: 12px; border-radius: 6px; border: 2px solid var(--line-2); background: var(--ink-2); z-index: 1; }
+.tl-i::after { content: ""; position: absolute; right: 5px; top: 29px; bottom: -17px; width: 2px; background: var(--line-2); }
+.tl-i:last-child::after { display: none; }
+.tl-i b { font-weight: 600; color: var(--fg-3); }
+.tl-i span { font-size: 12.5px; color: var(--fg-3); font-family: var(--f-body); }
+.tl-i.done b { color: var(--fg); }
+.tl-i.done::before { background: var(--ok); border-color: var(--ok); }
+.tl-i.done::after { background: var(--ok); }
+.tl-i.cur b { color: var(--accent); }
+.tl-i.cur::before { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 20%, transparent); animation: pulse 1.8s ease-in-out infinite; }
+.addr-p { margin: 0; font-size: 14px; color: var(--fg-2); line-height: 1.9; }
+.tbl-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); }
+.inv { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 520px; }
+.inv th { padding: 12px 14px; background: var(--ink-3); color: var(--fg-3); font-weight: 700; font-size: 12.5px; text-align: right; }
+.inv td { padding: 12px 14px; border-top: 1px solid var(--line); color: var(--fg-2); vertical-align: top; }
+.inv td small { color: var(--fg-3); }
+.inv .n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.inv.wt td b { color: var(--fg); }
+
+/* ================= v3 · static pages ================= */
+.pg-hero { position: relative; display: flex; flex-direction: column; gap: 10px; padding: clamp(34px, 6vw, 70px) clamp(20px, 4vw, 48px); border-radius: 30px; overflow: hidden; background: radial-gradient(70% 120% at 85% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%), radial-gradient(50% 90% at 0% 100%, rgba(76, 125, 255, .16), transparent 70%), var(--ink-2); border: 1px solid var(--line); isolation: isolate; }
+.pg-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(to left, #000, transparent 70%); -webkit-mask-image: linear-gradient(to left, #000, transparent 70%); opacity: .5; animation: gridMove 18s linear infinite; }
+.pg-hero h1 { margin: 0; font-family: var(--f-display); font-size: clamp(28px, 4vw, 46px); font-weight: 900; line-height: 1.4; animation: wordUp .8s var(--ease) backwards .1s; }
+.pg-hero p { margin: 0; max-width: 56ch; color: var(--fg-2); font-size: 15.5px; animation: wordUp .8s var(--ease) backwards .2s; }
+.pg-body { margin-top: -24px; max-width: 980px; }
+.prose { display: flex; flex-direction: column; gap: 14px; max-width: 72ch; font-size: 15px; color: var(--fg-2); line-height: 2.05; }
+.prose p { margin: 0; }
+.prose .h3 { margin-top: 14px; color: var(--fg); scroll-margin-top: 80px; }
+.vals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ct { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 18px; align-items: start; }
+.ct-info { display: flex; flex-direction: column; gap: 10px; }
+.ct-info .btn { align-self: flex-start; margin-top: 6px; }
+.sel-txt { user-select: all; }
+.faq-g { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+.pd-none { margin: 0; padding: 30px; text-align: center; color: var(--fg-3); }
+.terms { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 30px; align-items: start; }
+.toc { position: sticky; top: 12px; display: flex; flex-direction: column; gap: 2px; padding: 10px; border-radius: 18px; background: var(--ink-2); border: 1px solid var(--line); }
+.toc a { padding: 9px 12px; border-radius: 10px; color: var(--fg-2); font-size: 13.5px; text-decoration: none; }
+.toc a:hover { background: var(--ink-3); color: var(--fg); }
+.pg-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.pg-links button { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 18px 18px 18px 46px; border-radius: 20px; border: 1px solid var(--line); background: var(--ink-2); cursor: pointer; text-align: right; transition: border-color .2s, transform .35s var(--spring), background .2s; }
+.pg-links button:hover { border-color: var(--line-2); background: var(--ink-3); transform: translateY(-3px); }
+.pg-links b { font-size: 14.5px; }
+.pg-links span { font-size: 12.5px; color: var(--fg-3); line-height: 1.8; }
+.pg-links .i { position: absolute; left: 16px; top: 50%; margin-top: -10px; color: var(--fg-3); transition: transform .3s var(--spring), color .2s; }
+.pg-links button:hover .i { transform: translateX(-4px); color: var(--accent); }
+
+/* ================= v3 · 404 ================= */
+.nf { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 40px 16px 20px; text-align: center; }
+.nf-art { position: relative; width: min(260px, 60vw); aspect-ratio: 1; animation: nfFloat 5s ease-in-out infinite; }
+.nf-art .illu { position: absolute; inset: 0; width: 100%; height: 100%; filter: grayscale(.4) drop-shadow(0 30px 40px rgba(0, 0, 0, .5)); }
+.nf-cable { position: absolute; left: 48%; top: 6%; width: 4px; height: 26%; border-radius: 2px; background: linear-gradient(var(--fg-3), transparent); transform-origin: top; animation: cable 3s ease-in-out infinite; }
+.nf-cable::after { content: ""; position: absolute; top: -10px; left: -5px; width: 14px; height: 12px; border-radius: 3px; background: var(--fg-3); }
+.nf-code { position: relative; font-family: var(--f-tech); font-size: clamp(76px, 14vw, 150px); font-weight: 700; line-height: 1; letter-spacing: .06em; color: var(--fg); direction: ltr; text-shadow: 0 0 40px color-mix(in srgb, var(--accent) 40%, transparent); }
+.nf-code::before, .nf-code::after { content: attr(data-t); position: absolute; inset: 0; }
+.nf-code::before { color: #FF5C8A; mix-blend-mode: screen; animation: glitch 2.6s steps(1) infinite; }
+.nf-code::after { color: #4C7DFF; mix-blend-mode: screen; animation: glitch 2.6s steps(1) infinite reverse; }
+.nf h1 { margin: 0; font-family: var(--f-display); font-size: clamp(22px, 3vw, 30px); font-weight: 900; }
+.nf p { margin: 0; max-width: 46ch; color: var(--fg-2); }
+.nf .qv-ctas { justify-content: center; margin-top: 8px; }
+.nf-press { margin-top: 18px; font-family: var(--f-tech); font-size: 13px; letter-spacing: .2em; color: var(--fg-3); animation: blink 1.4s steps(2) infinite; direction: ltr; }
+.nf-press kbd { display: inline-grid; place-items: center; width: 26px; height: 26px; margin: 0 4px; border-radius: 13px; background: #45C489; color: #05130c; font: 700 13px var(--f-tech); }
+
+@keyframes stepIn { from { opacity: 0; transform: translateY(14px); } }
+@keyframes otpPop { 50% { transform: scale(1.1); } }
+@keyframes shake { 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
+@keyframes fadeIn { from { opacity: 0; } }
+@keyframes eq { 0%, 100% { transform: scaleY(.25); } 50% { transform: scaleY(1); } }
+@keyframes gridMove { to { background-position: -340px 0; } }
+@keyframes nfFloat { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-14px) rotate(3deg); } }
+@keyframes cable { 0%, 100% { transform: rotate(8deg); } 50% { transform: rotate(-10deg); } }
+@keyframes glitch { 0%, 86%, 100% { transform: none; opacity: 0; } 88% { transform: translate(-5px, 2px); opacity: .9; clip-path: inset(10% 0 55% 0); } 91% { transform: translate(4px, -2px); opacity: .9; clip-path: inset(60% 0 8% 0); } 94% { transform: translate(-2px, 0); opacity: .7; clip-path: inset(30% 0 40% 0); } }
+@keyframes blink { 50% { opacity: .3; } }
+.calm .pg-hero::after, .calm .nf-art, .calm .nf-cable, .calm .nf-code::before, .calm .nf-code::after, .calm .nf-press, .calm .bars i, .calm .pill.go::before, .calm .tl-i.cur::before, .calm .auth-h .mark { animation: none !important; }
+
+@media (max-width: 1240px) {
+  .vals, .stat4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 980px) {
+  .acc, .od, .co { grid-template-columns: minmax(0, 1fr); margin-top: -40px; }
+  .acc-side, .co-sum { position: static; }
+  .acc-user { flex-direction: row; flex-wrap: wrap; justify-content: flex-start; gap: 4px 14px; text-align: right; padding: 16px; }
+  .acc-user .lv-ring { width: 64px; height: 64px; }
+  .acc-user .lv-ring svg { width: 64px; height: 64px; }
+  .acc-user .lv-ring b { font-size: 20px; }
+  .acc-user .lv-ring small { display: none; }
+  .acc-user > b { margin: 0; }
+  .acc-nav { flex-direction: row; overflow-x: auto; scrollbar-width: none; padding: 6px; }
+  .acc-nav button { flex: none; min-height: 42px; padding: 0 14px; font-size: 13.5px; }
+  .acc-nav button[aria-current="page"]::before { right: 14px; left: 14px; top: auto; bottom: 2px; width: auto; height: 3px; }
+  .ct, .terms { grid-template-columns: minmax(0, 1fr); }
+  .toc { position: static; flex-direction: row; overflow-x: auto; scrollbar-width: none; }
+  .toc a { flex: none; }
+  .co-sum { order: 2; }
+}
+@media (max-width: 620px) {
+  .row2 { grid-template-columns: minmax(0, 1fr); }
+  .quick3, .next3 { grid-template-columns: minmax(0, 1fr); }
+  .stat4, .vals { gap: 10px; }
+  .stt { padding: 14px; }
+  .stt b { font-size: 18px; }
+  .card-p { padding: 18px 16px; border-radius: 20px; }
+  .otp { gap: 8px; }
+  .otp input { width: 48px; height: 56px; font-size: 21px; }
+  .auth { padding: 30px 18px 22px; }
+  .sp span { font-size: 11.5px; }
+  .sp i { width: 34px; height: 34px; border-radius: 11px; }
+  .stepper::before, .sp-fill { top: 22px; }
+  .login-btn { padding: 0 12px; }
+  .login-btn span { display: none; }
+  .oc { padding: 10px; gap: 10px; }
+  .oc-th > span { width: 44px; height: 44px; }
+  .oc-th > span:nth-child(n+3) { display: none; }
+  .oc .pill { display: none; }
+
+  .pg-body { margin-top: -30px; }
+}
+.oc-st { display: none; font-style: normal; font-size: 12px; font-weight: 700; }
+.oc-st.ok { color: var(--ok); } .oc-st.go { color: var(--accent); } .oc-st.mute { color: var(--fg-2); }
+@media (max-width: 620px) { .oc-st { display: block; } }
+@media (max-width: 980px) { .r-item[data-v="account"] { display: none; } }
+
 /* keyframes */
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes bob { 50% { transform: translateY(-8px); } }
@@ -1501,8 +1824,10 @@ var CODES = [
   { id: 'gc3', title: 'PUBG Mobile ۶۶۰ UC', meta: 'کد دیجیتال · ۹ مهر', code: 'UC66-4402-9917' }
 ];
 var ORDERS = [
-  { no: '۴۸۲۱', items: 'کنترلر DualSense و پایه شارژر', step: 3, eta: 'تحویل تخمینی: فردا' },
-  { no: '۴۷۹۶', items: 'مانیتور گیمینگ ۲۷ اینچ QHD', step: 4, eta: 'تحویل شد · ۱۹ مهر' }
+  { id: '4821', no: '۴۸۲۱', date: '۲۲ مهر ۱۴۰۵', items: [{ id: 'a1', qty: 1, vlabel: 'رنگ: سفید' }, { id: 'a5', qty: 1 }], ship: 'پست پیشتاز', shipFee: 0, pay: 'پرداخت اینترنتی', digital: false, step: 3, track: '۲۴۰۱ ۸۸۷۳ ۱۰۹۲ ۵۵۶۱', eta: 'تحویل تخمینی: فردا', times: ['۲۲ مهر · ۱۱:۴۰', '۲۲ مهر · ۱۱:۴۱', '۲۲ مهر · ۱۸:۱۰', '۲۳ مهر · ۰۹:۲۵'] },
+  { id: '4796', no: '۴۷۹۶', date: '۱۶ مهر ۱۴۰۵', items: [{ id: 'g1', qty: 1 }], ship: 'ارسال فوری تهران', shipFee: 98000, pay: 'کیف پول پیکسل‌گاه', digital: false, step: 4, track: '۷۷۱۰ ۲۳۴۵ ۰۰۹۸ ۱۲۶۴', eta: 'تحویل شد · ۱۹ مهر', times: ['۱۶ مهر · ۲۰:۰۵', '۱۶ مهر · ۲۰:۰۶', '۱۷ مهر · ۱۰:۳۰', '۱۸ مهر · ۱۲:۱۵', '۱۹ مهر · ۱۳:۴۰'] },
+  { id: '4752', no: '۴۷۵۲', date: '۹ مهر ۱۴۰۵', items: [{ id: 'gc3', qty: 1 }], ship: 'تحویل آنی', shipFee: 0, pay: 'پرداخت اینترنتی', digital: true, step: 4, track: '', eta: 'تحویل آنی شد', times: ['۹ مهر · ۲۲:۱۰', '۹ مهر · ۲۲:۱۰', '۹ مهر · ۲۲:۱۰', '۹ مهر · ۲۲:۱۰', '۹ مهر · ۲۲:۱۱'] },
+  { id: '4710', no: '۴۷۱۰', date: '۲۸ شهریور ۱۴۰۵', items: [{ id: 'g4', qty: 1 }, { id: 'g3', qty: 1 }], ship: 'پست پیشتاز', shipFee: 0, pay: 'پرداخت اقساطی', digital: false, step: 4, ret: true, track: '۵۵۱۲ ۹۰۸۸ ۳۴۱۰ ۷۷۰۲', eta: 'تحویل شد · ۳۱ شهریور', times: ['۲۸ شهریور · ۰۹:۱۲', '۲۸ شهریور · ۰۹:۱۳', '۲۸ شهریور · ۱۵:۰۰', '۲۹ شهریور · ۰۸:۴۰', '۳۱ شهریور · ۱۱:۲۰'] }
 ];
 var STEPS = ['ثبت سفارش', 'پرداخت', 'آماده‌سازی', 'ارسال', 'تحویل'];
 var NOTIFS = [
@@ -1676,6 +2001,7 @@ function renderRail() {
     '<button class="r-item" type="button" data-go="library" data-v="library" data-sfx>' + icon('library') + '<span class="lbl">کتابخانه</span><span class="r-badge" id="libBadge">' + fa(CODES.length) + '</span></button>' +
     '<button class="r-item" type="button" data-go="wishlist" data-v="wishlist" data-sfx>' + icon('heart') + '<span class="lbl">علاقه‌مندی‌ها</span><span class="r-badge" id="wishBadge"></span></button>' +
     '<button class="r-item" type="button" data-go="cat" data-cat="games" data-sub="بازارچه بازی‌های کارکرده" data-v="used" data-sfx>' + icon('recycle') + '<span class="lbl">بازارچه کارکرده</span></button>' +
+    '<button class="r-item" type="button" data-go="account" data-v="account" data-sfx>' + icon('user') + '<span class="lbl">حساب کاربری</span></button>' +
     '</div><div class="r-sep"></div><div class="r-quick"><span class="r-cap lbl">دسترسی سریع</span>' +
     ['qo', 'gc1', 'a1'].map(function (id) { var p = BY[id]; return '<button class="r-q" type="button" data-go="library" data-sfx style="--tint:' + p.tint + '"><span class="mini">' + miniArt(p) + '</span><span class="lbl">' + esc(p.name.length > 22 ? p.name.slice(0, 22) + '…' : p.name) + '<small>' + (p.kind === 'game' ? 'آماده‌ی بازی' : 'کد آماده است') + '</small></span></button>'; }).join('') +
     '</div><div class="r-fill"></div>' +
@@ -1696,13 +2022,7 @@ function renderTop() {
     '<button class="m-logo" type="button" data-go="home" aria-label="پیکسل‌گاه، خانه">' + MARK + '<span>پیکسل‌گاه</span></button>' +
     '<button class="search" type="button" id="searchBtn" aria-label="جستجو، میان‌بر Ctrl+K" data-sfx>' + icon('search') + '<span class="s-ph">جستجو در همه‌ی کالاها</span><kbd>Ctrl K</kbd></button>' +
     '<nav class="cats" id="cats" aria-label="دسته‌بندی‌ها">' + CATS.map(function (c) { return '<button class="cat" type="button" data-cat="' + c.id + '" aria-expanded="false" aria-haspopup="true" style="--tint:' + c.tint + '" data-sfx>' + icon(c.icon) + '<span>' + c.label + '</span></button>'; }).join('') + '<span class="cat-line" id="catLine" aria-hidden="true"></span></nav>' +
-    '<div class="acts">' +
-    '<button class="wallet" type="button" data-action="wallet" aria-label="کیف پول، شارژ" data-sfx>' + icon('wallet') + '<span class="w-txt" id="walletTop">' + fa(state.wallet) + '</span><small>تومان</small><span class="w-plus">' + icon('plus') + '</span></button>' +
-    '<button class="ib" type="button" id="cartBtn" data-action="cart" aria-label="سبد خرید" data-sfx>' + icon('cart') + '<span class="badge" id="cartBadge"></span></button>' +
-    '<button class="ib" type="button" id="bellBtn" data-action="bell" aria-label="اعلان‌ها" data-sfx>' + icon('bell') + '<span class="dot" id="bellDot"></span></button>' +
-    '<button class="avatar" type="button" id="profileBtn" data-action="profile" aria-label="پروفایل، سطح ' + fa(state.level) + '" data-sfx>' + ringSVG(46, 20, 3) + '<span id="lvlTop">' + fa(state.level) + '</span></button>' +
-    '<button class="ib m-only" type="button" id="soundTop" data-action="sound" aria-pressed="false" aria-label="صدای رابط">' + icon('soundOff') + '</button>' +
-    '<button class="ib m-only" type="button" id="menuBtn" data-action="menu" aria-label="دسته‌بندی‌ها">' + icon('library') + '</button>' +
+    '<div class="acts" id="acts">' + actsHTML() +
     '</div><div class="mega" id="mega" aria-label="منوی دسته‌بندی"></div>';
 }
 function ringSVG(size, r, sw) {
@@ -1837,23 +2157,33 @@ var firstRender = true;
 function go(v, params, opts) {
   params = params || {}; opts = opts || {};
   closeMega(); closePop();
-  var same = v === state.view && v !== 'cat' && v !== 'product';
+  if (v === 'cat' && !CATBY[params.cat]) v = '404';
+  if (v === 'product' && !BY[params.pid]) v = '404';
+  if (['home', 'cat', 'library', 'wishlist', 'product'].indexOf(v) < 0 && !VIEW_FN[v]) v = '404';
+  if (v === 'account' && state.view === 'account' && state.user && $('#accMain') && !opts.force) {
+    if ((params.tab || 'overview') === (state.params.tab || 'overview')) { main.scrollTo({ top: 0, behavior: calm() ? 'auto' : 'smooth' }); return; }
+    state.params = params; accSwitch(params.tab); pushRoute(v, params, opts.nopush); return;
+  }
+  var same = v === state.view && v !== 'cat' && v !== 'product' && sameP(params, state.params);
   if (same && !opts.force) { main.scrollTo({ top: 0, behavior: calm() ? 'auto' : 'smooth' }); return; }
+  if (v === 'checkout' && state.view !== 'checkout' && state.co) { state.co.step = 1; state.co.result = null; state.co.fail = false; state.co.terms = false; }
   var doRender = function () {
     runCleanups();
-    state.view = v;
+    state.view = v; state.params = params;
     state.cat = params.cat || null; state.sub = params.sub || null; state.group = params.group || null; state.pid = params.pid || null; if (v !== 'product') pd = null;
     if (v === 'home') renderHome();
     else if (v === 'cat') renderCategory();
     else if (v === 'library') renderLibrary();
     else if (v === 'wishlist') renderWishlist();
     else if (v === 'product') renderProduct();
+    else VIEW_FN[v](params);
     main.scrollTop = 0;
     railActive();
+    pushRoute(v, params, opts.nopush);
     if (!firstRender) { view.classList.remove('out'); view.classList.add('in'); setTimeout(function () { view.classList.remove('in'); }, 700); }
     firstRender = false;
     initReveal();
-    if (v !== 'home') setAmb(v === 'cat' ? CATBY[state.cat].tint : v === 'product' && BY[state.pid] ? BY[state.pid].tint : state.accent);
+    if (v !== 'home') setAmb(v === 'cat' ? CATBY[state.cat].tint : v === 'product' && BY[state.pid] ? BY[state.pid].tint : v === '404' ? '#FF5C8A' : state.accent);
   };
   if (firstRender || calm()) { doRender(); return; }
   view.classList.add('out');
@@ -1920,7 +2250,7 @@ function renderHome() {
       '<div class="tabs" role="tablist" id="platTabs"><span class="tab-ind" id="tabInd"></span>' + [['all', 'همه'], ['ps5', 'PS5'], ['sw2', 'Switch 2'], ['xbox', 'Xbox'], ['ps4', 'PS4']].map(function (t) { return '<button class="tab" type="button" role="tab" data-plat="' + t[0] + '" aria-selected="' + (state.plat === t[0]) + '">' + t[1] + '</button>'; }).join('') + '</div></div>' +
       '<div class="grid" id="gameGrid">' + gamesFor(state.plat).map(cardHTML).join('') + '</div></section>' +
 
-    '<section class="sec reveal" aria-labelledby="h-club"><div class="sec-h"><div><span class="eyebrow">PIXEL CLUB</span><h2 class="h2" id="h-club">باشگاه گیمرها</h2><p class="sec-sub">هر خرید امتیاز می‌دهد؛ با هر سطح تخفیف دائمی بیشتر.</p></div></div>' +
+    '<section class="sec reveal" aria-labelledby="h-club"><div class="sec-h"><div><span class="eyebrow">PIXEL CLUB</span><h2 class="h2" id="h-club">باشگاه گیمرها</h2><p class="sec-sub">هر خرید امتیاز می‌دهد؛ با هر سطح تخفیف دائمی بیشتر.</p></div>' + (state.user ? '' : '<button class="btn primary sm club-cta" type="button" data-x="login">' + icon('user') + 'عضویت رایگان · ۵۰ امتیاز هدیه</button>') + '</div>' +
       '<div class="club"><div class="panel"><div class="lv"><div class="lv-ring">' + '<svg viewBox="0 0 96 96" aria-hidden="true"><circle class="rbg" cx="48" cy="48" r="40" fill="none" stroke-width="8"/><circle class="rfg" cx="48" cy="48" r="40" fill="none" stroke-width="8" stroke-dasharray="251.3" stroke-dashoffset="' + (251.3 * (1 - state.xp / state.xpMax)).toFixed(1) + '"/></svg><b id="lvNum">' + fa(state.level) + '</b><small>سطح</small></div>' +
         '<div class="lv-tx"><h3>شکارچی تخفیف</h3><p><span id="xpLeft">' + fa(state.xpMax - state.xp) + '</span> امتیاز تا سطح بعد · جایزه: <b>۸٪ تخفیف دائمی</b></p></div></div>' +
         '<div class="xp"><div class="xp-top"><span>پیشرفت این سطح</span><span><b id="xpNow" data-count="' + state.xp + '">' + fa(state.xp) + '</b> از ' + fa(state.xpMax) + '</span></div><div class="xp-bar"><i id="xpFill" style="--p:' + (state.xp / state.xpMax * 100).toFixed(1) + '%"></i></div></div>' +
@@ -1947,7 +2277,7 @@ function renderHome() {
 
     '<section class="sec reveal" aria-label="چرا پیکسل‌گاه"><div class="trust">' +
       [['shield', 'ضمانت اصالت کالا', 'همه‌ی کالاها اورجینال و پلمب'], ['bolt', 'تحویل فوری کدها', 'گیفت کارت و اکانت در چند ثانیه'], ['truck', 'ارسال به سراسر کشور', 'پیگیری لحظه‌ای مرسوله'], ['headset', 'پشتیبانی هر روز هفته', 'گفتگو با گیمرهای واقعی']].map(function (t) { return '<div class="tr"><span class="tk">' + icon(t[0]) + '</span><div><b>' + t[1] + '</b><span>' + t[2] + '</span></div></div>'; }).join('') +
-    '</div><div class="foot"><span>© ۱۴۰۵ پیکسل‌گاه · نسخه‌ی نمایشی طرح</span><nav aria-label="لینک‌های پایانی"><button type="button" data-go="library">کتابخانه‌ی من</button><button type="button" data-action="support">راهنمای فعال‌سازی کد</button><button type="button" data-action="support">قوانین و ضمانت</button><button type="button" data-action="support">تماس با ما</button></nav></div></section>';
+    '</div><div class="foot"><span>© ۱۴۰۵ پیکسل‌گاه · نسخه‌ی نمایشی طرح</span><nav aria-label="لینک‌های پایانی"><button type="button" data-go="account">حساب کاربری</button><button type="button" data-go="page" data-page="guide">راهنمای فعال‌سازی کد</button><button type="button" data-go="page" data-page="faq">سؤالات متداول</button><button type="button" data-go="page" data-page="warranty">گارانتی و بازگشت</button><button type="button" data-go="page" data-page="terms">قوانین</button><button type="button" data-go="page" data-page="about">درباره‌ی ما</button><button type="button" data-go="page" data-page="contact">تماس با ما</button></nav></div></section>';
 
   initHero();
   initCountdown();
@@ -2143,9 +2473,10 @@ function sortList(list) {
 
 /* ---------- library ---------- */
 function renderLibrary() {
+  if (!state.user) { view.innerHTML = wallHTML('کتابخانه‌ات بعد از ورود باز می‌شود', 'کدهای دیجیتال و سفارش‌هایت به حسابت گره خورده‌اند.'); return; }
   var tab = state.libTab;
   view.innerHTML = '<section class="sec"><div class="lib-h"><div><span class="eyebrow">LIBRARY</span><h1>کتابخانه‌ی من</h1><p class="sec-sub">کدهای دیجیتال همیشه این‌جا می‌مانند؛ سفارش‌های فیزیکی را لحظه به لحظه دنبال کن.</p></div>' +
-    '<div class="tabs" role="tablist" id="libTabs"><span class="tab-ind"></span><button class="tab" type="button" role="tab" data-lib="codes" aria-selected="' + (tab === 'codes') + '">کدهای دیجیتال · ' + fa(CODES.length) + '</button><button class="tab" type="button" role="tab" data-lib="orders" aria-selected="' + (tab === 'orders') + '">سفارش‌ها · ' + fa(ORDERS.length) + '</button></div></div>' +
+    '<div class="tabs" role="tablist" id="libTabs"><span class="tab-ind"></span><button class="tab" type="button" role="tab" data-lib="codes" aria-selected="' + (tab === 'codes') + '">کدهای دیجیتال · ' + fa(CODES.length) + '</button><button class="tab" type="button" role="tab" data-lib="orders" aria-selected="' + (tab === 'orders') + '">سفارش‌ها · ' + fa(ORDERS.filter(function (o) { return !o.digital; }).length) + '</button></div></div>' +
     '<div id="libBody">' + (tab === 'codes' ? codesHTML() : ordersHTML()) + '</div></section>';
   var tabs = $('#libTabs');
   requestAnimationFrame(function () { placeInd(tabs); animateOrders(); });
@@ -2168,8 +2499,8 @@ function codesHTML() {
   }).join('') + '</div><p class="sec-sub" style="margin-top:14px">کدها نمونه‌اند و فقط برای نمایش طرح ساخته شده‌اند.</p>';
 }
 function ordersHTML() {
-  return '<div class="orders">' + ORDERS.map(function (o, i) {
-    return '<article class="order" style="--i:' + i + '"><div class="order-h"><div><b>سفارش ' + o.no + '</b> · <span>' + o.items + '</span></div><span>' + o.eta + '</span></div>' +
+  return '<div class="orders">' + ORDERS.filter(function (o) { return !o.digital; }).map(function (o, i) {
+    return '<article class="order" style="--i:' + i + '"><div class="order-h"><div><b>سفارش ' + o.no + '</b> · <span>' + esc(itemsLabel(o)) + '</span></div><span>' + o.eta + '</span><button class="btn ghost sm" type="button" data-go="order" data-no="' + o.id + '">جزئیات' + icon('arrowL') + '</button></div>' +
       '<div class="steps" data-step="' + o.step + '"><span class="prog"></span><span class="truck" aria-hidden="true">' + icon('truck') + '</span>' + STEPS.map(function (s, k) { return '<div class="step' + (k < o.step ? ' done' : '') + (k === o.step ? (o.step === 4 ? ' done' : ' cur') : '') + '"><i></i>' + s + '</div>'; }).join('') + '</div></article>';
   }).join('') + '</div>';
 }
@@ -2250,7 +2581,7 @@ function renderCart(d) {
         '<div class="qty"><button type="button" data-q="+" data-id="' + esc(l.key) + '" aria-label="یکی بیشتر">' + icon('plus') + '</button><output>' + fa(l.qty) + '</output><button type="button" data-q="-" data-id="' + esc(l.key) + '" aria-label="' + (l.qty === 1 ? 'حذف' : 'یکی کمتر') + '">' + icon(l.qty === 1 ? 'trash' : 'minus') + '</button></div></div>';
     }).join('') : '<div class="empty" style="border:0"><span class="ek">' + icon('cart') + '</span><h3>سبدت خالی است</h3><p>از تخفیف‌های امروز شروع کن.</p><button class="btn primary sm" type="button" data-dclose data-go="home">رفتن به فروشگاه</button></div>') + '</div>' +
     (state.cart.length ? '<div class="dr-f"><div class="sum"><span>جمع کالاها</span><span>' + toman(t.full) + '</span></div>' + (t.save ? '<div class="sum"><span>سود تو از تخفیف</span><span class="save">' + toman(t.save) + '</span></div>' : '') +
-      '<div class="sum tot"><span>مبلغ قابل پرداخت</span><span id="cartTot">' + toman(t.now) + '</span></div><div class="sum"><span>امتیاز باشگاه این خرید</span><span style="color:var(--accent)">+۱۲۰ امتیاز</span></div><button class="btn primary" type="button" data-action="checkout">تکمیل خرید نمونه' + icon('arrowL') + '</button></div>' : '');
+      '<div class="sum tot"><span>مبلغ قابل پرداخت</span><span id="cartTot">' + toman(t.now) + '</span></div><div class="sum"><span>امتیاز باشگاه این خرید</span><span style="color:var(--accent)">+۱۲۰ امتیاز</span></div><button class="btn primary" type="button" data-action="checkout">ادامه‌ی خرید و پرداخت' + icon('arrowL') + '</button></div>' : '');
 }
 function changeQty(id, dir) {
   var line = state.cart.filter(function (l) { return l.key === id; })[0]; if (!line) return;
@@ -2314,7 +2645,7 @@ function openQuick(id) {
 var palOpen = false;
 function palIndex() {
   var out = [];
-  [['library', 'کتابخانه‌ی من', 'کدهای دیجیتال و سفارش‌ها', function () { go('library'); }], ['heart', 'علاقه‌مندی‌ها', 'کالاهای نشان‌شده', function () { go('wishlist'); }], ['cart', 'سبد خرید', 'مشاهده و تکمیل خرید', function () { openCart(); }], ['wallet', 'شارژ کیف پول', '۵٪ اعتبار هدیه', function () { openWallet(); }], ['sliders', 'تنظیمات لانچر', 'رنگ، صدا و حرکت', function () { openSettings(mqMobile.matches ? $('#profileBtn') : $('.rail [data-action="settings"]')); }], ['replay', 'پخش دوباره‌ی انیمیشن ورود', 'لانچر را از نو باز کن', function () { boot(true); }]].forEach(function (a) { out.push({ type: 'act', ic: a[0], label: a[1], sub: a[2], run: a[3] }); });
+  [['library', 'کتابخانه‌ی من', 'کدهای دیجیتال و سفارش‌ها', function () { go('library'); }], ['heart', 'علاقه‌مندی‌ها', 'کالاهای نشان‌شده', function () { go('wishlist'); }], ['cart', 'سبد خرید', 'مشاهده و تکمیل خرید', function () { openCart(); }], ['wallet', 'شارژ کیف پول', '۵٪ اعتبار هدیه', function () { requireLogin(openWallet); }], ['user', 'حساب کاربری', 'سفارش‌ها، آدرس‌ها و اطلاعات', function () { go('account'); }], ['receipt', 'پیگیری سفارش', 'وضعیت مرسوله‌ها و مرجوعی', function () { go('account', { tab: 'orders' }); }], ['info', 'سؤالات متداول', 'ارسال، پرداخت، گارانتی', function () { go('page', { page: 'faq' }); }], ['key', 'راهنمای فعال‌سازی کد', 'PSN، Xbox، eShop، Steam', function () { go('page', { page: 'guide' }); }], ['shield', 'گارانتی و بازگشت کالا', 'شرایط و مراحل مرجوعی', function () { go('page', { page: 'warranty' }); }], ['phone', 'تماس با ما', 'آدرس، تلفن و فرم پیام', function () { go('page', { page: 'contact' }); }], ['sliders', 'تنظیمات لانچر', 'رنگ، صدا و حرکت', function () { openSettings(mqMobile.matches ? $('#profileBtn') : $('.rail [data-action="settings"]')); }], ['replay', 'پخش دوباره‌ی انیمیشن ورود', 'لانچر را از نو باز کن', function () { boot(true); }]].forEach(function (a) { out.push({ type: 'act', ic: a[0], label: a[1], sub: a[2], run: a[3] }); });
   CATS.forEach(function (c) {
     out.push({ type: 'cat', ic: c.icon, label: c.label, sub: 'دسته‌بندی', run: function () { go('cat', { cat: c.id }); } });
     c.groups.forEach(function (g) {
@@ -2530,7 +2861,7 @@ document.addEventListener('click', function (e) {
     var v = goEl.dataset.go;
     if (drawerEl && goEl.closest('.drawer')) closeDrawer();
     if (modalEl && goEl.closest('.modal')) closeModal();
-    go(v, { cat: goEl.dataset.cat, sub: goEl.dataset.sub || null, group: goEl.dataset.group || null, pid: goEl.dataset.pid }, { force: v === 'cat' });
+    var ds = goEl.dataset; go(v, { cat: ds.cat, sub: ds.sub || null, group: ds.group || null, pid: ds.pid, tab: ds.tab, no: ds.no, page: ds.page, kind: ds.kind, id: ds.id, q: ds.q }, { force: v === 'cat' });
     return;
   }
   var pidEl = t.closest('[data-pid]'); if (pidEl) { if (modalEl && pidEl.closest('.modal')) closeModal(true); if (drawerEl && pidEl.closest('.drawer')) closeDrawer(); go('product', { pid: pidEl.dataset.pid }); return; }
@@ -2540,13 +2871,13 @@ document.addEventListener('click', function (e) {
   if (act) {
     var a = act.dataset.action;
     if (a === 'cart') openCart();
-    else if (a === 'wallet') { closePop(); openWallet(); }
+    else if (a === 'wallet') { closePop(); requireLogin(openWallet); }
     else if (a === 'bell') openBell(act);
-    else if (a === 'profile') openProfile(act);
+    else if (a === 'profile') openProfileV3(act);
     else if (a === 'settings') openSettings(act);
     else if (a === 'support') { closePop(); openSupport(); }
     else if (a === 'sound') setSound(!state.sound);
-    else if (a === 'checkout') checkout();
+    else if (a === 'checkout') { closeDrawer(); requireLogin(function () { go('checkout', {}, { force: state.view === 'checkout' }); }); }
     else if (a === 'replay') { closePop(); boot(true); }
     else if (a === 'menu') { if (megaId) closeMega(); else openMega(state.view === 'cat' ? state.cat : CATS[0].id); }
     else if (a === 'megaclose') closeMega();
@@ -3128,9 +3459,634 @@ view.addEventListener('submit', function (e) {
   }
 });
 
+/* ================= v3 · shared ================= */
+state.params = {};
+state.nextOrder = 4836;
+Object.assign(IC, {
+  card: 'M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5zM3 10h18M7 15h3',
+  edit: 'M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4',
+  info: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 11v6M12 7.5h.01',
+  logout: 'M14 4h4.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H14M9 8l-4 4 4 4M5 12h10',
+  mail: 'M3 6h18v12H3zM3 7l9 6 9-6',
+  phone: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z',
+  pin: 'M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11zM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
+  receipt: 'M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6M9 16h3',
+  ret: 'M9 14L4 9l5-5M4 9h10.5a5.5 5.5 0 0 1 0 11H11',
+  filter: 'M4 5h16l-6 8v6l-4-2v-4z',
+  compare: 'M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0zM8 21h8',
+  sort: 'M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3',
+  news: 'M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2M7 9h7M7 13h7M7 16h4',
+  star: 'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z',
+  image: 'M4 5h16v14H4zM4 16l5-5 4 4 2-2 5 5M15 9h.01',
+  monitor: 'M3 4h18v12H3zM8 20h8M12 16v4',
+  power: 'M12 3v8M7 6a7 7 0 1 0 10 0',
+  wrench: 'M14.5 6.5a4 4 0 0 0-5.3 5.3L4 17l3 3 5.2-5.2a4 4 0 0 0 5.3-5.3L15 12l-3-3z'
+});
+ORDERS.forEach(function (o) {
+  var sub = 0;
+  o.items.forEach(function (it) { if (it.price == null) it.price = priceNow(BY[it.id]); sub += it.price * it.qty; });
+  o.sub = sub; o.disc = o.disc || 0; o.shipFee = o.shipFee || 0; o.total = sub - o.disc + o.shipFee;
+});
+function accSwitch(tab) {
+  tab = ACC_TABS.some(function (t) { return t[0] === tab; }) ? tab : 'overview';
+  state.accTab = tab;
+  $$('.acc-nav [data-tab]').forEach(function (b) { b.setAttribute('aria-current', b.dataset.tab === tab ? 'page' : 'false'); });
+  var m = $('#accMain'); m.innerHTML = accTabHTML(tab); bindAccount(tab);
+  var cur = $('.acc-nav [aria-current="page"]'); if (cur && mqMobile.matches) cur.parentNode.scrollBy({ left: (cur.getBoundingClientRect().left + cur.offsetWidth / 2) - (cur.parentNode.getBoundingClientRect().left + cur.parentNode.offsetWidth / 2), behavior: calm() ? 'auto' : 'smooth' });
+  Sound.click();
+}
+
+/* ================= v3 · routing ================= */
+var SIMPLE_VIEWS = ['home', 'library', 'wishlist', 'account', 'checkout', 'search', 'compare', 'builder', 'news'];
+var VIEW_FN = {};
+var routeInit = true;
+function routeToken(v, p) {
+  p = p || {};
+  if (v === 'cat' && p.cat) return 'cat-' + p.cat;
+  if (v === 'product' && p.pid) return 'p-' + p.pid;
+  if (v === 'order' && p.no) return 'order-' + p.no;
+  if (v === 'article' && p.id) return 'news-' + p.id;
+  if (v === 'page' && p.page) return 'page-' + p.page;
+  if (v === 'service' && p.kind) return 'service-' + p.kind;
+  if (v === 'account' && p.tab && p.tab !== 'overview') return 'account-' + p.tab;
+  return v;
+}
+function parseRoute(h) {
+  h = String(h || '').replace(/^#/, '');
+  if (!h || h === 'home') return ['home', {}];
+  var m = h.match(/^([a-z]+)-([\w.~-]+)$/);
+  if (m) {
+    var k = m[1], val = m[2];
+    if (k === 'cat' && CATBY[val]) return ['cat', { cat: val }];
+    if (k === 'p' && BY[val]) return ['product', { pid: val }];
+    if (k === 'order') return ['order', { no: val }];
+    if (k === 'news') return ['article', { id: val }];
+    if (k === 'page') return ['page', { page: val }];
+    if (k === 'service') return ['service', { kind: val }];
+    if (k === 'account') return ['account', { tab: val }];
+    return ['404', {}];
+  }
+  if (SIMPLE_VIEWS.indexOf(h) >= 0) return [h, {}];
+  return ['404', {}];
+}
+function sameP(a, b) { a = a || {}; b = b || {}; return ['tab', 'no', 'page', 'kind', 'id', 'q'].every(function (k) { return (a[k] || '') === (b[k] || ''); }); }
+function pushRoute(v, p, nopush) {
+  if (nopush) return;
+  try {
+    var tok = '#' + routeToken(v, p);
+    var clean = {}; Object.keys(p || {}).forEach(function (k) { if (p[k] != null) clean[k] = p[k]; });
+    if (routeInit) history.replaceState({ v: v, p: clean }, '', tok);
+    else if (location.hash !== tok) history.pushState({ v: v, p: clean }, '', tok);
+  } catch (e) {}
+  routeInit = false;
+}
+window.addEventListener('popstate', function (e) {
+  var r = e.state && e.state.v ? [e.state.v, e.state.p || {}] : parseRoute(location.hash);
+  closeModal(true); closeDrawer(true);
+  go(r[0], r[1], { nopush: true, force: true });
+});
+
+/* ================= v3 · helpers ================= */
+var FA_MONTHS = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
+var PROVINCES = ['تهران', 'البرز', 'اصفهان', 'فارس', 'خراسان رضوی', 'آذربایجان شرقی', 'آذربایجان غربی', 'خوزستان', 'مازندران', 'گیلان', 'کرمان', 'قم', 'یزد', 'همدان', 'کرمانشاه', 'هرمزگان', 'سیستان و بلوچستان', 'زنجان', 'قزوین', 'سمنان', 'گلستان', 'اردبیل', 'مرکزی', 'لرستان', 'کردستان', 'بوشهر', 'چهارمحال و بختیاری', 'کهگیلویه و بویراحمد', 'ایلام', 'خراسان شمالی', 'خراسان جنوبی'];
+function normDigits(s) { return String(s || '').replace(/[۰-۹]/g, function (d) { return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d); }).replace(/[٠-٩]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'.indexOf(d); }); }
+function cleanPhone(s) { var v = normDigits(s).replace(/[\s-]/g, ''); if (/^\+98/.test(v)) v = '0' + v.slice(3); if (/^98\d{10}$/.test(v)) v = '0' + v.slice(2); return v; }
+function fmtPhone(p) { p = cleanPhone(p); return faD(p.length === 11 ? p.slice(0, 4) + ' ' + p.slice(4, 7) + ' ' + p.slice(7) : p); }
+function nowTime() { return new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }); }
+function genDigits(n) { var s = ''; for (var i = 0; i < n; i++) s += Math.floor(Math.random() * 10); return s; }
+function genCode() { var c = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s = ''; for (var i = 0; i < 12; i++) { s += c[Math.random() * c.length | 0]; if (i === 3 || i === 7) s += '-'; } return s; }
+function pill(cls, t) { return '<span class="pill ' + cls + '">' + t + '</span>'; }
+function wallHTML(title, sub) {
+  return '<section class="sec"><div class="empty wall"><span class="ek">' + icon('user') + '</span><h3>' + title + '</h3><p>' + sub + '</p><button class="btn primary sm" type="button" data-x="login">' + icon('user') + 'ورود یا ثبت‌نام</button></div></section>';
+}
+function fld(id, label, input, extra) { return '<div class="fld"><label for="' + id + '">' + label + '</label>' + input + (extra || '') + '<span class="err" id="' + id + 'Err" aria-live="polite"></span></div>'; }
+function setErr(id, msg) { var e = document.getElementById(id + 'Err'), i = document.getElementById(id); if (e) e.textContent = msg || ''; if (i) i.setAttribute('aria-invalid', msg ? 'true' : 'false'); return !msg; }
+
+/* ================= v3 · user & data ================= */
+state.knownPhone = '09120000000';
+state.user = LS.get('pg-out') === '1' ? null : { name: 'گیمر پیکسل‌گاه', phone: '09120000000', email: '', bday: ['', '', ''] };
+state.addresses = [
+  { id: 'ad1', title: 'خانه', name: 'گیمر پیکسل‌گاه', phone: '09120000000', province: 'تهران', city: 'تهران', addr: 'خیابان نمونه، کوچه‌ی نمونه، پلاک ۱۲، واحد ۳', postal: '1234567890', def: true },
+  { id: 'ad2', title: 'محل کار', name: 'گیمر پیکسل‌گاه', phone: '09120000000', province: 'البرز', city: 'کرج', addr: 'بلوار نمونه، ساختمان نمونه، طبقه‌ی ۴', postal: '3134567890', def: false }
+];
+state.prefs = { orders: true, sms: true, stock: true, news: false };
+state.accTab = 'overview';
+state.co = null;
+function defAddr() { return state.addresses.filter(function (a) { return a.def; })[0] || state.addresses[0] || null; }
+function addrById(id) { return state.addresses.filter(function (a) { return a.id === id; })[0] || defAddr(); }
+function addrLine(a) { return a ? a.province + '، ' + a.city + '، ' + a.addr : ''; }
+function itemsLabel(o) { return o.items.map(function (it) { return BY[it.id] ? BY[it.id].name : ''; }).join(' و '); }
+function orderStatus(o) {
+  if (o.ret) return { cls: 'go', t: 'مرجوعی در حال بررسی' };
+  if (o.step >= 4) return { cls: 'ok', t: o.digital ? 'تحویل آنی شد' : 'تحویل شده' };
+  if (o.step === 3) return { cls: 'go', t: 'در مسیر ارسال' };
+  if (o.step === 2) return { cls: 'go', t: 'در حال آماده‌سازی' };
+  return { cls: 'mute', t: 'ثبت‌شده' };
+}
+
+/* ================= v3 · top bar & login ================= */
+function actsHTML() {
+  var u = state.user;
+  return (u ? '<button class="wallet" type="button" data-action="wallet" aria-label="کیف پول، شارژ" data-sfx>' + icon('wallet') + '<span class="w-txt" id="walletTop">' + fa(state.wallet) + '</span><small>تومان</small><span class="w-plus">' + icon('plus') + '</span></button>' : '') +
+    '<button class="ib" type="button" id="cartBtn" data-action="cart" aria-label="سبد خرید" data-sfx>' + icon('cart') + '<span class="badge" id="cartBadge"></span></button>' +
+    (u ? '<button class="ib" type="button" id="bellBtn" data-action="bell" aria-label="اعلان‌ها" data-sfx>' + icon('bell') + '<span class="dot" id="bellDot"></span></button>' +
+      '<button class="avatar" type="button" id="profileBtn" data-action="profile" aria-label="پروفایل، سطح ' + fa(state.level) + '" data-sfx>' + ringSVG(46, 20, 3) + '<span id="lvlTop">' + fa(state.level) + '</span></button>'
+      : '<button class="btn primary sm login-btn" type="button" data-x="login" id="profileBtn">' + icon('user') + '<span>ورود</span></button>') +
+    '<button class="ib m-only" type="button" id="soundTop" data-action="sound" aria-pressed="false" aria-label="صدای رابط">' + icon('soundOff') + '</button>' +
+    '<button class="ib m-only" type="button" id="menuBtn" data-action="menu" aria-label="دسته‌بندی‌ها">' + icon('library') + '</button>';
+}
+function refreshActs() { var a = $('#acts'); if (a) a.innerHTML = actsHTML(); updateBadges(); updateXP(); syncSoundUI(); }
+function requireLogin(fn) { if (state.user) fn(); else openLogin(fn); }
+function openLogin(after) {
+  closePop();
+  var st = { step: 'phone', phone: '', left: 0, iv: 0, name: '' };
+  var m = openModal('<div class="auth" id="authBox"></div>', { label: 'ورود یا ثبت‌نام' });
+  var box = m.querySelector('#authBox');
+  var head = function (t, p) { return '<div class="auth-h"><span class="mark">' + MARK + '</span><h2>' + t + '</h2><p>' + p + '</p></div>'; };
+  var focusFirst = function () { setTimeout(function () { var f = box.querySelector('[data-autofocus]'); if (f) f.focus({ preventScroll: true }); }, 60); };
+  function tick() {
+    if (!box.isConnected) { clearInterval(st.iv); return; }
+    st.left = Math.max(0, st.left - 1);
+    var t = box.querySelector('#aTime'), r = box.querySelector('#aResend');
+    if (t) t.textContent = faD(String(Math.floor(st.left / 60)).padStart(2, '0') + ':' + String(st.left % 60).padStart(2, '0'));
+    if (r) { r.disabled = st.left > 0; if (!st.left) r.innerHTML = 'ارسال دوباره‌ی کد'; }
+    if (!st.left) clearInterval(st.iv);
+  }
+  function startTimer() { clearInterval(st.iv); st.left = 120; st.iv = setInterval(tick, 1000); tick(); st.left++; tick(); }
+  function render() {
+    if (st.step === 'phone') {
+      box.innerHTML = head('ورود یا ثبت‌نام', 'شماره موبایلت را وارد کن تا کد تأیید برایت پیامک شود.') +
+        '<form class="auth-step form" id="aPhone" novalidate>' + fld('aTel', 'شماره موبایل', '<input class="inp" id="aTel" type="tel" inputmode="numeric" dir="ltr" autocomplete="tel" placeholder="0912 345 6789" value="' + esc(st.phone) + '" data-autofocus>') +
+        '<button class="btn primary" type="submit">دریافت کد تأیید' + icon('arrowL') + '</button><p class="auth-note">ورود یعنی پذیرفتن <button type="button" class="linkb" data-go="page" data-page="terms">قوانین فروشگاه</button>.</p></form>';
+      box.querySelector('#aPhone').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = cleanPhone(box.querySelector('#aTel').value);
+        if (!/^09\d{9}$/.test(v)) { setErr('aTel', 'شماره باید با ۰۹ شروع شود و ۱۱ رقم باشد.'); Sound.blip(220, .12, 'square', .03); return; }
+        st.phone = v; st.step = 'code'; render(); startTimer(); Sound.click();
+      });
+    } else if (st.step === 'code') {
+      box.innerHTML = head('کد تأیید را وارد کن', 'کد ۵ رقمی به <b dir="ltr">' + fmtPhone(st.phone) + '</b> پیامک شد.') +
+        '<div class="auth-step"><div class="otp" id="aOtp" role="group" aria-label="کد تأیید">' + [0, 1, 2, 3, 4].map(function (i) { return '<input type="text" inputmode="numeric" aria-label="رقم ' + fa(i + 1) + '"' + (i === 0 ? ' autocomplete="one-time-code" data-autofocus' : '') + '>'; }).join('') + '</div>' +
+        '<span class="err" id="aCodeErr" style="text-align:center" aria-live="polite"></span>' +
+        '<div class="auth-row"><button type="button" class="linkb" id="aEdit">' + icon('edit') + 'ویرایش شماره</button><button type="button" class="linkb" id="aResend" disabled>ارسال دوباره · <span id="aTime" class="tech"></span></button></div>' +
+        '<button class="btn primary" type="button" id="aVerify">تأیید و ورود</button><p class="auth-note">در نسخه‌ی نمایشی هر کد ۵ رقمی پذیرفته می‌شود.</p></div>';
+      var ins = $$('#aOtp input', box), busy = false;
+      var code = function () { return ins.map(function (x) { return normDigits(x.value); }).join(''); };
+      var fillFrom = function (v, start) { for (var k = 0; k < v.length && start + k < 5; k++) { ins[start + k].value = faD(v[k]); ins[start + k].classList.add('fill'); } ins[Math.min(4, start + v.length)].focus(); check(); };
+      var check = function () { if (code().length === 5) verify(); };
+      ins.forEach(function (inp, i) {
+        inp.addEventListener('input', function () { var v = normDigits(inp.value).replace(/\D/g, ''); if (v.length > 1) { fillFrom(v, i); return; } inp.value = v ? faD(v) : ''; inp.classList.toggle('fill', !!v); setErr('aCode', ''); if (v && ins[i + 1]) ins[i + 1].focus(); Sound.tap(); check(); });
+        inp.addEventListener('keydown', function (e) {
+          if (e.key === 'Backspace' && !inp.value && ins[i - 1]) { ins[i - 1].focus(); ins[i - 1].value = ''; ins[i - 1].classList.remove('fill'); }
+          else if (e.key === 'ArrowRight' && ins[i + 1]) ins[i + 1].focus();
+          else if (e.key === 'ArrowLeft' && ins[i - 1]) ins[i - 1].focus();
+          else if (e.key === 'Enter') verify();
+        });
+        inp.addEventListener('paste', function (e) { var t = (e.clipboardData || window.clipboardData).getData('text'); e.preventDefault(); fillFrom(normDigits(t).replace(/\D/g, ''), 0); });
+      });
+      function verify() {
+        if (busy) return;
+        if (code().length < 5) { setErr('aCode', 'هر ۵ رقم کد را وارد کن.'); var o = box.querySelector('#aOtp'); o.classList.remove('shake'); void o.offsetWidth; o.classList.add('shake'); return; }
+        busy = true;
+        var b = box.querySelector('#aVerify'); b.disabled = true; b.innerHTML = '<span class="spinner"></span>در حال بررسی';
+        ins.forEach(function (x) { x.disabled = true; });
+        setTimeout(function () { clearInterval(st.iv); st.step = st.phone === state.knownPhone ? 'done' : 'name'; render(); }, 850);
+      }
+      box.querySelector('#aVerify').addEventListener('click', verify);
+      box.querySelector('#aEdit').addEventListener('click', function () { clearInterval(st.iv); st.step = 'phone'; render(); });
+      box.querySelector('#aResend').addEventListener('click', function () { startTimer(); toast({ ic: 'chat', title: 'کد دوباره ارسال شد', body: 'به ' + fmtPhone(st.phone), ms: 2600 }); });
+    } else if (st.step === 'name') {
+      box.innerHTML = head('حساب تازه‌ات ساخته شد', 'اسمت را بنویس تا روی سفارش‌ها و دیدگاه‌هایت نمایش داده شود.') +
+        '<form class="auth-step form" id="aName" novalidate>' + fld('aNm', 'نام و نام خانوادگی', '<input class="inp" id="aNm" autocomplete="name" placeholder="مثلاً سارا محمدی" data-autofocus>') +
+        '<button class="btn primary" type="submit">شروع' + icon('arrowL') + '</button><button class="linkb" type="button" id="aSkip" style="align-self:center">بعداً</button></form>';
+      var fin = function (nm) { st.name = nm || 'گیمر تازه‌وارد'; st.step = 'done'; render(); };
+      box.querySelector('#aName').addEventListener('submit', function (e) { e.preventDefault(); fin(box.querySelector('#aNm').value.trim()); });
+      box.querySelector('#aSkip').addEventListener('click', function () { fin(''); });
+    } else {
+      var isNew = st.phone !== state.knownPhone, nm = isNew ? st.name : 'گیمر پیکسل‌گاه';
+      box.innerHTML = '<div class="success auth-step"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><path d="M30 52l13 13 27-29"/></svg><h3>خوش آمدی، ' + esc(nm) + '</h3><p>' + (isNew ? 'عضو باشگاه گیمرها شدی و ۵۰ امتیاز خوش‌آمد گرفتی.' : 'وارد حسابت شدی.') + '</p></div>';
+      Sound.success();
+      setTimeout(function () {
+        closeModal();
+        state.user = { name: nm, phone: st.phone, email: '', bday: ['', '', ''] };
+        if (isNew) state.addresses.forEach(function (a) { a.name = nm; a.phone = st.phone; });
+        LS.set('pg-out', '0');
+        refreshActs();
+        if (isNew) setTimeout(function () { gainXP(50); }, 400);
+        $$('.club-cta').forEach(function (c) { c.remove(); });
+        if (after) after(); else if (['account', 'library', 'checkout', 'order'].indexOf(state.view) >= 0) go(state.view, state.params, { force: true, nopush: true });
+      }, 1300);
+    }
+    focusFirst();
+  }
+  render();
+}
+function logout() {
+  closePop();
+  state.user = null; LS.set('pg-out', '1');
+  refreshActs();
+  toast({ ic: 'user', title: 'از حسابت خارج شدی', body: 'سبد خریدت روی همین دستگاه می‌ماند.', ms: 3000 });
+  if (['account', 'library', 'checkout', 'order'].indexOf(state.view) >= 0) go(state.view, state.params, { force: true, nopush: true });
+}
+function openProfileV3(anchor) {
+  var u = state.user; if (!u) { openLogin(); return; }
+  openPop(anchor, '<div class="prof"><div class="pr-top"><span class="avatar">' + ringSVG(46, 20, 3) + '<span>' + fa(state.level) + '</span></span><div><b>' + esc(u.name) + '</b><br><span dir="ltr">' + fmtPhone(u.phone) + '</span><br><span>سطح ' + fa(state.level) + ' · ' + fa(state.xp) + ' از ' + fa(state.xpMax) + ' امتیاز</span></div></div>' +
+    '<button class="set-btn" type="button" data-go="account">' + icon('user') + 'حساب کاربری</button>' +
+    '<button class="set-btn" type="button" data-go="account" data-tab="orders">' + icon('receipt') + 'سفارش‌ها</button>' +
+    '<button class="set-btn" type="button" data-go="library">' + icon('library') + 'کتابخانه و کدها</button>' +
+    '<button class="set-btn" type="button" data-go="wishlist">' + icon('heart') + 'علاقه‌مندی‌ها</button>' +
+    '<button class="set-btn" type="button" data-action="wallet">' + icon('wallet') + 'کیف پول · ' + toman(state.wallet) + '</button>' +
+    '<button class="set-btn" type="button" data-action="settings">' + icon('sliders') + 'تنظیمات لانچر</button>' +
+    '<button class="set-btn lo" type="button" data-x="logout">' + icon('logout') + 'خروج از حساب</button></div>');
+}
+
+/* ================= v3 · account ================= */
+var ACC_TABS = [['overview', 'پیشخوان', 'home'], ['orders', 'سفارش‌ها', 'receipt'], ['addresses', 'آدرس‌ها', 'pin'], ['profile', 'اطلاعات حساب', 'user'], ['prefs', 'اعلان‌ها', 'bell']];
+VIEW_FN.account = function (p) {
+  if (!state.user) { view.innerHTML = wallHTML('وارد حسابت شو', 'سفارش‌ها، آدرس‌ها و امتیازهای باشگاه این‌جا هستند.'); return; }
+  var tab = p.tab && ACC_TABS.some(function (t) { return t[0] === p.tab; }) ? p.tab : 'overview', u = state.user;
+  state.accTab = tab;
+  view.innerHTML = '<section class="sec"><div class="lib-h"><div><span class="eyebrow">ACCOUNT</span><h1>حساب کاربری</h1></div></div></section>' +
+    '<div class="acc"><aside class="acc-side"><div class="acc-user"><div class="lv-ring"><svg viewBox="0 0 96 96" aria-hidden="true"><circle class="rbg" cx="48" cy="48" r="40" fill="none" stroke-width="8"/><circle class="rfg" cx="48" cy="48" r="40" fill="none" stroke-width="8" stroke-dasharray="251.3" stroke-dashoffset="' + (251.3 * (1 - state.xp / state.xpMax)).toFixed(1) + '"/></svg><b>' + fa(state.level) + '</b><small>سطح</small></div><b id="accName">' + esc(u.name) + '</b><span dir="ltr">' + fmtPhone(u.phone) + '</span><div class="acc-w">' + icon('wallet') + '<span>' + toman(state.wallet) + '</span><button class="linkb" type="button" data-action="wallet">شارژ</button></div></div>' +
+    '<nav class="acc-nav" aria-label="بخش‌های حساب">' + ACC_TABS.map(function (t) { return '<button type="button" data-go="account" data-tab="' + t[0] + '" aria-current="' + (t[0] === tab ? 'page' : 'false') + '">' + icon(t[2]) + t[1] + '</button>'; }).join('') + '<button type="button" class="lo" data-x="logout">' + icon('logout') + 'خروج</button></nav></aside>' +
+    '<div class="acc-main" id="accMain">' + accTabHTML(tab) + '</div></div>';
+  bindAccount(tab);
+};
+function orderCard(o, i) {
+  var s = orderStatus(o);
+  return '<button class="oc" type="button" data-go="order" data-no="' + o.id + '" style="--i:' + (i || 0) + '"><span class="oc-th">' + o.items.slice(0, 3).map(function (it) { var q = BY[it.id]; return q ? '<span style="--tint:' + q.tint + '">' + miniArt(q) + '</span>' : ''; }).join('') + '</span><span class="oc-tx"><b>سفارش ' + o.no + ' · ' + esc(itemsLabel(o)) + '</b><span>' + o.date + ' · ' + toman(o.total) + '</span><em class="oc-st ' + s.cls + '">' + s.t + '</em></span>' + pill(s.cls, s.t) + icon('chevL', 'oc-go') + '</button>';
+}
+function accTabHTML(tab) {
+  var u = state.user;
+  if (tab === 'overview') {
+    var active = ORDERS.filter(function (o) { return o.step < 4 && !o.ret; }).length;
+    return '<div class="stat4">' + [['receipt', fa(active), 'سفارش جاری'], ['wallet', fa(state.wallet), 'موجودی کیف پول (تومان)'], ['trophy', fa(state.xp), 'امتیاز این سطح'], ['heart', fa(state.wish.length), 'علاقه‌مندی']].map(function (s, i) { return '<div class="stt" style="--i:' + i + '">' + icon(s[0]) + '<b>' + s[1] + '</b><span>' + s[2] + '</span></div>'; }).join('') + '</div>' +
+      '<div class="card-p"><div class="sec-h2"><h3>سفارش‌های اخیر</h3><button class="linkb" type="button" data-go="account" data-tab="orders">همه‌ی سفارش‌ها</button></div><div class="olist">' + ORDERS.slice(0, 3).map(orderCard).join('') + '</div></div>' +
+      '<div class="quick3"><button type="button" data-go="library">' + icon('key') + '<b>کدهای دیجیتال</b><span>' + fa(CODES.length) + ' کد در کتابخانه</span></button><button type="button" data-go="account" data-tab="addresses">' + icon('pin') + '<b>آدرس‌ها</b><span>' + fa(state.addresses.length) + ' آدرس ذخیره‌شده</span></button><button type="button" data-go="service" data-kind="tradein">' + icon('recycle') + '<b>فروش بازی کارکرده</b><span>اعتبار کیف پول بگیر</span></button></div>';
+  }
+  if (tab === 'orders') {
+    return '<div class="card-p"><div class="sec-h2"><h3>سفارش‌ها</h3><div class="chips" id="ordF">' + [['all', 'همه'], ['open', 'جاری'], ['done', 'تحویل‌شده'], ['ret', 'مرجوعی']].map(function (f, i) { return '<button class="chip" type="button" data-of="' + f[0] + '" aria-pressed="' + (i === 0) + '">' + f[1] + '</button>'; }).join('') + '</div></div><div class="olist" id="ordList">' + ORDERS.map(orderCard).join('') + '</div></div>';
+  }
+  if (tab === 'addresses') {
+    return '<div class="card-p"><div class="sec-h2"><h3>آدرس‌ها</h3></div><div class="addrs" id="addrList">' + addrCards() + '</div></div>';
+  }
+  if (tab === 'profile') {
+    var b = u.bday || ['', '', ''];
+    var opt = function (arr, cur, ph) { return '<option value="">' + ph + '</option>' + arr.map(function (x) { return '<option value="' + x[0] + '"' + (String(cur) === String(x[0]) ? ' selected' : '') + '>' + x[1] + '</option>'; }).join(''); };
+    var days = [], years = []; for (var d = 1; d <= 31; d++) days.push([d, fa(d)]); for (var y = 1395; y >= 1330; y--) years.push([y, faD(y)]);
+    return '<form class="card-p form" id="profForm" novalidate><h3>اطلاعات حساب</h3><div class="row2">' + fld('pfName', 'نام و نام خانوادگی', '<input class="inp" id="pfName" autocomplete="name" value="' + esc(u.name) + '">') + fld('pfPhone', 'شماره موبایل', '<input class="inp" id="pfPhone" dir="ltr" value="' + fmtPhone(u.phone) + '" disabled>', '<span class="hint">برای تغییر شماره با پشتیبانی تماس بگیر.</span>') + '</div>' +
+      fld('pfMail', 'ایمیل (اختیاری)', '<input class="inp" id="pfMail" type="email" dir="ltr" autocomplete="email" placeholder="name@example.com" value="' + esc(u.email || '') + '">', '<span class="hint">فاکتورها و کدهای دیجیتال به این ایمیل هم فرستاده می‌شوند.</span>') +
+      '<div class="fld"><label for="pfD">تاریخ تولد (اختیاری)</label><div class="row3"><select class="inp" id="pfD" aria-label="روز">' + opt(days, b[0], 'روز') + '</select><select class="inp" id="pfM" aria-label="ماه">' + opt(FA_MONTHS.map(function (m, i) { return [i + 1, m]; }), b[1], 'ماه') + '</select><select class="inp" id="pfY" aria-label="سال">' + opt(years, b[2], 'سال') + '</select></div><span class="hint">روز تولدت یک کد تخفیف هدیه می‌گیری.</span></div>' +
+      '<button class="btn primary" type="submit" style="align-self:flex-start">ذخیره‌ی تغییرات</button></form>';
+  }
+  return '<div class="card-p" id="prefBox"><h3>اعلان‌ها و پیامک‌ها</h3>' + [['orders', 'وضعیت سفارش‌ها', 'ارسال، تحویل و مرجوعی'], ['sms', 'پیامک تخفیف‌ها', 'تخفیف‌های ویژه و کدهای هدیه'], ['stock', 'موجود شدن کالا', 'کالاهایی که «خبرم کن» زده‌ای'], ['news', 'خبرنامه‌ی ایمیلی', 'خلاصه‌ی هفتگی اخبار بازی']].map(function (r) { return '<div class="set-row"><span>' + r[1] + '<small>' + r[2] + '</small></span><button class="tog" type="button" role="switch" data-pref="' + r[0] + '" aria-checked="' + !!state.prefs[r[0]] + '" aria-label="' + r[1] + '"></button></div>'; }).join('') + '</div>';
+}
+function addrCards() {
+  return state.addresses.map(function (a, i) {
+    return '<article class="addr' + (a.def ? ' def' : '') + '" style="--i:' + i + '"><h4>' + icon('pin') + esc(a.title) + (a.def ? pill('go', 'پیش‌فرض') : '') + '</h4><p>' + esc(addrLine(a)) + '</p><span class="meta">' + esc(a.name) + ' · <span dir="ltr">' + fmtPhone(a.phone) + '</span> · کد پستی <span dir="ltr">' + faD(a.postal) + '</span></span><div class="addr-acts"><button class="btn ghost sm" type="button" data-addr="edit" data-id="' + a.id + '">' + icon('edit') + 'ویرایش</button>' + (a.def ? '' : '<button class="btn ghost sm" type="button" data-addr="def" data-id="' + a.id + '">پیش‌فرض کن</button><button class="btn ghost sm" type="button" data-addr="del" data-id="' + a.id + '">' + icon('trash') + 'حذف</button>') + '</div></article>';
+  }).join('') + '<button class="add-tile" type="button" data-addr="new">' + icon('plus') + 'افزودن آدرس جدید</button>';
+}
+function bindAccount(tab) {
+  if (tab === 'orders') $('#ordF').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-of]'); if (!b) return;
+    $$('[data-of]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    var f = b.dataset.of, list = ORDERS.filter(function (o) { return f === 'all' || (f === 'open' && o.step < 4 && !o.ret) || (f === 'done' && o.step >= 4 && !o.ret) || (f === 'ret' && o.ret); });
+    $('#ordList').innerHTML = list.length ? list.map(orderCard).join('') : '<p class="pd-note">' + icon('box') + 'سفارشی در این دسته نیست.</p>';
+    Sound.click();
+  });
+  if (tab === 'profile') $('#profForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nm = $('#pfName').value.trim(), ml = $('#pfMail').value.trim(), ok = true;
+    ok = setErr('pfName', nm.length < 2 ? 'نامت را بنویس.' : '') && ok;
+    ok = setErr('pfMail', ml && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(ml) ? 'ایمیل درست نیست؛ مثل name@example.com' : '') && ok;
+    if (!ok) return;
+    state.user.name = nm; state.user.email = ml; state.user.bday = [$('#pfD').value, $('#pfM').value, $('#pfY').value];
+    $('#accName').textContent = nm;
+    toast({ ic: 'check', tone: 'ok', title: 'اطلاعاتت ذخیره شد', ms: 2600 }); Sound.success();
+  });
+  if (tab === 'prefs') $('#prefBox').addEventListener('click', function (e) {
+    var t = e.target.closest('[data-pref]'); if (!t) return;
+    var k = t.dataset.pref; state.prefs[k] = !state.prefs[k]; t.setAttribute('aria-checked', String(state.prefs[k])); Sound.click();
+  });
+}
+function openAddress(a, onSave) {
+  var isNew = !a; a = a || { id: 'ad' + Date.now(), title: 'خانه', name: state.user ? state.user.name : '', phone: state.user ? state.user.phone : '', province: 'تهران', city: '', addr: '', postal: '', def: !state.addresses.length };
+  var m = openModal('<form class="m-pad form" id="adForm" novalidate><span class="eyebrow">ADDRESS</span><h2>' + (isNew ? 'آدرس جدید' : 'ویرایش آدرس') + '</h2>' +
+    '<div class="fld"><label>عنوان</label><div class="chips" id="adT">' + ['خانه', 'محل کار', 'دیگر'].map(function (t) { return '<button class="chip" type="button" data-t="' + t + '" aria-pressed="' + (a.title === t) + '">' + t + '</button>'; }).join('') + '</div></div>' +
+    '<div class="row2">' + fld('adName', 'نام گیرنده', '<input class="inp" id="adName" autocomplete="name" value="' + esc(a.name) + '">') + fld('adPhone', 'موبایل گیرنده', '<input class="inp" id="adPhone" type="tel" inputmode="numeric" dir="ltr" value="' + esc(fmtPhone(a.phone)) + '">') + '</div>' +
+    '<div class="row2">' + fld('adProv', 'استان', '<select class="inp" id="adProv">' + PROVINCES.map(function (p) { return '<option' + (p === a.province ? ' selected' : '') + '>' + p + '</option>'; }).join('') + '</select>') + fld('adCity', 'شهر', '<input class="inp" id="adCity" value="' + esc(a.city) + '" placeholder="مثلاً تهران">') + '</div>' +
+    fld('adAddr', 'آدرس کامل', '<textarea class="inp" id="adAddr" placeholder="خیابان، کوچه، پلاک و واحد">' + esc(a.addr) + '</textarea>') +
+    fld('adPost', 'کد پستی ۱۰ رقمی', '<input class="inp" id="adPost" inputmode="numeric" dir="ltr" value="' + esc(faD(a.postal)) + '" placeholder="1234567890">') +
+    '<label class="check"><input type="checkbox" id="adDef"' + (a.def ? ' checked' : '') + '>این آدرس پیش‌فرض باشد</label>' +
+    '<button class="btn primary" type="submit">' + icon('check') + 'ذخیره‌ی آدرس</button></form>', { label: isNew ? 'آدرس جدید' : 'ویرایش آدرس' });
+  var title = a.title;
+  m.querySelector('#adT').addEventListener('click', function (e) { var b = e.target.closest('[data-t]'); if (!b) return; title = b.dataset.t; $$('[data-t]', m).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); });
+  m.querySelector('#adForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = { name: $('#adName').value.trim(), phone: cleanPhone($('#adPhone').value), province: $('#adProv').value, city: $('#adCity').value.trim(), addr: $('#adAddr').value.trim(), postal: normDigits($('#adPost').value).replace(/\D/g, '') };
+    var ok = true;
+    ok = setErr('adName', v.name.length < 2 ? 'نام گیرنده را بنویس.' : '') && ok;
+    ok = setErr('adPhone', !/^09\d{9}$/.test(v.phone) ? 'موبایل باید با ۰۹ شروع شود و ۱۱ رقم باشد.' : '') && ok;
+    ok = setErr('adCity', v.city.length < 2 ? 'شهر را بنویس.' : '') && ok;
+    ok = setErr('adAddr', v.addr.length < 10 ? 'آدرس را کامل‌تر بنویس؛ خیابان، کوچه و پلاک.' : '') && ok;
+    ok = setErr('adPost', !/^\d{10}$/.test(v.postal) ? 'کد پستی ۱۰ رقم است.' : '') && ok;
+    if (!ok) { Sound.blip(220, .12, 'square', .03); return; }
+    Object.assign(a, v, { title: title });
+    if ($('#adDef').checked || !state.addresses.length) { state.addresses.forEach(function (x) { x.def = false; }); a.def = true; }
+    if (isNew) state.addresses.push(a);
+    closeModal();
+    toast({ ic: 'pin', tone: 'ok', title: isNew ? 'آدرس اضافه شد' : 'آدرس به‌روز شد', body: a.title + ' · ' + a.city, ms: 2600 });
+    Sound.success();
+    if (onSave) onSave(a);
+  });
+}
+document.addEventListener('click', function (e) {
+  var toc = e.target.closest('[data-toc]'); if (toc) { e.preventDefault(); scrollToSec(toc.dataset.toc); return; }
+  if (state.view === 'page') { var qq = e.target.closest('[data-pd="qa"]'); if (qq) { var it = qq.closest('.qa'), op = !it.classList.contains('open'); it.classList.toggle('open', op); qq.setAttribute('aria-expanded', String(op)); Sound.hover(); return; } }
+  var x = e.target.closest('[data-x]');
+  if (x) {
+    var k = x.dataset.x;
+    if (k === 'login') { if (modalEl && x.closest('.modal')) closeModal(true); openLogin(); }
+    else if (k === 'logout') logout();
+    return;
+  }
+  var ad = e.target.closest('[data-addr]');
+  if (ad) {
+    var act = ad.dataset.addr, a = state.addresses.filter(function (y) { return y.id === ad.dataset.id; })[0];
+    var redraw = function () { var l = $('#addrList'); if (l) l.innerHTML = addrCards(); if (state.view === 'checkout') coRender(); };
+    if (act === 'new') openAddress(null, function (n) { if (state.co) state.co.addr = n.id; redraw(); });
+    else if (act === 'edit' && a) openAddress(a, redraw);
+    else if (act === 'def' && a) { state.addresses.forEach(function (y) { y.def = y === a; }); redraw(); Sound.click(); }
+    else if (act === 'del' && a) {
+      if (ad.dataset.sure !== '1') { ad.dataset.sure = '1'; ad.innerHTML = icon('trash') + 'مطمئنی؟ دوباره بزن'; ad.classList.add('danger'); setTimeout(function () { if (ad.isConnected) { ad.dataset.sure = ''; ad.innerHTML = icon('trash') + 'حذف'; ad.classList.remove('danger'); } }, 3000); return; }
+      state.addresses = state.addresses.filter(function (y) { return y !== a; }); redraw(); toast({ ic: 'trash', title: 'آدرس حذف شد', ms: 2200 });
+    }
+  }
+});
+
+/* ================= v3 · checkout ================= */
+var COUPONS = { PIXEL10: { pct: .10, cap: 2000000, label: '۱۰٪ تا سقف ۲ میلیون تومان' }, GAMER5: { pct: .05, cap: 0, label: '۵٪ بدون سقف' } };
+var SHIPS = [
+  { name: 'ارسال فوری تهران', sub: 'همان روز، در بازه‌ی انتخابی', ic: 'bolt', tehran: true, fee: function () { return 98000; } },
+  { name: 'پست پیشتاز', sub: '۲ تا ۴ روز کاری · رایگان برای خرید بالای ۲ میلیون', ic: 'truck', fee: function (n) { return n >= 2000000 ? 0 : 65000; } },
+  { name: 'تحویل حضوری', sub: 'از فروشگاه، از فردا ساعت ۱۰', ic: 'store', fee: function () { return 0; } }
+];
+var SLOTS = ['امروز · ۱۸ تا ۲۱', 'فردا · ۱۰ تا ۱۴', 'فردا · ۱۸ تا ۲۱'];
+var PAYS = { gate: { name: 'پرداخت اینترنتی', sub: 'با همه‌ی کارت‌های عضو شتاب', ic: 'card' }, wallet: { name: 'کیف پول پیکسل‌گاه', sub: '', ic: 'wallet' }, inst: { name: 'پرداخت اقساطی', sub: '۴ قسط ماهانه', ic: 'clock' } };
+var CO_STEPS = ['سبد خرید', 'ارسال', 'پرداخت', 'ثبت سفارش'];
+function coState() { if (!state.co) { var d = defAddr(); state.co = { step: 1, coupon: null, couponCode: '', addr: d ? d.id : null, ship: 1, slot: 0, pay: 'gate', terms: false, fail: false, result: null }; } return state.co; }
+function isDigitalLine(l) { var p = BY[l.id]; return p.illu === 'giftcard' || /اکانت|دیجیتال/.test(l.vlabel || ''); }
+function cartDigitalOnly() { return state.cart.length > 0 && state.cart.every(isDigitalLine); }
+function coTotals() {
+  var t = cartTotals(), co = coState(), dig = cartDigitalOnly();
+  var cd = co.coupon ? Math.round(t.now * co.coupon.pct / 1000) * 1000 : 0;
+  if (co.coupon && co.coupon.cap) cd = Math.min(cd, co.coupon.cap);
+  var a = addrById(co.addr), ship = SHIPS[co.ship];
+  if (!dig && ship.tehran && (!a || a.city !== 'تهران')) { co.ship = 1; ship = SHIPS[1]; }
+  var fee = dig ? 0 : ship.fee(t.now - cd);
+  return { full: t.full, now: t.now, save: t.save, cd: cd, fee: fee, total: t.now - cd + fee, dig: dig, count: cartCount() };
+}
+VIEW_FN.checkout = function () {
+  if (!state.user) { view.innerHTML = wallHTML('برای تکمیل خرید وارد شو', 'سبدت سر جایش می‌ماند؛ بعد از ورود همین‌جا ادامه می‌دهی.'); return; }
+  var co = coState();
+  if (co.result) { view.innerHTML = resultHTML(co.result); return; }
+  if (!state.cart.length) { view.innerHTML = '<section class="sec"><div class="empty"><span class="ek">' + icon('cart') + '</span><h3>سبدت خالی است</h3><p>چیزی برای پرداخت نمانده. از تخفیف‌های امروز شروع کن.</p><button class="btn primary sm" type="button" data-go="home">رفتن به فروشگاه</button></div></section>'; return; }
+  view.innerHTML = '<section class="sec"><div class="lib-h"><div><span class="eyebrow">CHECKOUT</span><h1>تکمیل خرید</h1></div><button class="btn ghost sm" type="button" data-go="home">' + icon('arrowL') + 'ادامه‌ی خرید</button></div><div class="stepper" id="coStepper"></div></section>' +
+    '<div class="co"><div class="co-main" id="coMain"></div><aside class="co-sum" id="coSum" aria-label="خلاصه‌ی سفارش"></aside></div>';
+  coRender();
+};
+function coRender() {
+  var co = coState(), t = coTotals(), sp = $('#coStepper'); if (!sp) return;
+  sp.innerHTML = '<span class="sp-fill" style="--w:' + ((co.step - 1) / 3 * 75) + '%"></span>' + CO_STEPS.map(function (s, i) { var n = i + 1; return '<button class="sp' + (n < co.step ? ' done' : n === co.step ? ' cur' : '') + '" type="button" ' + (n < co.step ? 'data-cos="' + n + '"' : 'disabled') + ' aria-current="' + (n === co.step ? 'step' : 'false') + '"><i>' + (n < co.step ? icon('check') : fa(n)) + '</i><span>' + s + '</span></button>'; }).join('');
+  var main = $('#coMain'), html = '';
+  if (co.step === 1) {
+    html = '<div class="co-step"><div class="card-p"><h3>کالاهای سبد · ' + fa(t.count) + '</h3><div class="ret-items">' + state.cart.map(function (l, i) { var p = BY[l.id]; return '<div class="line" style="--i:' + i + ';--tint:' + p.tint + '"><span class="mini">' + miniArt(p) + '</span><div class="ln"><b>' + esc(p.name) + '</b>' + (l.vlabel ? '<small class="vl">' + esc(l.vlabel) + '</small>' : '') + '<span>' + toman(linePrice(l) * l.qty) + '</span></div><div class="qty"><button type="button" data-coq="+" data-key="' + esc(l.key) + '" aria-label="یکی بیشتر">' + icon('plus') + '</button><output>' + fa(l.qty) + '</output><button type="button" data-coq="-" data-key="' + esc(l.key) + '" aria-label="' + (l.qty === 1 ? 'حذف' : 'یکی کمتر') + '">' + icon(l.qty === 1 ? 'trash' : 'minus') + '</button></div></div>'; }).join('') + '</div></div>' +
+      '<div class="card-p"><h3>کد تخفیف</h3><form class="code-in" id="cpForm" novalidate><label for="cpIn" class="vh">کد تخفیف</label><input class="inp" id="cpIn" dir="ltr" placeholder="PIXEL10" value="' + esc(co.couponCode) + '" autocomplete="off"' + (co.coupon ? ' disabled' : '') + '>' + (co.coupon ? '<button class="btn ghost sm" type="button" data-cocp="rm">حذف کد</button>' : '<button class="btn ghost sm" type="submit">اعمال</button>') + '</form><span class="err" id="cpInErr" aria-live="polite"></span>' + (co.coupon ? '<p class="pd-note ok">' + icon('check') + 'کد ' + esc(co.couponCode) + ' اعمال شد: ' + co.coupon.label + '</p>' : '<p class="pd-note">' + icon('tag') + 'کدهای نمونه: PIXEL10 و GAMER5</p>') + '</div></div>';
+  } else if (co.step === 2) {
+    if (t.dig) html = '<div class="co-step"><div class="card-p"><h3>تحویل</h3><div class="note-big">' + icon('bolt') + '<div><b>همه‌ی کالاهای سبدت دیجیتال‌اند</b><span>کدها و اکانت‌ها بعد از پرداخت فوراً در کتابخانه و ایمیلت ظاهر می‌شوند. آدرس لازم نیست.</span></div></div></div></div>';
+    else {
+      var a = addrById(co.addr), inTeh = a && a.city === 'تهران';
+      html = '<div class="co-step"><div class="card-p"><div class="sec-h2"><h3>آدرس تحویل</h3><button class="linkb" type="button" data-addr="new">' + icon('plus') + 'آدرس جدید</button></div><div class="vg-cards" role="radiogroup" aria-label="آدرس">' + state.addresses.map(function (x) { return '<button class="vc" type="button" role="radio" data-coaddr="' + x.id + '" aria-checked="' + (x.id === co.addr) + '"><b>' + esc(x.title) + ' · ' + esc(x.city) + '</b><small>' + esc(x.addr) + '</small><span class="dl">' + esc(x.name) + ' · <span dir="ltr">' + fmtPhone(x.phone) + '</span></span></button>'; }).join('') + '</div></div>' +
+        '<div class="card-p"><h3>روش ارسال</h3><div class="vg-cards" role="radiogroup" aria-label="روش ارسال">' + SHIPS.map(function (s, i) { var dis = s.tehran && !inTeh, fee = s.fee(t.now - t.cd); return '<button class="vc' + (dis ? ' dis' : '') + '" type="button" role="radio" data-coship="' + i + '" aria-checked="' + (i === co.ship) + '"' + (dis ? ' aria-disabled="true"' : '') + '><b>' + icon(s.ic) + s.name + '</b><small>' + (dis ? 'فقط برای آدرس‌های شهر تهران' : s.sub) + '</small><span class="dl">' + (fee ? toman(fee) : 'رایگان') + '</span></button>'; }).join('') + '</div>' +
+        (co.ship === 0 ? '<div class="fld"><label>بازه‌ی تحویل</label><div class="chips">' + SLOTS.map(function (s, i) { return '<button class="chip" type="button" data-coslot="' + i + '" aria-pressed="' + (i === co.slot) + '">' + s + '</button>'; }).join('') + '</div></div>' : '') + '</div></div>';
+    }
+  } else if (co.step === 3) {
+    html = '<div class="co-step"><div class="card-p"><h3>روش پرداخت</h3><div class="vg-cards" role="radiogroup" aria-label="روش پرداخت">' + Object.keys(PAYS).map(function (k) { var pz = PAYS[k], low = k === 'wallet' && state.wallet < t.total; var sub = k === 'wallet' ? 'موجودی: ' + toman(state.wallet) + (low ? ' · کمبود ' + toman(t.total - state.wallet) : '') : k === 'inst' ? '۴ قسط ماهانه‌ی ' + toman(Math.round(t.total / 4 / 1000) * 1000) : pz.sub; return '<button class="vc' + (low ? ' dis' : '') + '" type="button" role="radio" data-copay="' + k + '" aria-checked="' + (k === co.pay) + '"' + (low ? ' aria-disabled="true"' : '') + '><b>' + icon(pz.ic) + pz.name + '</b><small>' + sub + '</small>' + '</button>'; }).join('') + '</div>' + (state.wallet < t.total ? '<p class="pd-note">' + icon('wallet') + 'موجودی کیف پول برای این خرید کافی نیست. <button class="linkb" type="button" data-action="wallet">شارژ کیف پول</button></p>' : '') + '</div>' +
+      '<div class="card-p"><label class="check"><input type="checkbox" id="coTerms"' + (co.terms ? ' checked' : '') + '><span>قوانین فروشگاه و شرایط بازگشت کالا را خواندم و می‌پذیرم. <button class="linkb" type="button" data-go="page" data-page="terms">خواندن قوانین</button></span></label><span class="err" id="coTermsErr" aria-live="polite"></span>' +
+      '<label class="check demo"><input type="checkbox" id="coFail"' + (co.fail ? ' checked' : '') + '><span>نسخه‌ی نمایشی: پرداخت را ناموفق شبیه‌سازی کن</span></label></div></div>';
+  }
+  main.innerHTML = html;
+  var btnTxt = co.step === 1 ? 'ادامه: ارسال' : co.step === 2 ? 'ادامه: پرداخت' : 'پرداخت ' + toman(t.total);
+  $('#coSum').innerHTML = '<h3>خلاصه‌ی سفارش</h3><div class="sum"><span>کالاها (' + fa(t.count) + ')</span><span>' + toman(t.full) + '</span></div>' + (t.save ? '<div class="sum"><span>تخفیف کالاها</span><span class="save">−' + toman(t.save) + '</span></div>' : '') + (t.cd ? '<div class="sum"><span>کد تخفیف</span><span class="save">−' + toman(t.cd) + '</span></div>' : '') +
+    '<div class="sum"><span>هزینه‌ی ارسال</span><span>' + (t.dig ? 'تحویل آنی' : co.step < 2 ? 'در مرحله‌ی بعد' : t.fee ? toman(t.fee) : 'رایگان') + '</span></div><div class="sum tot"><span>مبلغ قابل پرداخت</span><span id="coTot">' + toman(t.total) + '</span></div>' +
+    '<div class="sum"><span>امتیاز باشگاه</span><span style="color:var(--accent)">+' + fa(xpOf(t.total)) + ' امتیاز</span></div>' +
+    '<button class="btn primary" type="button" data-con="next" data-magnet>' + btnTxt + icon(co.step === 3 ? 'card' : 'arrowL') + '</button>' + (co.step > 1 ? '<button class="linkb" type="button" data-cos="' + (co.step - 1) + '" style="align-self:center">بازگشت به مرحله‌ی قبل</button>' : '') +
+    '<p class="pd-note">' + icon('shield') + 'پرداخت امن · ضمانت اصالت کالا · ۷ روز ضمانت بازگشت</p>';
+}
+function coNext() {
+  var co = coState(), t = coTotals();
+  if (co.step === 2 && !t.dig && !addrById(co.addr)) { toast({ ic: 'pin', tone: 'pink', title: 'یک آدرس انتخاب کن', body: 'یا آدرس جدید اضافه کن.' }); return; }
+  if (co.step === 3) {
+    co.terms = $('#coTerms').checked; co.fail = $('#coFail').checked;
+    if (!co.terms) { setErr('coTerms', 'برای ثبت سفارش، پذیرفتن قوانین لازم است.'); Sound.blip(220, .12, 'square', .03); return; }
+    if (co.pay === 'wallet' && state.wallet < t.total) { toast({ ic: 'wallet', tone: 'pink', title: 'موجودی کیف پول کافی نیست', body: 'کیف پول را شارژ کن یا روش دیگری انتخاب کن.' }); return; }
+    payNow(); return;
+  }
+  co.step++; coRender(); main.scrollTo({ top: 0, behavior: calm() ? 'auto' : 'smooth' }); Sound.click();
+}
+function payNow() {
+  var co = coState(), t = coTotals();
+  var ov = document.createElement('div'); ov.className = 'payov'; ov.setAttribute('role', 'status');
+  ov.innerHTML = '<div class="payov-box"><div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><b id="payMsg">' + (co.pay === 'wallet' ? 'در حال برداشت از کیف پول…' : 'در حال انتقال به درگاه پرداخت…') + '</b><span>' + toman(t.total) + '</span></div>';
+  document.body.appendChild(ov);
+  setTimeout(function () { var m = $('#payMsg'); if (m) m.textContent = 'در حال تأیید تراکنش…'; }, 1000);
+  setTimeout(function () {
+    ov.remove();
+    if (co.fail) { co.result = { ok: false, total: t.total }; Sound.blip(200, .25, 'sawtooth', .04); }
+    else {
+      var id = String(state.nextOrder++), dig = t.dig, a = addrById(co.addr), now = nowTime();
+      var today = 'امروز'; try { today = new Date().toLocaleDateString('fa-IR-u-ca-persian', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (er) {}
+      var o = { id: id, no: faD(id), date: today, items: state.cart.map(function (l) { return { id: l.id, qty: l.qty, price: linePrice(l), vlabel: l.vlabel }; }), sub: t.now, disc: t.cd, ship: dig ? 'تحویل آنی' : SHIPS[co.ship].name + (co.ship === 0 ? ' · ' + SLOTS[co.slot] : ''), shipFee: t.fee, total: t.total, pay: PAYS[co.pay].name, addr: dig ? null : a, digital: dig, step: dig ? 4 : 2, track: dig ? '' : faD(genDigits(4) + ' ' + genDigits(4) + ' ' + genDigits(4) + ' ' + genDigits(4)), eta: dig ? 'تحویل آنی شد' : co.ship === 0 ? 'تحویل: ' + SLOTS[co.slot] : co.ship === 2 ? 'آماده‌ی تحویل از فردا' : 'تحویل تخمینی: ۲ تا ۴ روز کاری', times: dig ? ['امروز · ' + now, 'امروز · ' + now, 'امروز · ' + now, 'امروز · ' + now, 'امروز · ' + now] : ['امروز · ' + now, 'امروز · ' + now] };
+      ORDERS.unshift(o);
+      var codes = 0;
+      state.cart.forEach(function (l) { if (BY[l.id].illu === 'giftcard' || /اکانت|دیجیتال/.test(l.vlabel || '')) for (var q = 0; q < l.qty; q++) { CODES.unshift({ id: l.id, title: BY[l.id].name, meta: 'کد دیجیتال · امروز', code: genCode() }); codes++; } });
+      if (co.pay === 'wallet') state.wallet -= t.total;
+      state.cart = []; updateBadges();
+      var lb = $('#libBadge'); if (lb) lb.textContent = fa(CODES.length);
+      co.result = { ok: true, id: id, total: t.total, xp: xpOf(t.total), codes: codes, dig: dig };
+      Sound.success(); confetti();
+      setTimeout(function () { gainXP(co.result.xp); }, 1200);
+    }
+    view.innerHTML = resultHTML(co.result);
+    main.scrollTo({ top: 0 });
+  }, 2000);
+}
+function resultHTML(r) {
+  if (!r.ok) return '<section class="sec"><div class="result bad"><svg class="xmark" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><path d="M34 34l32 32M66 34L34 66"/></svg><h2>پرداخت انجام نشد</h2><p>تراکنش از طرف بانک تأیید نشد. اگر مبلغی از حسابت کم شده، حداکثر تا ۷۲ ساعت به حسابت برمی‌گردد. سبد خریدت سر جایش است.</p><div class="qv-ctas"><button class="btn primary" type="button" data-cor="retry">' + icon('replay') + 'تلاش دوباره</button><button class="btn ghost" type="button" data-action="support">گفتگو با پشتیبانی</button></div></div></section>';
+  var o = ORDERS.filter(function (x) { return x.id === r.id; })[0];
+  return '<section class="sec"><div class="result"><div class="success"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><path d="M30 52l13 13 27-29"/></svg></div><h2>سفارشت ثبت شد</h2><div class="ono">#' + faD(r.id) + '</div><p>' + toman(r.total) + ' پرداخت شد. ' + (r.dig ? 'کدهایت همین حالا در کتابخانه هستند.' : 'وضعیت ارسال را از صفحه‌ی سفارش یا پیامک دنبال کن.') + '</p><div class="xp-gain">+' + r.xp + ' XP</div>' +
+    '<div class="qv-ctas"><button class="btn primary" type="button" data-go="order" data-no="' + r.id + '">' + icon('truck') + 'پیگیری سفارش</button>' + (r.codes ? '<button class="btn ghost" type="button" data-go="library">' + icon('key') + 'دیدن ' + fa(r.codes) + ' کد</button>' : '') + '<button class="btn ghost" type="button" data-go="home">بازگشت به فروشگاه</button></div>' +
+    (o ? '<div class="next3"><div>' + icon('check') + '<b>ثبت و پرداخت</b><span>انجام شد</span></div><div>' + icon(r.dig ? 'key' : 'box') + '<b>' + (r.dig ? 'تحویل کد' : 'آماده‌سازی') + '</b><span>' + (r.dig ? 'انجام شد' : 'تا چند ساعت دیگر') + '</span></div><div>' + icon(r.dig ? 'trophy' : 'truck') + '<b>' + (r.dig ? 'امتیاز باشگاه' : 'ارسال') + '</b><span>' + (r.dig ? '+' + fa(r.xp) + ' امتیاز' : o.eta) + '</span></div></div>' : '') + '</div></section>';
+}
+function confetti() {
+  if (calm()) return;
+  var c = document.createElement('canvas'); c.className = 'confetti'; document.body.appendChild(c);
+  var ctx = c.getContext('2d'), d = Math.min(2, devicePixelRatio || 1), W = innerWidth, H = innerHeight; c.width = W * d; c.height = H * d; ctx.scale(d, d);
+  var cols = [getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#F5B83D', '#4C7DFF', '#45C489', '#FF5C8A', '#8B7CFF', '#ffffff'], ps = [];
+  for (var i = 0; i < 160; i++) ps.push({ x: W / 2 + (Math.random() - .5) * 120, y: H * .38, vx: (Math.random() - .5) * 16, vy: -Math.random() * 15 - 4, r: Math.random() * 6 + 3, a: Math.random() * 6, va: (Math.random() - .5) * .3, c: cols[i % cols.length] });
+  var t0 = performance.now();
+  (function fr(t) { var k = (t - t0) / 2600; ctx.clearRect(0, 0, W, H); ps.forEach(function (p) { p.vy += .42; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.a += p.va; ctx.save(); ctx.globalAlpha = Math.max(0, 1 - k); ctx.translate(p.x, p.y); ctx.rotate(p.a); ctx.fillStyle = p.c; ctx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); ctx.restore(); }); if (k < 1) requestAnimationFrame(fr); else c.remove(); })(t0);
+}
+view.addEventListener('click', function (e) {
+  if (state.view !== 'checkout') return;
+  var co = coState(), t = e.target, b;
+  if ((b = t.closest('[data-coq]'))) { var key = b.dataset.key, l = state.cart.filter(function (x) { return x.key === key; })[0]; if (!l) return; if (b.dataset.coq === '+') l.qty++; else if (l.qty > 1) l.qty--; else state.cart = state.cart.filter(function (x) { return x !== l; }); updateBadges(); if (!state.cart.length) VIEW_FN.checkout(); else coRender(); Sound.tap(); return; }
+  if ((b = t.closest('[data-cocp]'))) { co.coupon = null; co.couponCode = ''; coRender(); return; }
+  if ((b = t.closest('[data-coaddr]'))) { co.addr = b.dataset.coaddr; coRender(); Sound.tap(); return; }
+  if ((b = t.closest('[data-coship]'))) { if (b.getAttribute('aria-disabled') === 'true') { toast({ ic: 'bolt', title: 'ارسال فوری فقط در تهران', body: 'برای این آدرس پست پیشتاز یا تحویل حضوری را انتخاب کن.', ms: 3000 }); return; } co.ship = +b.dataset.coship; coRender(); Sound.tap(); return; }
+  if ((b = t.closest('[data-coslot]'))) { co.slot = +b.dataset.coslot; coRender(); Sound.tap(); return; }
+  if ((b = t.closest('[data-copay]'))) { if (b.getAttribute('aria-disabled') === 'true') return; co.terms = $('#coTerms').checked; co.fail = $('#coFail').checked; co.pay = b.dataset.copay; coRender(); Sound.tap(); return; }
+  if ((b = t.closest('[data-cos]'))) { if (co.step === 3) { co.terms = $('#coTerms').checked; co.fail = $('#coFail').checked; } co.step = +b.dataset.cos; coRender(); return; }
+  if ((b = t.closest('[data-con]'))) { coNext(); return; }
+  if ((b = t.closest('[data-cor]'))) { co.result = null; co.step = 3; VIEW_FN.checkout(); }
+});
+view.addEventListener('submit', function (e) {
+  if (state.view !== 'checkout' || e.target.id !== 'cpForm') return;
+  e.preventDefault();
+  var co = coState(), code = normDigits($('#cpIn').value).trim().toUpperCase();
+  if (!code) { setErr('cpIn', 'کد تخفیف را بنویس.'); return; }
+  if (!COUPONS[code]) { setErr('cpIn', 'این کد معتبر نیست یا منقضی شده.'); Sound.blip(220, .12, 'square', .03); return; }
+  co.coupon = COUPONS[code]; co.couponCode = code; coRender(); Sound.success();
+  toast({ ic: 'tag', tone: 'ok', title: 'کد تخفیف اعمال شد', body: COUPONS[code].label, ms: 2600 });
+});
+
+/* ================= v3 · order detail ================= */
+VIEW_FN.order = function (p) {
+  if (!state.user) { view.innerHTML = wallHTML('برای دیدن سفارش وارد شو', 'جزئیات و پیگیری سفارش فقط برای صاحب حساب نمایش داده می‌شود.'); return; }
+  var o = ORDERS.filter(function (x) { return x.id === p.no; })[0];
+  if (!o) { VIEW_FN['404'](); return; }
+  var s = orderStatus(o), a = o.digital ? null : (o.addr || defAddr()), prog = [0, 0, .12, .62, 1][o.step] || 0;
+  view.innerHTML =
+    '<section class="sec"><nav class="crumbs" aria-label="مسیر"><button type="button" data-go="account">حساب کاربری</button>' + icon('chevL') + '<button type="button" data-go="account" data-tab="orders">سفارش‌ها</button>' + icon('chevL') + '<span>سفارش ' + o.no + '</span></nav>' +
+    '<div class="od-head"><div><h1>سفارش ' + o.no + '</h1><span class="sec-sub">ثبت‌شده در ' + o.date + ' · ' + o.pay + '</span></div>' + pill(s.cls, s.t) + '</div></section>' +
+    '<div class="od"><div class="acc-main">' +
+      '<div class="card-p"><div class="sec-h2"><h3>وضعیت مرسوله</h3><span class="sec-sub">' + o.eta + '</span></div><div class="steps" data-step="' + o.step + '"><span class="prog"></span><span class="truck" aria-hidden="true">' + icon(o.digital ? 'key' : 'truck') + '</span>' + STEPS.map(function (x, k) { return '<div class="step' + (k < o.step ? ' done' : '') + (k === o.step ? (o.step === 4 ? ' done' : ' cur') : '') + '"><i></i>' + x + '</div>'; }).join('') + '</div>' +
+      (o.digital ? '' : '<div class="route-card"><svg viewBox="0 0 600 120" aria-hidden="true"><path id="odRoute" d="M560 86 C 450 10, 340 110, 220 56 S 80 30, 40 70" fill="none" stroke="var(--ink-5)" stroke-width="4" stroke-linecap="round"/><path d="M560 86 C 450 10, 340 110, 220 56 S 80 30, 40 70" fill="none" style="stroke:var(--accent)" stroke-width="4" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" class="od-prog"/><circle cx="560" cy="86" r="9" fill="#45C489"/><circle cx="40" cy="70" r="9" style="fill:var(--accent)"/><text x="560" y="114" text-anchor="middle" class="rt">انبار</text><text x="40" y="104" text-anchor="middle" class="rt">مقصد</text><g class="od-truck"><circle r="13" style="fill:var(--ink-1);stroke:var(--accent)" stroke-width="3"/><path d="M-1 -3h7v6h-7zM-1 -1h-3l-2 2v2h5" fill="none" stroke="#fff" stroke-width="1.6"/>' + '<animateMotion dur="' + (calm() ? '0.01s' : '2.4s') + '" fill="freeze" keyPoints="0;' + prog + '" keyTimes="0;1" calcMode="linear"><mpath href="#odRoute" xlink:href="#odRoute"/></animateMotion>' + '</g></svg></div>') +
+      (o.track ? '<div class="code-box"><span class="tr-l">کد رهگیری پست</span><code class="shown" id="trk">' + o.track + '</code><button class="btn ghost sm" type="button" data-od="copy">' + icon('copy') + 'کپی</button></div>' : '') + '</div>' +
+      '<div class="card-p"><h3>جزئیات زمانی</h3><div class="tl">' + STEPS.map(function (x, k) { var done = k < o.step || o.step === 4, cur = k === o.step && o.step < 4; return '<div class="tl-i' + (done ? ' done' : cur ? ' cur' : '') + '" style="--i:' + k + '"><b>' + x + '</b><span>' + (o.times && o.times[k] ? o.times[k] : cur ? 'در حال انجام' : 'در انتظار') + '</span></div>'; }).join('') + '</div></div>' +
+      '<div class="card-p"><h3>کالاها</h3><div class="ret-items">' + o.items.map(function (it, i) { var q = BY[it.id]; return '<div class="line" style="--i:' + i + ';--tint:' + q.tint + '"><span class="mini">' + miniArt(q) + '</span><div class="ln"><b>' + esc(q.name) + '</b>' + (it.vlabel ? '<small class="vl">' + esc(it.vlabel) + '</small>' : '') + '<span>' + fa(it.qty) + ' × ' + toman(it.price) + '</span></div><button class="btn ghost sm" type="button" data-pid="' + q.id + '">' + (o.step >= 4 ? icon('chat') + 'ثبت دیدگاه' : 'صفحه‌ی کالا') + '</button></div>'; }).join('') + '</div></div>' +
+    '</div><aside class="acc-side">' +
+      '<div class="card-p"><h3>صورت‌حساب</h3><div class="sum"><span>جمع کالاها</span><span>' + toman(o.sub) + '</span></div>' + (o.disc ? '<div class="sum"><span>کد تخفیف</span><span class="save">−' + toman(o.disc) + '</span></div>' : '') + '<div class="sum"><span>ارسال · ' + o.ship + '</span><span>' + (o.shipFee ? toman(o.shipFee) : 'رایگان') + '</span></div><div class="sum tot"><span>پرداخت‌شده</span><span>' + toman(o.total) + '</span></div><button class="btn ghost sm" type="button" data-od="invoice">' + icon('receipt') + 'مشاهده‌ی فاکتور</button></div>' +
+      (a ? '<div class="card-p"><h3>آدرس تحویل</h3><p class="addr-p">' + esc(addrLine(a)) + '</p><span class="sec-sub">' + esc(a.name) + ' · <span dir="ltr">' + fmtPhone(a.phone) + '</span></span></div>' : '') +
+      '<div class="card-p"><h3>نیاز به کمک داری؟</h3>' + (o.ret ? '<p class="pd-note">' + icon('ret') + 'درخواست مرجوعی ثبت شده و پشتیبانی تا ۲۴ ساعت با تو تماس می‌گیرد.</p>' : o.digital ? '' : '<button class="btn ghost sm" type="button" data-od="return">' + icon('ret') + 'درخواست مرجوعی</button>') + '<button class="btn ghost sm" type="button" data-action="support">' + icon('headset') + 'گفتگو با پشتیبانی</button></div>' +
+    '</aside></div>';
+  state.orderNo = o.id;
+  requestAnimationFrame(function () { animateOrders(); setTimeout(function () { var g = $('.od-prog'); if (g) g.style.strokeDashoffset = String(1 - prog); }, 40); });
+};
+view.addEventListener('click', function (e) {
+  if (state.view !== 'order') return;
+  var b = e.target.closest('[data-od]'); if (!b) return;
+  var o = ORDERS.filter(function (x) { return x.id === state.orderNo; })[0]; if (!o) return;
+  var k = b.dataset.od;
+  if (k === 'copy') { var raw = normDigits(o.track); var done = function () { b.innerHTML = icon('check') + 'کپی شد'; setTimeout(function () { b.innerHTML = icon('copy') + 'کپی'; }, 1600); }; try { navigator.clipboard.writeText(raw).then(done, function () { selectText($('#trk')); done(); }); } catch (err) { selectText($('#trk')); done(); } }
+  else if (k === 'invoice') openInvoice(o);
+  else if (k === 'return') openReturn(o);
+});
+function openInvoice(o) {
+  openModal('<div class="m-pad"><span class="eyebrow">INVOICE</span><h2>فاکتور سفارش ' + o.no + '</h2><p>' + o.date + ' · ' + o.pay + '</p><div class="tbl-wrap"><table class="inv"><thead><tr><th>#</th><th>شرح کالا</th><th>تعداد</th><th>مبلغ واحد</th><th>مبلغ کل</th></tr></thead><tbody>' +
+    o.items.map(function (it, i) { var q = BY[it.id]; return '<tr><td>' + fa(i + 1) + '</td><td>' + esc(q.name) + (it.vlabel ? '<br><small>' + esc(it.vlabel) + '</small>' : '') + '</td><td class="n">' + fa(it.qty) + '</td><td class="n">' + fa(it.price) + '</td><td class="n">' + fa(it.price * it.qty) + '</td></tr>'; }).join('') +
+    '</tbody></table></div><div class="sum"><span>جمع کالاها</span><span>' + toman(o.sub) + '</span></div>' + (o.disc ? '<div class="sum"><span>تخفیف</span><span class="save">−' + toman(o.disc) + '</span></div>' : '') + '<div class="sum"><span>ارسال</span><span>' + (o.shipFee ? toman(o.shipFee) : 'رایگان') + '</span></div><div class="sum tot"><span>جمع کل</span><span>' + toman(o.total) + '</span></div>' +
+    '<p class="pd-note">' + icon('info') + 'فروشنده: [نام حقوقی فروشگاه] · شناسه‌ی ملی: [شناسه] · این فاکتور نمونه است.</p></div>', { label: 'فاکتور', wide: true });
+}
+function openReturn(o) {
+  var m = openModal('<form class="m-pad form" id="retForm" novalidate><span class="eyebrow">RETURN</span><h2>درخواست مرجوعی</h2><p>تا ۷ روز بعد از تحویل می‌توانی کالا را برگردانی. کالاهایی را که می‌خواهی برگردانی انتخاب کن.</p>' +
+    '<div class="fld"><label>کالاها</label><div class="ret-items">' + o.items.map(function (it) { var q = BY[it.id]; return '<label class="check box-c"><input type="checkbox" name="ri" value="' + it.id + '"><span class="mini" style="--tint:' + q.tint + '">' + miniArt(q) + '</span><span>' + esc(q.name) + '</span></label>'; }).join('') + '</div><span class="err" id="riErr" aria-live="polite"></span></div>' +
+    '<div class="fld"><label>دلیل مرجوعی</label><div class="vg-cards" role="radiogroup" aria-label="دلیل">' + ['آسیب‌دیدگی در ارسال', 'مغایرت با توضیحات', 'ایراد فنی', 'پشیمانی از خرید'].map(function (r, i) { return '<button class="vc" type="button" role="radio" data-rr="' + i + '" aria-checked="false"><b>' + r + '</b>' + (i === 3 ? '<small>فقط برای کالای پلمب و استفاده‌نشده</small>' : '') + '</button>'; }).join('') + '</div><span class="err" id="rrErr" aria-live="polite"></span></div>' +
+    fld('retDesc', 'توضیح (اختیاری)', '<textarea class="inp" id="retDesc" placeholder="مشکل را کوتاه توضیح بده"></textarea>') +
+    '<div class="fld"><label for="retPh">عکس از کالا یا بسته (اختیاری)</label><input class="inp file" id="retPh" type="file" accept="image/*" multiple><div class="thumbs-up" id="retThumbs"></div></div>' +
+    '<button class="btn primary" type="submit">' + icon('ret') + 'ثبت درخواست</button></form>', { label: 'درخواست مرجوعی', wide: false });
+  var reason = -1;
+  m.addEventListener('click', function (e) { var r = e.target.closest('[data-rr]'); if (!r) return; reason = +r.dataset.rr; $$('[data-rr]', m).forEach(function (x) { x.setAttribute('aria-checked', x === r ? 'true' : 'false'); }); setErr('rr', ''); });
+  m.querySelector('#retPh').addEventListener('change', function (e) {
+    var box = m.querySelector('#retThumbs'); box.innerHTML = '';
+    Array.prototype.slice.call(e.target.files || [], 0, 6).forEach(function (f) { var img = document.createElement('img'); img.alt = 'پیش‌نمایش ' + f.name; img.src = URL.createObjectURL(f); box.appendChild(img); });
+  });
+  m.querySelector('#retForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var picked = $$('input[name="ri"]:checked', m).length, ok = true;
+    ok = setErr('ri', picked ? '' : 'دست‌کم یک کالا انتخاب کن.') && ok;
+    ok = setErr('rr', reason >= 0 ? '' : 'دلیل مرجوعی را انتخاب کن.') && ok;
+    if (!ok) return;
+    o.ret = true; closeModal(); Sound.success();
+    toast({ ic: 'ret', tone: 'ok', title: 'درخواست مرجوعی ثبت شد', body: 'کد پیگیری: RT-' + o.id + ' · تماس پشتیبانی تا ۲۴ ساعت', ms: 4200 });
+    VIEW_FN.order({ no: o.id });
+  });
+}
+
+/* ================= v3 · static pages ================= */
+var FAQ = [
+  ['سفارش و ارسال', [['سفارشم کی می‌رسد؟', 'در تهران با ارسال فوری همان روز، و در شهرهای دیگر با پست پیشتاز معمولاً ۲ تا ۴ روز کاری. کد رهگیری بعد از ارسال پیامک می‌شود.'], ['می‌توانم سفارش را حضوری تحویل بگیرم؟', 'بله. در مرحله‌ی ارسال «تحویل حضوری» را انتخاب کن تا بعد از آماده شدن پیامک بگیری.'], ['هزینه‌ی ارسال چقدر است؟', 'ارسال فوری تهران هزینه دارد و پست پیشتاز برای خریدهای بالای ۲ میلیون تومان رایگان است.']]],
+  ['پرداخت', [['چه روش‌هایی برای پرداخت هست؟', 'پرداخت اینترنتی با کارت‌های عضو شتاب، کیف پول فروشگاه و پرداخت اقساطی.'], ['پرداخت ناموفق بود ولی پول کم شد؛ چه کنم؟', 'مبلغ معمولاً تا ۷۲ ساعت از طرف بانک برمی‌گردد. اگر برنگشت، با پشتیبانی تماس بگیر.']]],
+  ['گارانتی و مرجوعی', [['شرایط مرجوعی چیست؟', 'تا ۷ روز بعد از تحویل، کالای سالم و با بسته‌بندی کامل قابل برگشت است. کالای دیجیتال بعد از نمایش کد قابل برگشت نیست.'], ['گارانتی شرکتی چه تفاوتی با گارانتی فروشگاه دارد؟', 'گارانتی شرکتی توسط مرکز خدمات مجاز انجام می‌شود و قطعه تعویض می‌کند؛ گارانتی فروشگاه کوتاه‌تر است و تعویض در هفت روز اول را پوشش می‌دهد.']]],
+  ['کد دیجیتال و اکانت', [['کد را کجا می‌بینم؟', 'بلافاصله بعد از پرداخت در کتابخانه‌ی حسابت و ایمیل.'], ['فرق اکانت ظرفیت ۲ و ۳ چیست؟', 'با ظرفیت ۲ بازی را روی اکانت خودت اجرا می‌کنی و بخش آنلاین در دسترس است. ظرفیت ۳ با اکانت تحویلی و برای بازی آفلاین است.']]]
+];
+var GUIDES = {
+  psn: ['PlayStation', ['کنسول را روشن کن و وارد PlayStation Store شو.', 'روی آیکون پروفایل یا منوی بالا، گزینه‌ی Redeem Code را بزن.', 'کد ۱۲ رقمی را از کتابخانه کپی و وارد کن.', 'تأیید کن؛ اعتبار یا اشتراک فوراً فعال می‌شود.']],
+  xbox: ['Xbox', ['دکمه‌ی Xbox را بزن و به Store برو.', 'گزینه‌ی Redeem را انتخاب کن.', 'کد ۲۵ کاراکتری را وارد کن.', 'Confirm را بزن تا کد روی اکانتت بنشیند.']],
+  eshop: ['Nintendo eShop', ['از صفحه‌ی اصلی سوییچ وارد Nintendo eShop شو.', 'اکانتت را انتخاب کن و به Redeem Code برو.', 'کد ۱۶ رقمی را وارد کن.', 'اعتبار به کیف پول eShop اضافه می‌شود.']],
+  steam: ['Steam', ['وارد برنامه یا سایت Steam شو.', 'از منوی Games گزینه‌ی Activate a Product on Steam را بزن.', 'کد را وارد و شرایط را تأیید کن.', 'بازی به کتابخانه‌ی Steam اضافه می‌شود.']],
+  pubg: ['UC پابجی', ['وارد بازی PUBG Mobile شو و Player ID را از پروفایل کپی کن.', 'Player ID را هنگام خرید وارد کن.', 'UC ظرف چند دقیقه به اکانت بازی واریز می‌شود.']]
+};
+var PAGES = {
+  about: { t: 'درباره‌ی پیکسل‌گاه', e: 'ABOUT', s: 'فروشگاهی که خود گیمرها اداره‌اش می‌کنند.' },
+  contact: { t: 'تماس با ما', e: 'CONTACT', s: 'هر روز هفته پاسخگوییم؛ سریع‌ترین راه، گفتگوی آنلاین است.' },
+  faq: { t: 'سؤالات متداول', e: 'FAQ', s: 'جواب پرتکرارترین سؤال‌ها درباره‌ی سفارش، پرداخت و گارانتی.' },
+  terms: { t: 'قوانین و مقررات', e: 'TERMS', s: 'شرایط استفاده از فروشگاه و ثبت سفارش.' },
+  warranty: { t: 'گارانتی و بازگشت کالا', e: 'WARRANTY', s: 'انواع گارانتی، شرایط مرجوعی و مراحل آن.' },
+  guide: { t: 'راهنمای فعال‌سازی کد', e: 'ACTIVATION', s: 'قدم‌به‌قدم، برای هر پلتفرم.' }
+};
+VIEW_FN.page = function (p) {
+  var k = PAGES[p.page] ? p.page : null;
+  if (!k) { VIEW_FN['404'](); return; }
+  var pg = PAGES[k], body = '';
+  if (k === 'about') body = '<div class="prose"><p>پیکسل‌گاه از یک دغدغه‌ی ساده شروع شد: خرید کنسول، بازی و قطعه برای گیمرهای ایرانی باید مطمئن، سریع و بدون دردسر باشد. ما همه‌ی کالاها را اورجینال و پلمب تحویل می‌دهیم و کدهای دیجیتال را در چند ثانیه.</p><p>تیم ما خودش بازی می‌کند؛ برای همین وقتی درباره‌ی کنسول یا قطعه‌ای می‌پرسی، با کسی حرف می‌زنی که با آن کار کرده است.</p><p class="pd-note">' + icon('edit') + 'این متن نمونه است؛ داستان و اطلاعات واقعی فروشگاه جای آن قرار می‌گیرد.</p></div><div class="vals">' + [['shield', 'اصالت کالا', 'همه‌چیز اورجینال، پلمب و با ضمانت.'], ['bolt', 'سرعت', 'ارسال همان روز در تهران و کد در چند ثانیه.'], ['headset', 'پشتیبانی گیمرها', 'مشاوره از کسانی که خودشان بازی می‌کنند.'], ['tag', 'قیمت منصفانه', 'قیمت لحظه‌ای و نمودار تغییر قیمت هر کالا.']].map(function (v, i) { return '<div class="stt" style="--i:' + i + '">' + icon(v[0]) + '<b class="vt">' + v[1] + '</b><span>' + v[2] + '</span></div>'; }).join('') + '</div>';
+  else if (k === 'contact') body = '<div class="ct"><div class="ct-info">' + [['pin', 'آدرس فروشگاه', '[آدرس فروشگاه]'], ['phone', 'تلفن', '[شماره‌ی تماس]'], ['mail', 'ایمیل', '[ایمیل پشتیبانی]'], ['clock', 'ساعت کاری', 'شنبه تا پنجشنبه، ۱۰ تا ۲۱ · جمعه‌ها ۱۴ تا ۲۰']].map(function (c) { return '<div class="addr"><h4>' + icon(c[0]) + c[1] + '</h4><p class="sel-txt">' + c[2] + '</p></div>'; }).join('') + '<button class="btn primary" type="button" data-action="support">' + icon('chat') + 'گفتگوی آنلاین با پشتیبانی</button></div>' +
+    '<form class="card-p form" id="ctForm" novalidate><h3>پیام بفرست</h3><div class="row2">' + fld('ctName', 'نام', '<input class="inp" id="ctName" autocomplete="name">') + fld('ctPhone', 'موبایل', '<input class="inp" id="ctPhone" type="tel" inputmode="numeric" dir="ltr" placeholder="0912 345 6789">') + '</div>' + fld('ctSub', 'موضوع', '<select class="inp" id="ctSub"><option>پیگیری سفارش</option><option>مشاوره‌ی خرید</option><option>گارانتی و مرجوعی</option><option>همکاری</option><option>سایر</option></select>') + fld('ctMsg', 'پیام', '<textarea class="inp" id="ctMsg" placeholder="پیامت را بنویس"></textarea>') + '<button class="btn primary" type="submit" style="align-self:flex-start">' + icon('send') + 'ارسال پیام</button></form></div>';
+  else if (k === 'faq') body = '<div class="fld"><label for="faqQ" class="vh">جستجو در سؤالات</label><input class="inp" id="faqQ" placeholder="جستجو در سؤالات، مثلاً «مرجوعی»" autocomplete="off"></div><div id="faqBox">' + FAQ.map(function (g) { return '<div class="faq-g"><h2 class="h3">' + g[0] + '</h2><div class="qa-list">' + g[1].map(function (q) { return qaHTML(q[0], q[1], false, false).replace('پاسخ پشتیبانی پیکسل‌گاه', 'پیکسل‌گاه'); }).join('') + '</div></div>'; }).join('') + '</div><p class="pd-none" id="faqNone" hidden>سؤالی با این عبارت پیدا نشد. <button class="linkb" type="button" data-action="support">از پشتیبانی بپرس</button></p>';
+  else if (k === 'terms') { var T = [['کلیات', 'استفاده از فروشگاه یعنی پذیرش این قوانین. قیمت‌ها به تومان و شامل مالیات بر ارزش افزوده است.'], ['ثبت سفارش', 'سفارش پس از پرداخت موفق ثبت می‌شود. در صورت ناموجود شدن کالا پس از پرداخت، مبلغ کامل به کیف پول یا حساب بانکی برگردانده می‌شود.'], ['ارسال و تحویل', 'زمان تحویل بسته به روش ارسال است. هنگام تحویل، بسته را در حضور مأمور ارسال بررسی کن.'], ['کالای دیجیتال', 'کدها و اکانت‌ها پس از نمایش در کتابخانه قابل بازگشت نیستند، مگر کد معیوب باشد.'], ['حریم خصوصی', 'اطلاعات تماس و آدرس فقط برای پردازش سفارش استفاده می‌شود و در اختیار دیگران قرار نمی‌گیرد.']]; body = '<div class="terms"><nav class="toc" aria-label="فهرست">' + T.map(function (x, i) { return '<a href="#t' + i + '" data-toc="t' + i + '">' + fa(i + 1) + '. ' + x[0] + '</a>'; }).join('') + '</nav><div class="prose">' + T.map(function (x, i) { return '<h2 id="t' + i + '" class="h3">' + fa(i + 1) + '. ' + x[0] + '</h2><p>' + x[1] + '</p>'; }).join('') + '<p class="pd-note">' + icon('edit') + 'این متن نمونه است و باید با قوانین واقعی فروشگاه جایگزین شود.</p></div></div>'; }
+  else if (k === 'warranty') body = '<div class="tbl-wrap"><table class="inv wt"><thead><tr><th>نوع گارانتی</th><th>مدت</th><th>پوشش</th><th>کجا انجام می‌شود</th></tr></thead><tbody><tr><td><b>شرکتی</b></td><td>۱۸ ماه</td><td>تعمیر و تعویض قطعه</td><td>مرکز خدمات مجاز</td></tr><tr><td><b>فروشگاه</b></td><td>۶ ماه</td><td>تعویض در هفت روز اول و پشتیبانی فنی</td><td>پیکسل‌گاه</td></tr><tr><td><b>بدون گارانتی</b></td><td>—</td><td>فقط ضمانت اصالت</td><td>—</td></tr></tbody></table></div>' +
+    '<h2 class="h3">مراحل مرجوعی</h2><ol class="guide">' + ['از صفحه‌ی سفارش، «درخواست مرجوعی» را بزن و دلیل را انتخاب کن.', 'کارشناس تا ۲۴ ساعت تماس می‌گیرد و روش ارسال را هماهنگ می‌کند.', 'کالا بررسی می‌شود؛ معمولاً ۲ تا ۳ روز کاری.', 'مبلغ به کیف پول یا حساب بانکی برمی‌گردد، یا کالای سالم جایگزین ارسال می‌شود.'].map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ol>';
+  else if (k === 'guide') body = '<div class="tabs" role="tablist" id="gdTabs"><span class="tab-ind"></span>' + Object.keys(GUIDES).map(function (g, i) { return '<button class="tab" type="button" role="tab" data-gd="' + g + '" aria-selected="' + (i === 0) + '">' + GUIDES[g][0] + '</button>'; }).join('') + '</div><ol class="guide" id="gdBox">' + GUIDES.psn[1].map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ol><p class="pd-note">' + icon('headset') + 'اگر کد فعال نشد، از کتابخانه با پشتیبانی گفتگو کن؛ کد بررسی و در صورت مشکل جایگزین می‌شود.</p>';
+  view.innerHTML = '<section class="pg-hero"><span class="eyebrow">' + pg.e + '</span><h1>' + pg.t + '</h1><p>' + pg.s + '</p></section><section class="sec pg-body">' + body + '</section>' + pageLinksHTML(k);
+  if (k === 'faq') $('#faqQ').addEventListener('input', function (e) {
+    var q = norm(e.target.value), any = false;
+    $$('#faqBox .qa').forEach(function (it) { var hit = !q || norm(it.textContent).indexOf(q) >= 0; it.hidden = !hit; if (hit) any = true; if (q && hit) { it.classList.add('open'); it.querySelector('.qa-q').setAttribute('aria-expanded', 'true'); } });
+    $$('#faqBox .faq-g').forEach(function (g) { g.hidden = !$$('.qa', g).some(function (x) { return !x.hidden; }); });
+    $('#faqNone').hidden = any;
+  });
+  if (k === 'guide') { var tabs = $('#gdTabs'); requestAnimationFrame(function () { placeInd(tabs); }); tabs.addEventListener('click', function (e) { var b = e.target.closest('[data-gd]'); if (!b) return; $$('.tab', tabs).forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); }); placeInd(tabs); $('#gdBox').innerHTML = GUIDES[b.dataset.gd][1].map(function (s) { return '<li>' + s + '</li>'; }).join(''); Sound.click(); }); }
+  if (k === 'contact') $('#ctForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true;
+    ok = setErr('ctName', $('#ctName').value.trim().length < 2 ? 'نامت را بنویس.' : '') && ok;
+    ok = setErr('ctPhone', !/^09\d{9}$/.test(cleanPhone($('#ctPhone').value)) ? 'موبایل باید با ۰۹ شروع شود و ۱۱ رقم باشد.' : '') && ok;
+    ok = setErr('ctMsg', $('#ctMsg').value.trim().length < 10 ? 'پیامت را کمی کامل‌تر بنویس.' : '') && ok;
+    if (!ok) return;
+    e.target.innerHTML = '<div class="success"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><path d="M30 52l13 13 27-29"/></svg><h3>پیامت رسید</h3><p>کارشناس ما تا چند ساعت دیگر با شماره‌ای که دادی تماس می‌گیرد.</p></div>';
+    Sound.success();
+  });
+};
+function pageLinksHTML(cur) {
+  return '<section class="sec"><div class="pg-links">' + Object.keys(PAGES).filter(function (k) { return k !== cur; }).map(function (k) { return '<button type="button" data-go="page" data-page="' + k + '"><b>' + PAGES[k].t + '</b><span>' + PAGES[k].s + '</span>' + icon('arrowL') + '</button>'; }).join('') + '</div></section>';
+}
+VIEW_FN['404'] = function () {
+  view.innerHTML = '<section class="nf"><div class="nf-art alive" aria-hidden="true">' + ILLU.pad('#FF5C8A', false) + '<span class="nf-cable"></span></div><div class="nf-code" data-t="404" aria-hidden="true">404</div><h1>سیگنال قطع شد</h1><p>صفحه‌ای که دنبالش بودی پیدا نشد؛ شاید لینک اشتباه است یا این صفحه جابه‌جا شده.</p><div class="qv-ctas"><button class="btn primary" type="button" data-go="home" data-magnet>' + icon('home') + 'بازگشت به خانه</button><button class="btn ghost" type="button" id="nfSearch">' + icon('search') + 'جستجو در فروشگاه</button></div><span class="nf-press">PRESS <kbd>A</kbd> TO CONTINUE</span></section>';
+  var s = $('#nfSearch'); if (s) s.addEventListener('click', openPalette);
+};
+
 /* ================= start ================= */
 renderRail(); renderTop(); renderStatus(); initMega(); syncSoundUI();
-go('home');
+(function () { var r0 = parseRoute(location.hash); go(r0[0], r0[1]); })();
 updateBadges(); updateXP();
 requestAnimationFrame(railActive);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { railActive(); var t = $('#platTabs'); if (t) placeInd(t); });

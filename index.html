@@ -1515,15 +1515,25 @@ var ACCENTS = [['#F5B83D', 'زعفرانی'], ['#FF5A5F', 'قرمز'], ['#3DD6C6
 /* ================= sound ================= */
 var Sound = {
   ctx: null, last: 0,
-  ensure: function () { if (!this.ctx) { try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { this.ctx = null; } } if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume(); },
+  ensure: function () {
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+    if (!this.ctx) { try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { this.ctx = null; } }
+    if (!this.ctx) return;
+    if (this.ctx.state !== 'running') { try { this.ctx.resume(); } catch (e) {} }
+    try { var b = this.ctx.createBuffer(1, 1, 22050), src = this.ctx.createBufferSource(); src.buffer = b; src.connect(this.ctx.destination); src.start(0); } catch (e) {}
+    if (!this.el) { try { this.el = new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA='); this.el.loop = true; this.el.volume = 0.01; this.el.setAttribute('playsinline', ''); var pr = this.el.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {} }
+  },
   blip: function (f, dur, type, vol) {
     if (!state.sound || !this.ctx) return;
+    if (this.ctx.state !== 'running') { try { this.ctx.resume(); } catch (e) {} }
+    vol = (vol || .03) * (finePointer ? 1 : 1.8);
     var t = this.ctx.currentTime, o = this.ctx.createOscillator(), g = this.ctx.createGain();
     o.type = type || 'sine'; o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * 1.45, t + dur);
     g.gain.setValueAtTime(vol || .03, t); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
     o.connect(g); g.connect(this.ctx.destination); o.start(t); o.stop(t + dur + .02);
   },
   hover: function () { var n = performance.now(); if (n - this.last < 70) return; this.last = n; this.blip(1700, .03, 'sine', .012); },
+  tap: function () { var n = performance.now(); if (n - this.last < 60) return; this.last = n; this.blip(1250, .04, 'sine', .02); },
   click: function () { this.blip(520, .07, 'triangle', .045); },
   open: function () { this.blip(300, .14, 'sine', .04); },
   success: function () { var s = this; [660, 880, 1320].forEach(function (f, i) { setTimeout(function () { s.blip(f, .14, 'sine', .045); }, i * 90); }); }
@@ -1691,6 +1701,7 @@ function renderTop() {
     '<button class="ib" type="button" id="cartBtn" data-action="cart" aria-label="سبد خرید" data-sfx>' + icon('cart') + '<span class="badge" id="cartBadge"></span></button>' +
     '<button class="ib" type="button" id="bellBtn" data-action="bell" aria-label="اعلان‌ها" data-sfx>' + icon('bell') + '<span class="dot" id="bellDot"></span></button>' +
     '<button class="avatar" type="button" id="profileBtn" data-action="profile" aria-label="پروفایل، سطح ' + fa(state.level) + '" data-sfx>' + ringSVG(46, 20, 3) + '<span id="lvlTop">' + fa(state.level) + '</span></button>' +
+    '<button class="ib m-only" type="button" id="soundTop" data-action="sound" aria-pressed="false" aria-label="صدای رابط">' + icon('soundOff') + '</button>' +
     '<button class="ib m-only" type="button" id="menuBtn" data-action="menu" aria-label="دسته‌بندی‌ها">' + icon('library') + '</button>' +
     '</div><div class="mega" id="mega" aria-label="منوی دسته‌بندی"></div>';
 }
@@ -2403,10 +2414,18 @@ function openSettings(anchor) {
     }
   });
 }
+function syncSoundUI() {
+  var on = state.sound;
+  var b = $('#soundBtn'); if (b) { b.setAttribute('aria-pressed', String(on)); b.innerHTML = icon(on ? 'soundOn' : 'soundOff') + '<span>صدای رابط</span>'; }
+  var t = $('#soundTop'); if (t) { t.setAttribute('aria-pressed', String(on)); t.innerHTML = icon(on ? 'soundOn' : 'soundOff'); t.style.color = on ? 'var(--accent)' : ''; }
+  $$('[data-toggle="sound"]').forEach(function (x) { x.setAttribute('aria-checked', String(on)); });
+}
 function setSound(on) {
   state.sound = on;
-  if (on) { Sound.ensure(); Sound.success(); }
-  var b = $('#soundBtn'); if (b) { b.setAttribute('aria-pressed', String(on)); b.innerHTML = icon(on ? 'soundOn' : 'soundOff') + '<span>صدای رابط</span>'; }
+  LS.set('pg-sound', on ? '1' : '0');
+  if (on) { Sound.ensure(); setTimeout(function () { Sound.success(); }, 60); }
+  syncSoundUI();
+  if (!finePointer) toast({ ic: on ? 'soundOn' : 'soundOff', title: on ? 'صدای رابط روشن شد' : 'صدای رابط خاموش شد', body: on ? 'اگر صدا نمی‌آید، صدای دستگاه را بالا ببر.' : '', ms: 2400 });
 }
 function openSupport() {
   openDrawer('support', function (d) {
@@ -2480,6 +2499,14 @@ if (finePointer) {
   document.addEventListener('pointerleave', function () { spot.classList.remove('on'); });
   document.addEventListener('pointerover', function (e) { if (state.sound && e.target.closest && e.target.closest('[data-sfx], .card, .chip, .m-link, .m-gt')) Sound.hover(); });
 }
+
+/* ================= touch sound + audio unlock ================= */
+if (LS.get('pg-sound') === '1') state.sound = true;
+document.addEventListener('pointerdown', function (e) {
+  if (!state.sound) return;
+  Sound.ensure();
+  if (e.pointerType !== 'mouse' && e.target.closest && e.target.closest('button, a, .card, .chip, [data-sfx]')) Sound.tap();
+}, { passive: true, capture: true });
 
 /* ================= global events ================= */
 document.addEventListener('click', function (e) {
@@ -3102,7 +3129,7 @@ view.addEventListener('submit', function (e) {
 });
 
 /* ================= start ================= */
-renderRail(); renderTop(); renderStatus(); initMega();
+renderRail(); renderTop(); renderStatus(); initMega(); syncSoundUI();
 go('home');
 updateBadges(); updateXP();
 requestAnimationFrame(railActive);

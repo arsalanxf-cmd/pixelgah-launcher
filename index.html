@@ -1962,7 +1962,7 @@ function initHero() {
     thumbs[cur].classList.add('on'); thumbs[cur].setAttribute('aria-selected', 'true');
     if (count) count.innerHTML = '<b>0' + (cur + 1) + '</b> / 0' + slides.length;
     setAmb(HERO[cur].tint); emb.setColor(HERO[cur].tint);
-    if (mqMobile.matches) thumbs[cur].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    if (mqMobile.matches) { var tc = thumbs[cur].parentNode, tr = thumbs[cur].getBoundingClientRect(), cr = tc.getBoundingClientRect(); tc.scrollBy({ left: (tr.left + tr.width / 2) - (cr.left + cr.width / 2), behavior: calm() ? 'auto' : 'smooth' }); }
   }
   thumbs.forEach(function (t, i) {
     t.addEventListener('click', function () { show(i); });

@@ -1369,6 +1369,322 @@ select.inp { appearance: none; padding-left: 38px; background-image: linear-grad
 @media (max-width: 620px) { .oc-st { display: block; } }
 @media (max-width: 980px) { .r-item[data-v="account"] { display: none; } }
 
+.pal-r .pt { position: static; aspect-ratio: auto; border: 0; border-radius: 0; background: none; overflow: visible; box-shadow: none; transform: none !important; }
+.pal-all { min-height: 58px; margin-bottom: 4px; background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.pal-all .pk { background: color-mix(in srgb, var(--accent) 20%, var(--ink-4)); color: var(--accent); }
+.pal-all .pk > svg.i { position: static; width: 20px; height: 20px; }
+.pal-r .pk > svg.i { position: static; width: 19px; height: 19px; }
+/* ================= v3 · sheet ================= */
+.sheet-over { position: fixed; inset: 0; z-index: 96; background: rgba(3, 4, 7, .6); backdrop-filter: blur(4px); opacity: 0; transition: opacity .3s; }
+.sheet-over.open { opacity: 1; }
+.sheet { position: fixed; z-index: 97; left: 0; right: 0; bottom: 0; max-height: 86vh; max-height: 86dvh; display: flex; flex-direction: column; border-radius: 26px 26px 0 0; background: var(--ink-2); border: 1px solid var(--line-2); border-bottom: 0; box-shadow: 0 -30px 80px rgba(0, 0, 0, .6); transform: translateY(105%); transition: transform .45s var(--ease); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.sheet.open { transform: none; }
+.sh-grab { display: grid; place-items: center; height: 26px; cursor: grab; touch-action: none; flex: none; }
+.sh-grab i { width: 44px; height: 5px; border-radius: 3px; background: var(--ink-5); }
+.sh-h { display: flex; align-items: center; justify-content: space-between; padding: 0 18px 10px; flex: none; }
+.sh-h h2 { margin: 0; font-family: var(--f-display); font-size: 18px; }
+.sh-b { flex: 1; overflow-y: auto; padding: 4px 18px 18px; overscroll-behavior: contain; }
+.sh-f { display: flex; gap: 10px; padding: 12px 18px; border-top: 1px solid var(--line); flex: none; }
+.sh-f .btn { flex: 1; }
+.sh-f .btn.primary { flex: 2; }
+.sheet .sf-clear { display: none; }
+
+/* ================= v3 · search ================= */
+.sr-head { gap: 16px; }
+#srTitle .q { color: var(--accent); }
+.sr-bar { display: flex; align-items: center; gap: 10px; max-width: 760px; padding: 6px 16px 6px 6px; border-radius: 18px; background: var(--ink-2); border: 1px solid var(--line-2); transition: border-color .2s, box-shadow .3s; }
+.sr-bar:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent), 0 20px 50px -24px color-mix(in srgb, var(--accent) 50%, transparent); }
+.sr-bar > .i { color: var(--fg-3); }
+.sr-bar input { flex: 1; min-width: 0; height: 46px; border: 0; background: none; color: var(--fg); font: 600 16px var(--f-body); outline: none; }
+.sr-bar input::-webkit-search-cancel-button { filter: invert(.7); }
+.sr-pop { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.sr-pl { font-size: 13px; color: var(--fg-3); margin-left: 4px; }
+.sr { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 24px; align-items: start; margin-top: -30px; }
+.sr-side { position: sticky; top: 12px; max-height: calc(100vh - 140px); overflow-y: auto; scrollbar-width: thin; padding: 6px 16px 16px; border-radius: 22px; background: var(--ink-2); border: 1px solid var(--line); }
+.sr-main { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.sr-tools { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.sr-fbtn { display: none; }
+.sr-fbtn .cnt { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 11px; background: var(--accent); color: var(--accent-ink); font-size: 12px; }
+.sr-fbtn .cnt:empty { display: none; }
+.sr-sort { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.sr-act { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.sr-act:empty { display: none; }
+.chip.act { background: color-mix(in srgb, var(--accent) 14%, var(--ink-3)); border-color: color-mix(in srgb, var(--accent) 40%, transparent); color: var(--fg); animation: popIn .35s var(--spring) backwards; }
+.chip.act .i { width: 14px; height: 14px; opacity: .7; }
+.chip.act:hover .i { opacity: 1; }
+.sr-grid.anim .card { animation: rise .55s var(--ease) backwards; animation-delay: calc(var(--i) * 35ms); }
+.sr-empty { display: flex; flex-direction: column; gap: 18px; }
+.sr-sugh { margin-top: 10px; }
+.sf { display: flex; flex-direction: column; }
+.fg { border-bottom: 1px solid var(--line); }
+.fg summary { display: flex; align-items: center; justify-content: space-between; min-height: 52px; font-weight: 800; font-size: 14px; cursor: pointer; list-style: none; }
+.fg summary::-webkit-details-marker { display: none; }
+.fg summary .chev { color: var(--fg-3); transition: transform .35s var(--spring); }
+.fg[open] summary .chev { transform: rotate(-90deg); }
+.fg-b { display: flex; flex-direction: column; gap: 2px; padding-bottom: 14px; }
+.fg[open] .fg-b { animation: stepIn .35s var(--ease); }
+.fck { display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 0 8px; border-radius: 10px; cursor: pointer; font-size: 14px; color: var(--fg-2); transition: background .2s, opacity .2s; }
+.fck:hover { background: var(--ink-3); color: var(--fg); }
+.fck input { appearance: none; flex: none; width: 20px; height: 20px; margin: 0; border-radius: 6px; border: 2px solid var(--line-2); background: var(--ink-3); display: grid; place-items: center; cursor: pointer; transition: background .2s, border-color .2s; }
+.fck input::after { content: ""; width: 9px; height: 5px; border: solid var(--accent-ink); border-width: 0 0 2.5px 2.5px; transform: translateY(-1px) rotate(-45deg) scale(0); transition: transform .3s var(--spring); }
+.fck input:checked { background: var(--accent); border-color: var(--accent); }
+.fck input:checked::after { transform: translateY(-1px) rotate(-45deg) scale(1); }
+.fck input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.fck span { flex: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+.fck em { font-style: normal; font-size: 12px; color: var(--fg-3); font-variant-numeric: tabular-nums; }
+.fck.zero { opacity: .4; }
+.dotc { width: 9px; height: 9px; border-radius: 5px; background: var(--c); box-shadow: 0 0 8px var(--c); flex: none; }
+.fg .set-row { min-height: 44px; padding: 2px 8px; }
+.fg .set-row > span { display: flex; align-items: center; gap: 8px; color: var(--fg-2); }
+.fg .set-row .i { width: 17px; height: 17px; color: var(--fg-3); }
+.pr-hist { display: flex; align-items: flex-end; gap: 2px; height: 46px; padding: 0 9px; }
+.pr-hist i { flex: 1; height: var(--h); border-radius: 3px 3px 0 0; background: var(--ink-5); transition: height .5s var(--ease), background .2s; }
+.pr-hist i.in { background: color-mix(in srgb, var(--accent) 70%, var(--ink-5)); }
+.pr-dual { position: relative; height: 28px; margin: 0 2px; }
+.pr-dual::before { content: ""; position: absolute; top: 12px; inset-inline: 9px; height: 4px; border-radius: 2px; background: var(--ink-5); }
+.pr-fill { position: absolute; top: 12px; height: 4px; border-radius: 2px; background: var(--accent); margin: 0 9px; box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 60%, transparent); }
+.pr-dual input { position: absolute; inset: 0; width: 100%; height: 28px; margin: 0; background: none; appearance: none; -webkit-appearance: none; pointer-events: none; outline: none; }
+.pr-dual input::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 11px; background: #fff; border: 4px solid var(--accent); box-shadow: 0 4px 12px rgba(0, 0, 0, .5); cursor: grab; pointer-events: auto; transition: transform .2s var(--spring); }
+.pr-dual input::-moz-range-thumb { width: 14px; height: 14px; border-radius: 11px; background: #fff; border: 4px solid var(--accent); cursor: grab; pointer-events: auto; }
+.pr-dual input:active::-webkit-slider-thumb { transform: scale(1.15); cursor: grabbing; }
+.pr-dual input:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 30%, transparent); }
+.pr-dual input::-webkit-slider-runnable-track { background: none; }
+.pr-lbl { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--fg-3); padding: 2px 4px 0; }
+.pr-lbl b { color: var(--fg); font-weight: 700; }
+.sf-clear { margin-top: 14px; }
+
+/* ================= v3 · compare ================= */
+.c-cmp { position: absolute; z-index: 4; top: 104px; left: 8px; display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 20px; background: rgba(5, 6, 10, .55); backdrop-filter: blur(6px); color: #fff; cursor: pointer; opacity: 0; transform: scale(.8); transition: opacity .2s .1s, transform .3s var(--spring) .1s, background .2s, color .2s; }
+.card.is-game .c-cmp { top: 130px; }
+.c-cmp .i { width: 18px; height: 18px; }
+.card:hover .c-cmp, .card:focus-within .c-cmp, .c-cmp.on { opacity: 1; transform: none; }
+.c-cmp.on { background: var(--accent); color: var(--accent-ink); }
+@media (hover: none) { .c-cmp { opacity: 1; transform: none; width: 34px; height: 34px; top: auto; bottom: 8px; } .card.is-game .c-cmp { top: auto; } }
+.pb-cmp.on { background: color-mix(in srgb, var(--accent) 20%, var(--ink-4)); color: var(--accent); }
+.cmp-tray { position: fixed; z-index: 60; left: 50%; bottom: calc(46px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 12px; padding: 10px 12px 10px 10px; border-radius: 22px; background: color-mix(in srgb, var(--ink-2) 94%, transparent); backdrop-filter: blur(20px); border: 1px solid var(--line-2); box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .8); transform: translate(-50%, 150%); opacity: 0; pointer-events: none; transition: transform .5s var(--spring), opacity .3s; }
+.cmp-tray.open { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
+.ct-slots { display: flex; gap: 6px; }
+.ct-s { position: relative; width: 50px; height: 50px; border-radius: 14px; background: radial-gradient(circle, color-mix(in srgb, var(--tint) 45%, transparent), transparent 70%), var(--ink-4); animation: popIn .4s var(--spring); }
+.ct-s .mini { position: absolute; inset: 0; border-radius: 14px; overflow: hidden; }
+.ct-s .mini svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ct-s .mini .illu { inset: 8%; width: 84%; height: 84%; }
+.ct-s.none { display: grid; place-items: center; background: none; border: 1.5px dashed var(--line-2); color: var(--fg-3); animation: none; }
+.ct-s.none .i { width: 16px; height: 16px; }
+.ct-x { position: absolute; z-index: 2; top: -6px; left: -6px; display: grid; place-items: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 11px; background: var(--ink-5); color: var(--fg); cursor: pointer; }
+.ct-x .i { width: 12px; height: 12px; stroke-width: 2.6; }
+.ct-x:hover { background: var(--bad); }
+.ct-tx { display: flex; flex-direction: column; min-width: 0; }
+.ct-tx b { font-size: 14px; white-space: nowrap; }
+.ct-tx span { font-size: 12px; color: var(--fg-3); white-space: nowrap; }
+.cmp-tray .btn:disabled { opacity: .45; cursor: not-allowed; }
+.diff-tog { gap: 12px; padding: 6px 14px; border-radius: 16px; background: var(--ink-2); border: 1px solid var(--line); }
+.cmp-wrap { overflow-x: auto; border-radius: 24px; border: 1px solid var(--line); background: var(--ink-1); scrollbar-width: thin; }
+.cmp { width: 100%; min-width: calc(150px + var(--n) * 190px); border-collapse: separate; border-spacing: 0; font-size: 13.5px; table-layout: fixed; }
+.cmp .cmp-l { position: sticky; right: 0; z-index: 2; width: 150px; padding: 12px 16px; background: var(--ink-2); color: var(--fg-3); font-weight: 600; text-align: right; vertical-align: middle; border-left: 1px solid var(--line); }
+.cmp thead th { padding: 14px 10px; vertical-align: top; background: var(--ink-1); border-bottom: 1px solid var(--line); }
+.cmp thead .cmp-l { background: var(--ink-2); }
+.cmp-h { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; animation: rise .6s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 80ms); }
+.cmp-h .ct-x { top: 0; left: 4px; }
+.cmp-art { position: relative; width: 100%; max-width: 150px; aspect-ratio: 1.15; border-radius: 18px; overflow: hidden; background: radial-gradient(circle, color-mix(in srgb, var(--tint) 45%, transparent), transparent 70%), var(--ink-3); }
+.cmp-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cmp-art .illu { inset: 10%; width: 80%; height: 80%; }
+.cmp-n { border: 0; background: none; color: var(--fg); font: 700 14px/1.6 var(--f-body); cursor: pointer; padding: 0; min-height: 46px; }
+.cmp-n:hover { color: var(--accent); }
+.cmp-p { display: flex; flex-direction: column; font-size: 12.5px; }
+.cmp-p s { color: var(--fg-3); }
+.cmp-p b { font-size: 15px; }
+.cmp td { padding: 12px 14px; text-align: center; color: var(--fg); border-bottom: 1px solid var(--line); vertical-align: middle; line-height: 1.8; transition: background .2s; }
+.cmp tbody tr:hover td { background: color-mix(in srgb, var(--ink-3) 60%, transparent); }
+.cmp tbody tr.dif .cmp-l { color: var(--fg); }
+.cmp tr.same td { color: var(--fg-3); }
+.cmp.diff tr.same { display: none; }
+.cmp tr.grp th { padding: 16px 16px 8px; text-align: right; font-family: var(--f-display); font-size: 14px; color: var(--accent); background: var(--ink-1); border-bottom: 1px solid var(--line); position: sticky; right: 0; }
+.cmp td.best { background: color-mix(in srgb, var(--ok) 8%, transparent); }
+.cmp .bt { display: block; width: fit-content; margin: 4px auto 0; padding: 1px 8px; border-radius: 8px; background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); font-size: 11px; font-weight: 700; }
+.cmp .stars { vertical-align: -2px; }
+.cmp td small { color: var(--fg-3); }
+.cmp .yes { display: inline-flex; align-items: center; gap: 4px; color: var(--ok); font-weight: 700; }
+.cmp .yes .i { width: 16px; height: 16px; }
+.cmp .no { color: var(--fg-3); }
+.cmp-addc { width: 170px; }
+.cmp thead .cmp-addc .add-tile { width: 100%; min-height: 250px; }
+
+/* ================= v3 · PC builder ================= */
+.bd-hero { --tint: #8B7CFF; padding-block: clamp(26px, 3.6vw, 46px); }
+.bd-pre { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px; animation: wordUp .8s var(--ease) backwards .3s; }
+.bd { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 22px; align-items: start; margin-top: -30px; }
+.bd-slots { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.slot { border-radius: 20px; background: var(--ink-2); border: 1px solid var(--line); overflow: hidden; transition: border-color .25s, box-shadow .3s; animation: linkIn .45s var(--ease) backwards; animation-delay: calc(var(--i) * 40ms); }
+.slot.open { border-color: var(--line-2); box-shadow: 0 24px 60px -30px rgba(0, 0, 0, .7); }
+.slot.err { border-color: color-mix(in srgb, var(--bad) 55%, var(--line)); }
+.slot.warn { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.slot-h { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 76px; padding: 12px 16px; border: 0; background: none; color: inherit; cursor: pointer; text-align: right; }
+.slot-ic { display: grid; place-items: center; width: 48px; height: 48px; flex: none; border-radius: 15px; background: var(--ink-4); color: var(--fg-3); transition: background .3s, color .3s, transform .4s var(--spring); }
+.slot-ic .i { width: 22px; height: 22px; }
+.slot.has .slot-ic { background: color-mix(in srgb, var(--accent) 18%, var(--ink-4)); color: var(--accent); }
+.slot.err .slot-ic { background: color-mix(in srgb, var(--bad) 18%, var(--ink-4)); color: var(--bad); }
+.slot-h:hover .slot-ic { transform: scale(1.06) rotate(-4deg); }
+.slot-tx { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.slot-tx small { font-size: 12px; color: var(--fg-3); font-weight: 600; }
+.slot-tx b { font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.slot:not(.has) .slot-tx b { color: var(--fg-3); font-weight: 600; }
+.slot-tx em { font-style: normal; font-size: 12.5px; color: var(--fg-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.slot.err .slot-tx em { color: var(--bad); }
+.slot.warn .slot-tx em { color: var(--accent); }
+.slot-pr { font-size: 13.5px; font-weight: 700; white-space: nowrap; }
+.slot-st { width: 10px; height: 10px; flex: none; border-radius: 5px; background: var(--ink-5); }
+.slot.has .slot-st { background: var(--ok); box-shadow: 0 0 10px var(--ok); }
+.slot.warn .slot-st { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+.slot.err .slot-st { background: var(--bad); box-shadow: 0 0 10px var(--bad); animation: pulse 1.6s ease-in-out infinite; }
+.slot-h .chev { color: var(--fg-3); transition: transform .35s var(--spring); }
+.slot.open .slot-h .chev { transform: rotate(-90deg); }
+.slot-b { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s var(--ease); }
+.slot.open .slot-b { grid-template-rows: 1fr; }
+.slot-b > div { overflow: hidden; display: flex; flex-direction: column; gap: 10px; padding: 0 16px; }
+.slot.open .slot-b > div { padding-bottom: 16px; }
+.slot-b .vg-cards { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.slot-b .linkb { align-self: flex-start; color: var(--fg-3); }
+.vc.err { border-color: color-mix(in srgb, var(--bad) 40%, var(--line-2)); }
+.vc.err:not([aria-checked="true"]) { opacity: .62; }
+.vc .why { display: flex; align-items: center; gap: 4px; color: var(--accent); font-weight: 600; }
+.vc.err .why { color: var(--bad); }
+.vc .why .i { width: 13px; height: 13px; stroke-width: 2.4; }
+.bd-side { position: sticky; top: 12px; display: flex; flex-direction: column; gap: 14px; min-width: 0; max-height: calc(100vh - 128px); max-height: calc(100dvh - 128px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--ink-5) transparent; border-radius: 26px; }
+.bd-side > * { flex: none; }
+.bd-stage { --tint: var(--accent); position: relative; overflow: hidden; border-radius: 26px; background: radial-gradient(60% 50% at 50% 45%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 75%), var(--ink-1); border: 1px solid var(--line); padding: 18px 40px 26px; }
+.bd-stage .floor { opacity: .35; }
+.pcsvg { position: relative; display: block; width: 100%; max-height: 300px; margin: 0 auto; overflow: visible; }
+.pp { opacity: .14; filter: grayscale(1); transition: opacity .5s, filter .5s; }
+.pp.on { opacity: 1; filter: none; }
+.pp.hl { opacity: .55; filter: none; }
+.pp.on.hl { filter: drop-shadow(0 0 10px var(--accent)); }
+.pp.bad { filter: drop-shadow(0 0 8px var(--bad)); animation: badPulse 1.4s ease-in-out infinite; }
+.pp.inst { animation: install .7s var(--spring); }
+.pp-case { opacity: .4; }
+.pp-case.on { opacity: 1; }
+.case-o { fill: #10131C; stroke: #3A4258; stroke-width: 2; }
+.case-in { fill: #0A0C12; stroke: #232A3A; }
+.case-front { fill: #151925; stroke: #2B3245; }
+.mb-b { fill: #1A2030; stroke: #36405A; }
+.mb-tr { stroke: #4A5675; stroke-width: 2; fill: none; stroke-linecap: round; }
+.mb-chip { fill: #232B3F; stroke: #3B4560; }
+.cpu-b { fill: #6C7489; stroke: #A9B1C6; }
+.cpu-d { fill: #2A3042; }
+.cool-b { fill: #232A3B; stroke: #4A5470; }
+.cool-aio { display: none; }
+.bd-stage.aio .cool-air { display: none; }
+.bd-stage.aio .cool-aio { display: inline; }
+.aio-rad { fill: #1D2333; stroke: #4A5470; }
+.aio-pump { fill: #141824; stroke: var(--accent); stroke-width: 2.5; }
+.aio-ring { fill: none; stroke: var(--accent); stroke-width: 2; opacity: .8; }
+.aio-tube { fill: none; stroke: #2A3144; stroke-width: 5; stroke-linecap: round; }
+.ram-s { fill: #2A3246; stroke: #4F5A78; }
+.ram-s.dim { opacity: .35; }
+.ssd-b { fill: #1F2636; stroke: #4F5A78; }
+.ssd-c { fill: #3B4560; }
+.gpu-b { fill: #1C2131; stroke: #56607D; stroke-width: 1.5; }
+.bd-stage.g2 .g3 { display: none; }
+.psu-sh { fill: #121621; stroke: #2B3245; }
+.psu-b { fill: #1C2131; stroke: #3F4862; }
+.psu-t { fill: var(--fg-3); font: 700 16px var(--f-tech); letter-spacing: .1em; }
+.fan-ring { fill: #0D1018; stroke: #3F4862; stroke-width: 1.5; }
+.fan-bl { fill: none; stroke: #697492; stroke-width: 2.2; stroke-linecap: round; }
+.fan-hub { fill: #3F4862; }
+.pp.on .fan { animation: spin 1.6s linear infinite; }
+.bd-stage.done .pp.on .fan { animation-duration: .5s; }
+.rgb { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; opacity: 0; filter: drop-shadow(0 0 6px var(--accent)); transition: opacity .5s; }
+.pp.on .rgb { opacity: .9; }
+.bd-stage.done .rgb { animation: rgbHue 6s linear infinite; }
+.bd-prog { position: absolute; top: 14px; left: 14px; padding: 4px 12px; border-radius: 12px; background: rgba(5, 6, 10, .6); backdrop-filter: blur(8px); font-size: 12.5px; color: var(--fg-2); }
+.bd-prog b { color: var(--accent); font-family: var(--f-display); }
+.bd-sum { gap: 14px; }
+.bs-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.bs-top small { display: block; font-size: 12.5px; color: var(--fg-3); }
+.bs-top b { font-family: var(--f-display); font-size: 22px; font-weight: 900; }
+.bs-ring { position: relative; display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; background: conic-gradient(var(--accent) var(--p), var(--ink-5) 0); transition: --p .6s; }
+.bs-ring::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: var(--ink-2); }
+.bs-ring span { position: relative; font: 700 14px var(--f-tech); direction: ltr; }
+.bs-pw { display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 16px; background: var(--ink-3); }
+.bs-l { display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; color: var(--fg-2); }
+.bs-l > span:first-child { display: flex; align-items: center; gap: 6px; }
+.bs-l .i { width: 16px; height: 16px; }
+.bs-l b { color: var(--fg); font-size: 15px; }
+.bs-bar { position: relative; height: 10px; border-radius: 5px; background: var(--ink-5); overflow: visible; }
+.bs-bar i { position: absolute; inset-block: 0; right: 0; width: var(--w); border-radius: 5px; background: var(--fg-3); transition: width .7s var(--ease), background .3s; }
+.bs-pw.ok .bs-bar i { background: linear-gradient(to left, var(--ok), color-mix(in srgb, var(--ok) 70%, #fff)); }
+.bs-pw.warn .bs-bar i { background: var(--accent); }
+.bs-pw.bad .bs-bar i { background: var(--bad); }
+.bs-bar em { position: absolute; top: -4px; bottom: -4px; right: var(--x); width: 2px; background: var(--fg); opacity: .6; border-radius: 1px; }
+.bs-iss { display: flex; flex-direction: column; gap: 6px; }
+.iss { display: flex; align-items: flex-start; gap: 8px; width: 100%; padding: 10px 12px; border: 0; border-radius: 12px; font: 600 13px/1.7 var(--f-body); text-align: right; color: var(--fg-2); background: var(--ink-3); cursor: default; animation: linkIn .4s var(--ease) backwards; }
+button.iss { cursor: pointer; }
+.iss .i { width: 16px; height: 16px; flex: none; margin-top: 3px; stroke-width: 2.4; }
+.iss.err { background: color-mix(in srgb, var(--bad) 12%, var(--ink-3)); color: #FFB3AA; }
+.iss.err .i { color: var(--bad); }
+.iss.warn { background: color-mix(in srgb, var(--accent) 10%, var(--ink-3)); color: var(--fg); }
+.iss.warn .i { color: var(--accent); }
+.iss.ok { background: color-mix(in srgb, var(--ok) 10%, var(--ink-3)); color: var(--fg); }
+.iss.ok .i { color: var(--ok); }
+.bs-fps { display: flex; flex-direction: column; gap: 8px; }
+.bs-h { font-size: 12.5px; color: var(--fg-3); font-weight: 600; }
+.fps { display: grid; grid-template-columns: 54px minmax(0, 1fr) 80px; align-items: center; gap: 10px; font-size: 13px; }
+.fps > span:first-child { font-family: var(--f-tech); color: var(--fg-2); direction: ltr; text-align: right; }
+.fps b { font-family: var(--f-tech); font-size: 13.5px; text-align: left; direction: ltr; }
+.fb { height: 8px; border-radius: 4px; background: var(--ink-5); overflow: hidden; }
+.fb i { display: block; height: 100%; width: var(--w); margin-right: 0; margin-left: auto; border-radius: 4px; background: linear-gradient(to left, #8B7CFF, var(--accent)); animation: fbIn 1s var(--ease) backwards; transform-origin: right; }
+.bs-x { display: flex; flex-direction: column; border-top: 1px solid var(--line); padding-top: 4px; }
+.bs-x .set-row { padding: 6px 0; }
+.bd-sum .btn.primary { min-height: 54px; font-size: 16px; }
+.bd-sum .btn.primary:disabled { opacity: .45; cursor: not-allowed; filter: grayscale(.4); box-shadow: none; }
+.bd-sum > .linkb { align-self: center; }
+
+@keyframes install { 0% { transform: translateY(-26px); opacity: 0; } 60% { opacity: 1; } }
+@keyframes badPulse { 50% { opacity: .55; } }
+@keyframes rgbHue { to { filter: drop-shadow(0 0 6px var(--accent)) hue-rotate(360deg); } }
+@keyframes fbIn { from { transform: scaleX(0); } }
+.calm .pp.on .fan, .calm .rgb, .calm .pp.bad, .calm .slot.err .slot-st { animation: none !important; }
+
+@media (max-width: 1240px) {
+  .bd { grid-template-columns: minmax(0, 1fr) 340px; }
+  .sr { grid-template-columns: 250px minmax(0, 1fr); }
+}
+@media (max-width: 980px) {
+  .sr { grid-template-columns: minmax(0, 1fr); margin-top: -36px; }
+  .sr-side { display: none; }
+  .sr-fbtn { display: inline-flex; }
+  .sheet .sf { display: flex; }
+  .bd { grid-template-columns: minmax(0, 1fr); margin-top: -36px; }
+  .bd-side { display: contents; }
+  .bd-stage { order: -1; }
+  .bd-sum { order: 1; }
+  .bd-stage { padding: 14px 20px 18px; }
+  .pcsvg { max-height: 280px; }
+  .cmp-tray { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (max-width: 620px) {
+  .sr-bar { padding: 4px 12px 4px 4px; }
+  .sr-bar input { height: 42px; font-size: 15px; }
+  .sr-pop { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; }
+  .sr-pop .chip { flex: none; }
+  .sr-pl { flex: none; }
+  .sr-tools { flex-wrap: nowrap; }
+  .sr-sort { flex: 1; }
+  .sr-sort .chip { flex: none; }
+  .cmp-tray { left: 12px; right: 12px; transform: translateY(150%); gap: 8px; padding: 8px; }
+  .cmp-tray.open { transform: none; }
+  .ct-s { width: 40px; height: 40px; border-radius: 12px; }
+  .ct-tx { display: none; }
+  .cmp-tray .btn { margin-right: auto; }
+  .cmp { min-width: calc(110px + var(--n) * 160px); font-size: 12.5px; }
+  .cmp .cmp-l { width: 110px; padding: 10px; }
+  .slot-h { gap: 10px; padding: 10px 12px; min-height: 68px; }
+  .slot-ic { width: 40px; height: 40px; border-radius: 13px; }
+  .slot-pr { display: none; }
+  .slot-b > div { padding: 0 12px; }
+  .bd-pre { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .bd-pre .chip, .bd-pre .sr-pl { flex: none; }
+}
+
 /* keyframes */
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes bob { 50% { transform: translateY(-8px); } }
@@ -2145,7 +2461,7 @@ function cardHTML(p, i) {
   return '<article class="card' + (game ? ' is-game' : '') + '" data-card="' + p.id + '" data-tilt style="--tint:' + p.tint + ';--i:' + (i || 0) + '">' +
     '<div class="c-media">' + (game ? coverHTML(p) : '<div class="c-illu">' + illu(p) + '</div>') +
     '<div class="c-badges">' + badges + '</div>' +
-    '<button class="c-wish' + (w ? ' on' : '') + '" type="button" data-wish="' + p.id + '" aria-pressed="' + w + '" aria-label="علاقه‌مندی: ' + esc(p.name) + '">' + icon('heart') + '</button><button class="c-eye" type="button" data-quick="' + p.id + '" aria-label="نگاه سریع: ' + esc(p.name) + '">' + icon('eye') + '</button></div>' +
+    '<button class="c-wish' + (w ? ' on' : '') + '" type="button" data-wish="' + p.id + '" aria-pressed="' + w + '" aria-label="علاقه‌مندی: ' + esc(p.name) + '">' + icon('heart') + '</button><button class="c-eye" type="button" data-quick="' + p.id + '" aria-label="نگاه سریع: ' + esc(p.name) + '">' + icon('eye') + '</button><button class="c-cmp' + (inCmp(p.id) ? ' on' : '') + '" type="button" data-cmp="' + p.id + '" aria-pressed="' + inCmp(p.id) + '" aria-label="مقایسه: ' + esc(p.name) + '">' + icon('compare') + '</button></div>' +
     '<div class="c-body"><span class="c-sub">' + esc(sub) + '</span><button class="c-name" type="button" data-pid="' + p.id + '">' + esc(p.name) + '</button>' +
     '<div class="c-foot"><div class="c-price">' + (p.off ? '<s>' + fa(p.price) + '</s>' : '') + '<b>' + toman(now) + '</b></div><button class="c-add" type="button" data-add="' + p.id + '" aria-label="افزودن ' + esc(p.name) + ' به سبد">' + icon('plus') + '</button></div></div></article>';
 }
@@ -2180,6 +2496,7 @@ function go(v, params, opts) {
     main.scrollTop = 0;
     railActive();
     pushRoute(v, params, opts.nopush);
+    afterRoute();
     if (!firstRender) { view.classList.remove('out'); view.classList.add('in'); setTimeout(function () { view.classList.remove('in'); }, 700); }
     firstRender = false;
     initReveal();
@@ -2206,7 +2523,7 @@ function slideHTML(h, i) {
   }
   var cta = h.kind === 'game'
     ? '<button class="btn primary" type="button" data-magnet data-add="' + h.game + '">' + h.cta + icon('cart') + '</button><button class="btn glass" type="button" data-pid="' + h.game + '">صفحه‌ی بازی</button>'
-    : '<button class="btn primary" type="button" data-magnet data-go="cat" data-cat="' + h.go + '"' + (h.sub ? ' data-sub="' + esc(h.sub) + '"' : '') + '>' + h.cta + icon('arrowL') + '</button>';
+    : '<button class="btn primary" type="button" data-magnet data-go="cat" data-cat="' + h.go + '"' + (h.sub ? ' data-sub="' + esc(h.sub) + '"' : '') + '>' + h.cta + icon('arrowL') + '</button>' + (h.go === 'pc' ? '<button class="btn glass" type="button" data-go="builder">' + icon('wrench') + 'سیستم‌ساز</button>' : '');
   return '<article class="slide' + (i === 0 ? ' on' : '') + '" data-i="' + i + '" style="--tint:' + h.tint + '" aria-hidden="' + (i !== 0) + '" aria-roledescription="اسلاید" aria-label="' + esc(h.title) + '">' +
     '<div class="s-bg' + (flip ? ' flip' : '') + '">' + bg + '</div><div class="s-scrim"></div>' +
     '<div class="s-copy"><span class="s-tag rise" style="--dl:.1s">' + h.tag + '</span>' +
@@ -2259,7 +2576,7 @@ function renderHome() {
         '<div class="ach-i"><span class="ak">' + icon('chat') + '</span><div><b>منتقد</b><span>۱ از ۳ نقد</span><span class="mbar"><i style="--p:33%"></i></span></div></div></div></div>' +
         '<div class="panel wal"><span class="wal-k">' + icon('wallet') + 'کیف پول پیکسل‌گاه</span><div class="wal-v"><span id="walletBig" data-count="' + state.wallet + '">' + fa(state.wallet) + '</span> <small>تومان</small></div><p>خرید با کیف پول سریع‌تر است و هر شارژ تا پایان هفته ۵٪ اعتبار هدیه دارد.</p><button class="btn" type="button" data-action="wallet">' + icon('plus') + 'شارژ کیف پول</button></div></div></section>' +
 
-    '<section class="sec reveal" aria-labelledby="h-builds"><div class="sec-h"><div><span class="eyebrow">PC BUILDS</span><h2 class="h2" id="h-builds">سیستم‌های پیشنهادی</h2><p class="sec-sub">مونتاژشده و تست‌شده؛ روی هر کدام برو تا فن‌ها تندتر بچرخند.</p></div><button class="btn ghost sm" type="button" data-go="cat" data-cat="pc">همه‌ی قطعات' + icon('arrowL') + '</button></div>' +
+    '<section class="sec reveal" aria-labelledby="h-builds"><div class="sec-h"><div><span class="eyebrow">PC BUILDS</span><h2 class="h2" id="h-builds">سیستم‌های پیشنهادی</h2><p class="sec-sub">مونتاژشده و تست‌شده؛ روی هر کدام برو تا فن‌ها تندتر بچرخند.</p></div><div class="qv-ctas"><button class="btn primary sm" type="button" data-go="builder">' + icon('wrench') + 'سیستم‌ساز</button><button class="btn ghost sm" type="button" data-go="cat" data-cat="pc">همه‌ی قطعات' + icon('arrowL') + '</button></div></div>' +
       '<div class="builds">' + BUILDS.map(function (b) { var p = BY[b.id]; return '<article class="build' + (b.feat ? ' feat' : '') + '" style="--tint:' + p.tint + '">' + (b.feat ? '<span class="b-flag">پیشنهاد ما</span>' : '') + '<div class="b-stage"><div class="floor"></div><div class="illu-w alive">' + illu(p) + '</div></div><div class="b-body"><span class="b-for">' + b.for + '</span><h3 class="b-name">' + p.name.replace('سیستم پیشنهادی ', '') + '</h3><ul class="specs">' + b.specs.map(function (s, k) { return '<li>' + icon(['cpu', 'wave', 'library', 'disc'][k]) + '<span>' + s + '</span></li>'; }).join('') + '</ul><div class="b-foot"><b>' + toman(priceNow(p)) + '</b><button class="btn primary sm" type="button" data-add="' + p.id + '">افزودن به سبد</button></div></div></article>'; }).join('') + '</div></section>' +
 
     '<section class="sec reveal" aria-label="خدمات ویژه"><div class="promos">' +
@@ -2645,7 +2962,7 @@ function openQuick(id) {
 var palOpen = false;
 function palIndex() {
   var out = [];
-  [['library', 'کتابخانه‌ی من', 'کدهای دیجیتال و سفارش‌ها', function () { go('library'); }], ['heart', 'علاقه‌مندی‌ها', 'کالاهای نشان‌شده', function () { go('wishlist'); }], ['cart', 'سبد خرید', 'مشاهده و تکمیل خرید', function () { openCart(); }], ['wallet', 'شارژ کیف پول', '۵٪ اعتبار هدیه', function () { requireLogin(openWallet); }], ['user', 'حساب کاربری', 'سفارش‌ها، آدرس‌ها و اطلاعات', function () { go('account'); }], ['receipt', 'پیگیری سفارش', 'وضعیت مرسوله‌ها و مرجوعی', function () { go('account', { tab: 'orders' }); }], ['info', 'سؤالات متداول', 'ارسال، پرداخت، گارانتی', function () { go('page', { page: 'faq' }); }], ['key', 'راهنمای فعال‌سازی کد', 'PSN، Xbox، eShop، Steam', function () { go('page', { page: 'guide' }); }], ['shield', 'گارانتی و بازگشت کالا', 'شرایط و مراحل مرجوعی', function () { go('page', { page: 'warranty' }); }], ['phone', 'تماس با ما', 'آدرس، تلفن و فرم پیام', function () { go('page', { page: 'contact' }); }], ['sliders', 'تنظیمات لانچر', 'رنگ، صدا و حرکت', function () { openSettings(mqMobile.matches ? $('#profileBtn') : $('.rail [data-action="settings"]')); }], ['replay', 'پخش دوباره‌ی انیمیشن ورود', 'لانچر را از نو باز کن', function () { boot(true); }]].forEach(function (a) { out.push({ type: 'act', ic: a[0], label: a[1], sub: a[2], run: a[3] }); });
+  [['library', 'کتابخانه‌ی من', 'کدهای دیجیتال و سفارش‌ها', function () { go('library'); }], ['heart', 'علاقه‌مندی‌ها', 'کالاهای نشان‌شده', function () { go('wishlist'); }], ['cart', 'سبد خرید', 'مشاهده و تکمیل خرید', function () { openCart(); }], ['wallet', 'شارژ کیف پول', '۵٪ اعتبار هدیه', function () { requireLogin(openWallet); }], ['user', 'حساب کاربری', 'سفارش‌ها، آدرس‌ها و اطلاعات', function () { go('account'); }], ['wrench', 'سیستم‌ساز', 'سیستم دلخواهت را قطعه به قطعه بچین', function () { go('builder'); }], ['compare', 'مقایسه‌ی کالاها', 'تا ۴ کالا کنار هم', function () { go('compare'); }], ['filter', 'جستجوی پیشرفته', 'همه‌ی کالاها با فیلتر قیمت، برند و پلتفرم', function () { go('search'); }], ['receipt', 'پیگیری سفارش', 'وضعیت مرسوله‌ها و مرجوعی', function () { go('account', { tab: 'orders' }); }], ['info', 'سؤالات متداول', 'ارسال، پرداخت، گارانتی', function () { go('page', { page: 'faq' }); }], ['key', 'راهنمای فعال‌سازی کد', 'PSN، Xbox، eShop، Steam', function () { go('page', { page: 'guide' }); }], ['shield', 'گارانتی و بازگشت کالا', 'شرایط و مراحل مرجوعی', function () { go('page', { page: 'warranty' }); }], ['phone', 'تماس با ما', 'آدرس، تلفن و فرم پیام', function () { go('page', { page: 'contact' }); }], ['sliders', 'تنظیمات لانچر', 'رنگ، صدا و حرکت', function () { openSettings(mqMobile.matches ? $('#profileBtn') : $('.rail [data-action="settings"]')); }], ['replay', 'پخش دوباره‌ی انیمیشن ورود', 'لانچر را از نو باز کن', function () { boot(true); }]].forEach(function (a) { out.push({ type: 'act', ic: a[0], label: a[1], sub: a[2], run: a[3] }); });
   CATS.forEach(function (c) {
     out.push({ type: 'cat', ic: c.icon, label: c.label, sub: 'دسته‌بندی', run: function () { go('cat', { cat: c.id }); } });
     c.groups.forEach(function (g) {
@@ -2672,6 +2989,7 @@ function openPalette() {
     var hit = q ? idx.filter(function (x) { return q.split(' ').every(function (w) { return x.n.indexOf(w) >= 0; }); }) : idx.filter(function (x) { return x.type === 'act' || (x.type === 'prod' && x.p.pop > 92); });
     var groups = [['prod', 'کالاها'], ['cat', 'دسته‌ها'], ['act', 'میان‌برها']];
     res = []; var html = '';
+    if (q.length > 1) { var nq = hit.filter(function (x) { return x.type === 'prod'; }).length, raw = input.value.trim(); res.push({ type: 'all', run: function () { go('search', { q: raw }); } }); html += '<button class="pal-r pal-all" type="button" role="option" id="po0" data-k="0" aria-selected="false" style="--i:0"><span class="pk">' + icon('search') + '</span><span class="pt"><b>همه‌ی نتایج «' + esc(raw) + '»</b><small>' + (nq ? fa(nq) + ' کالا · با فیلتر و مرتب‌سازی' : 'جستجو با فیلترهای پیشرفته') + '</small></span><kbd>Enter</kbd></button>'; }
     groups.forEach(function (g) {
       var items = hit.filter(function (x) { return x.type === g[0]; }).slice(0, g[0] === 'cat' ? 6 : 7);
       if (!items.length) return;
@@ -3179,7 +3497,7 @@ function buyHTML(p, d, sel) {
     (p.off >= 10 ? '<div class="pb-deal">' + icon('clock') + 'پایان تخفیف ویژه<span id="pbCd"></span></div>' : '') +
     '<div class="pb-inst" id="pbInst"></div>' +
     '<div class="pb-row"><div class="qty" role="group" aria-label="تعداد"><button type="button" data-pq="+" aria-label="یکی بیشتر">' + icon('plus') + '</button><output id="pbQty">۱</output><button type="button" data-pq="-" aria-label="یکی کمتر">' + icon('minus') + '</button></div><button class="btn primary pd-add" type="button" data-pd="add" data-magnet>' + icon('cart') + 'افزودن به سبد</button></div>' +
-    '<div class="pb-row2"><button class="btn ghost" type="button" data-pd="buy" id="pbBuyNow">' + icon('bolt') + 'خرید فوری</button><button class="btn ghost pb-wish' + (isWished(p.id) ? ' on' : '') + '" type="button" data-wish="' + p.id + '" aria-pressed="' + isWished(p.id) + '" aria-label="علاقه‌مندی">' + icon('heart') + '</button></div>' +
+    '<div class="pb-row2"><button class="btn ghost" type="button" data-pd="buy" id="pbBuyNow">' + icon('bolt') + 'خرید فوری</button><button class="btn ghost pb-wish' + (isWished(p.id) ? ' on' : '') + '" type="button" data-wish="' + p.id + '" aria-pressed="' + isWished(p.id) + '" aria-label="علاقه‌مندی">' + icon('heart') + '</button><button class="btn ghost pb-cmp' + (inCmp(p.id) ? ' on' : '') + '" type="button" data-cmp="' + p.id + '" aria-pressed="' + inCmp(p.id) + '" aria-label="افزودن به مقایسه">' + icon('compare') + '</button></div>' +
     '<div class="pb-xp">' + icon('trophy') + '<span id="pbXp"></span></div>' +
     '<div class="pb-sec"><b>روش تحویل</b><div class="ship" role="radiogroup" aria-label="روش تحویل" id="pbShip"></div><div class="pb-tot" id="pbTot"></div></div>' +
     '<div class="pb-sec pb-guar">' + icon('shield') + '<span>ضمانت اصالت کالا' + (hasW ? ' · گارانتی <b>' + specVal('{w}', d, sel) + '</b>' : '') + '</span></div>' +
@@ -3420,7 +3738,7 @@ view.addEventListener('click', function (e) {
   var b = t.closest('[data-pd]'); if (!b) return;
   var a = b.dataset.pd;
   if (a === 'add') addVariant(b);
-  else if (a === 'buy') { addVariant(b); setTimeout(openCart, calm() ? 0 : 900); }
+  else if (a === 'buy') { addVariant(b); setTimeout(function () { requireLogin(function () { go('checkout'); }); }, calm() ? 0 : 900); }
   else if (a === 'notify') { b.innerHTML = icon('check') + 'وقتی موجود شد خبرت می‌کنیم'; toast({ ic: 'bell', title: 'ثبت شد', body: 'به محض موجود شدن «' + selLabel(d, state.pv[p.id]) + '» اعلان می‌گیری.' }); }
   else if (a === 'alert') { var on = b.getAttribute('aria-checked') !== 'true'; b.setAttribute('aria-checked', String(on)); if (on) toast({ ic: 'tag', title: 'هشدار قیمت فعال شد', body: 'اگر قیمت ' + p.name + ' پایین بیاید خبرت می‌کنیم.' }); Sound.click(); }
   else if (a === 'more') { var dd = $('#pdDesc'), open = b.getAttribute('aria-expanded') !== 'true'; if (open) { dd.style.maxHeight = dd.scrollHeight + 'px'; dd.classList.remove('clip'); } else { dd.style.maxHeight = ''; dd.classList.add('clip'); } b.setAttribute('aria-expanded', String(open)); b.firstChild.textContent = open ? 'بستن' : 'ادامه‌ی مطلب'; }
@@ -3509,11 +3827,15 @@ function routeToken(v, p) {
   if (v === 'page' && p.page) return 'page-' + p.page;
   if (v === 'service' && p.kind) return 'service-' + p.kind;
   if (v === 'account' && p.tab && p.tab !== 'overview') return 'account-' + p.tab;
+  if (v === 'search' && p.q) return 'search=' + encodeURIComponent(p.q);
+  if (v === 'builder' && p.b) return 'builder=' + p.b;
   return v;
 }
 function parseRoute(h) {
   h = String(h || '').replace(/^#/, '');
   if (!h || h === 'home') return ['home', {}];
+  if (/^search=/.test(h)) { var sq = ''; try { sq = decodeURIComponent(h.slice(7)); } catch (e) { sq = h.slice(7); } return ['search', { q: sq }]; }
+  if (/^builder=/.test(h)) return ['builder', { b: h.slice(8) }];
   var m = h.match(/^([a-z]+)-([\w.~-]+)$/);
   if (m) {
     var k = m[1], val = m[2];
@@ -4083,6 +4405,467 @@ VIEW_FN['404'] = function () {
   view.innerHTML = '<section class="nf"><div class="nf-art alive" aria-hidden="true">' + ILLU.pad('#FF5C8A', false) + '<span class="nf-cable"></span></div><div class="nf-code" data-t="404" aria-hidden="true">404</div><h1>سیگنال قطع شد</h1><p>صفحه‌ای که دنبالش بودی پیدا نشد؛ شاید لینک اشتباه است یا این صفحه جابه‌جا شده.</p><div class="qv-ctas"><button class="btn primary" type="button" data-go="home" data-magnet>' + icon('home') + 'بازگشت به خانه</button><button class="btn ghost" type="button" id="nfSearch">' + icon('search') + 'جستجو در فروشگاه</button></div><span class="nf-press">PRESS <kbd>A</kbd> TO CONTINUE</span></section>';
   var s = $('#nfSearch'); if (s) s.addEventListener('click', openPalette);
 };
+
+/* ================= v3 · bottom sheet ================= */
+var sheetEl = null, sheetOver = null, sheetBack = null;
+function openSheet(title, node, foot, onClose) {
+  closeSheet(true);
+  sheetOver = document.createElement('div'); sheetOver.className = 'sheet-over';
+  sheetEl = document.createElement('div'); sheetEl.className = 'sheet'; sheetEl.setAttribute('role', 'dialog'); sheetEl.setAttribute('aria-modal', 'true'); sheetEl.setAttribute('aria-label', title);
+  sheetEl.innerHTML = '<div class="sh-grab" aria-hidden="true"><i></i></div><div class="sh-h"><h2>' + title + '</h2><button class="ib" type="button" data-shclose aria-label="بستن">' + icon('close') + '</button></div><div class="sh-b"></div>' + (foot ? '<div class="sh-f">' + foot + '</div>' : '');
+  sheetBack = { node: node, parent: node.parentNode, next: node.nextSibling, onClose: onClose };
+  sheetEl.querySelector('.sh-b').appendChild(node);
+  document.body.appendChild(sheetOver); document.body.appendChild(sheetEl);
+  sheetOver.addEventListener('click', function () { closeSheet(); });
+  sheetEl.addEventListener('click', function (e) { if (e.target.closest('[data-shclose]')) closeSheet(); });
+  var grab = sheetEl.querySelector('.sh-grab'), y0 = null, dy = 0;
+  grab.addEventListener('pointerdown', function (e) { y0 = e.clientY; dy = 0; grab.setPointerCapture(e.pointerId); sheetEl.style.transition = 'none'; });
+  grab.addEventListener('pointermove', function (e) { if (y0 == null) return; dy = Math.max(0, e.clientY - y0); sheetEl.style.transform = 'translateY(' + dy + 'px)'; });
+  var end = function () { if (y0 == null) return; y0 = null; sheetEl.style.transition = ''; sheetEl.style.transform = ''; if (dy > 90) closeSheet(); };
+  grab.addEventListener('pointerup', end); grab.addEventListener('pointercancel', end);
+  var l = { close: function () { closeSheet(); } }; sheetEl._layer = l; pushLayer(l);
+  requestAnimationFrame(function () { sheetOver.classList.add('open'); sheetEl.classList.add('open'); });
+  Sound.open();
+  return sheetEl;
+}
+function closeSheet(instant) {
+  if (!sheetEl) return;
+  var s = sheetEl, o = sheetOver, b = sheetBack; sheetEl = null; sheetOver = null; sheetBack = null; popLayer(s._layer);
+  var restore = function () { if (b && b.parent && b.parent.isConnected) b.parent.insertBefore(b.node, b.next && b.next.parentNode === b.parent ? b.next : null); if (b && b.onClose) b.onClose(); };
+  if (instant) { restore(); s.remove(); o.remove(); return; }
+  s.classList.remove('open'); o.classList.remove('open');
+  setTimeout(function () { restore(); s.remove(); o.remove(); }, 380);
+}
+function afterRoute() { closeSheet(true); renderTray(); }
+
+/* ================= v3 · search ================= */
+var ALIAS = [[/PlayStation 5|PS5/i, 'ps5'], [/PlayStation 4|PS4/i, 'ps4'], [/PlayStation|PSN|DualSense|DualShock|PS VR2|Pulse/i, 'پلی استیشن سونی ps'], [/Xbox|Microsoft/i, 'ایکس باکس مایکروسافت'], [/Nintendo|Switch|eShop/i, 'نینتندو سوییچ سوئیچ'], [/کنترلر|DualSense|DualShock/i, 'دسته گیم پد'], [/هدست/i, 'هدفون'], [/RTX|RX /i, 'گرافیک gpu'], [/مانیتور/i, 'نمایشگر'], [/گیفت/i, 'gift card کد'], [/Steam/i, 'استیم'], [/PUBG/i, 'پابجی یوسی'], [/تلگرام/i, 'telegram'], [/فیگور|Funko/i, 'فانکو عروسک']];
+var SIDX = null;
+function searchIdx() {
+  if (SIDX) return SIDX;
+  SIDX = {};
+  ALL.forEach(function (p) {
+    var txt = [p.name, p.sub || '', p.tags.join(' '), CATBY[p.cat].label, p.kind === 'game' ? PLAT[p.plat].name + ' ' + PLAT[p.plat].label + ' ' + p.genre : '', brandOf(p), p.used ? 'کارکرده دست دوم' : '', p.pre ? 'پیش خرید' : ''].join(' ');
+    ALIAS.forEach(function (a) { if (a[0].test(txt)) txt += ' ' + a[1]; });
+    SIDX[p.id] = { all: norm(txt), name: norm(p.name) };
+  });
+  return SIDX;
+}
+function relevance(p, words) {
+  if (!words.length) return 0;
+  var ix = searchIdx()[p.id], s = 0;
+  for (var i = 0; i < words.length; i++) {
+    var w = words[i], k = ix.name.indexOf(w);
+    if (ix.all.indexOf(w) < 0) return -1;
+    s += k === 0 ? 6 : k > 0 ? 4 : 1;
+  }
+  return s + p.pop / 100;
+}
+var PMIN = 400000, PMAXV = 220000000, LMIN = Math.log(PMIN), LMAX = Math.log(PMAXV);
+function t2p(t) { var v = Math.exp(LMIN + (LMAX - LMIN) * t / 100); return v >= 1e7 ? Math.round(v / 1e6) * 1e6 : Math.round(v / 1e5) * 1e5; }
+function p2t(v) { return Math.max(0, Math.min(100, (Math.log(Math.max(PMIN, v)) - LMIN) / (LMAX - LMIN) * 100)); }
+function shortT(v) { return v >= 1e6 ? fa(Math.round(v / 1e5) / 10) + ' میلیون' : fa(Math.round(v / 1000)) + ' هزار'; }
+function sfDefault() { return { cats: [], plats: [], brands: [], lo: 0, hi: 100, off: false, fast: false, used: false, pre: false, sort: 'rel' }; }
+state.sf = sfDefault();
+var SF_TOGS = [['off', 'فقط تخفیف‌دار', 'tag'], ['fast', 'تحویل فوری', 'bolt'], ['used', 'بازی کارکرده', 'recycle'], ['pre', 'پیش‌خرید', 'clock']];
+var SRT = [['rel', 'مرتبط‌ترین'], ['pop', 'محبوب‌ترین'], ['cheap', 'ارزان‌ترین'], ['exp', 'گران‌ترین'], ['off', 'بیشترین تخفیف']];
+var POPQ = ['PS5', 'کنترلر', 'گیفت کارت', 'RTX', 'هدست', 'Switch 2', 'مانیتور', 'کارکرده'];
+var BRANDS = (function () { var c = {}; ALL.forEach(function (p) { var b = brandOf(p); c[b] = (c[b] || 0) + 1; }); return Object.keys(c).filter(function (b) { return c[b] >= 2; }).sort(function (a, b) { return c[b] - c[a]; }); })();
+function passF(p, sf, skip) {
+  var n = priceNow(p);
+  if (skip !== 'cats' && sf.cats.length && sf.cats.indexOf(p.cat) < 0) return false;
+  if (skip !== 'plats' && sf.plats.length && (p.kind !== 'game' || sf.plats.indexOf(p.plat) < 0)) return false;
+  if (skip !== 'brands' && sf.brands.length && sf.brands.indexOf(brandOf(p)) < 0) return false;
+  if (skip !== 'price' && ((sf.lo > 0 && n < t2p(sf.lo)) || (sf.hi < 100 && n > t2p(sf.hi)))) return false;
+  if (sf.off && !p.off) return false;
+  if (sf.fast && !p.fast) return false;
+  if (sf.used && !p.used) return false;
+  if (sf.pre && !p.pre) return false;
+  return true;
+}
+function srBase() { var words = norm(state.sq || '').split(' ').filter(Boolean); return ALL.map(function (p) { return { p: p, r: relevance(p, words) }; }).filter(function (x) { return x.r >= 0; }); }
+function filtersHTML() {
+  var f = function (title, body, open) { return '<details class="fg"' + (open ? ' open' : '') + '><summary>' + title + icon('chevL', 'chev') + '</summary><div class="fg-b">' + body + '</div></details>'; };
+  var ck = function (key, val, label, extra) { return '<label class="fck"><input type="checkbox" data-sf="' + key + '" value="' + esc(val) + '"><span>' + (extra || '') + label + '</span><em data-cnt="' + key + ':' + esc(val) + '"></em></label>'; };
+  return '<div class="sf" id="srFilters">' +
+    f('دسته‌بندی', CATS.map(function (c) { return ck('cats', c.id, c.label, '<i class="dotc" style="--c:' + c.tint + '"></i>'); }).join(''), true) +
+    f('محدوده‌ی قیمت', '<div class="pr-hist" id="prHist" aria-hidden="true"></div><div class="pr-dual"><span class="pr-fill" id="prFill"></span><input type="range" min="0" max="100" step="1" value="0" id="prLo" aria-label="کمترین قیمت"><input type="range" min="0" max="100" step="1" value="100" id="prHi" aria-label="بیشترین قیمت"></div><div class="pr-lbl"><span>از <b id="prLoT"></b></span><span>تا <b id="prHiT"></b></span></div>', true) +
+    f('وضعیت و ارسال', SF_TOGS.map(function (t) { return '<div class="set-row"><span>' + icon(t[2]) + t[1] + '</span><button class="tog" type="button" role="switch" data-sft="' + t[0] + '" aria-checked="false" aria-label="' + t[1] + '"></button></div>'; }).join(''), true) +
+    f('پلتفرم بازی', Object.keys(PLAT).map(function (k) { return ck('plats', k, PLAT[k].name, '<i class="dotc" style="--c:' + PLAT[k].band + '"></i>'); }).join(''), false) +
+    f('برند', BRANDS.map(function (b) { return ck('brands', b, b); }).join(''), false) +
+    '<button class="btn ghost sm sf-clear" type="button" data-sfclear>' + icon('replay') + 'پاک کردن همه‌ی فیلترها</button></div>';
+}
+VIEW_FN.search = function (p) {
+  state.sq = (p.q || '').trim();
+  state.sf = sfDefault(); if (!state.sq) state.sf.sort = 'pop';
+  view.innerHTML = '<section class="sec sr-head"><div class="lib-h"><div><span class="eyebrow">SEARCH</span><h1 id="srTitle"></h1><p class="sec-sub" id="srCount"></p></div></div>' +
+    '<form class="sr-bar" id="srForm" role="search" novalidate>' + icon('search') + '<label class="vh" for="srQ">جستجو در فروشگاه</label><input id="srQ" type="search" value="' + esc(state.sq) + '" placeholder="کنسول، بازی، گیفت کارت، قطعه…" autocomplete="off" enterkeyhint="search"><button class="btn primary sm" type="submit">جستجو</button></form>' +
+    '<div class="chips sr-pop" id="srPop"><span class="sr-pl">جستجوهای پرطرفدار:</span>' + POPQ.map(function (q) { return '<button class="chip" type="button" data-srq="' + esc(q) + '">' + esc(q) + '</button>'; }).join('') + '</div></section>' +
+    '<div class="sr"><aside class="sr-side" id="srSide" aria-label="فیلترها">' + filtersHTML() + '</aside>' +
+    '<div class="sr-main"><div class="sr-tools"><button class="btn ghost sm sr-fbtn" id="srFBtn" type="button">' + icon('filter') + 'فیلترها<span class="cnt" id="srFCnt"></span></button><div class="chips sr-sort" id="srSort" role="group" aria-label="مرتب‌سازی">' + SRT.map(function (s) { return '<button class="chip" type="button" data-srt="' + s[0] + '" aria-pressed="false">' + s[1] + '</button>'; }).join('') + '</div></div>' +
+    '<div class="sr-act" id="srAct"></div><div class="grid sr-grid" id="srGrid" aria-live="polite"></div></div></div>';
+  bindSearch(); srApply();
+};
+function bindSearch() {
+  var sf = state.sf, box = $('#srFilters');
+  var setQ = function (q) { state.sq = q.trim(); state.params = { q: state.sq }; try { history.replaceState({ v: 'search', p: state.params }, '', '#' + routeToken('search', state.params)); } catch (e) {} if (state.sq && sf.sort === 'pop') sf.sort = 'rel'; srApply(); };
+  var tmr = 0;
+  $('#srQ').addEventListener('input', function (e) { clearTimeout(tmr); tmr = setTimeout(function () { setQ(e.target.value); }, 260); });
+  $('#srForm').addEventListener('submit', function (e) { e.preventDefault(); clearTimeout(tmr); setQ($('#srQ').value); $('#srQ').blur(); Sound.click(); });
+  $('#srPop').addEventListener('click', function (e) { var b = e.target.closest('[data-srq]'); if (!b) return; $('#srQ').value = b.dataset.srq; setQ(b.dataset.srq); Sound.click(); });
+  $('#srSort').addEventListener('click', function (e) { var b = e.target.closest('[data-srt]'); if (!b) return; sf.sort = b.dataset.srt; srApply(); Sound.click(); });
+  box.addEventListener('change', function (e) {
+    var c = e.target.closest('[data-sf]'); if (!c) return;
+    var arr = sf[c.dataset.sf], v = c.value;
+    if (c.checked) { if (arr.indexOf(v) < 0) arr.push(v); } else sf[c.dataset.sf] = arr.filter(function (x) { return x !== v; });
+    srApply(); Sound.tap();
+  });
+  box.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-sft]'); if (t) { sf[t.dataset.sft] = !sf[t.dataset.sft]; srApply(); Sound.click(); return; }
+    if (e.target.closest('[data-sfclear]')) { clearSF(); Sound.click(); }
+  });
+  var lo = $('#prLo'), hi = $('#prHi');
+  var onR = function (which) { var a = +lo.value, b = +hi.value; if (a > b - 4) { if (which === 'lo') { a = b - 4; lo.value = a; } else { b = a + 4; hi.value = b; } } sf.lo = Math.max(0, a); sf.hi = Math.min(100, b); priceUI(); clearTimeout(tmr); tmr = setTimeout(srApply, 120); };
+  lo.addEventListener('input', function () { onR('lo'); }); hi.addEventListener('input', function () { onR('hi'); });
+  $('#srAct').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-rmf]'); if (!b) return;
+    var k = b.dataset.rmf, v = b.dataset.v;
+    if (k === 'price') { sf.lo = 0; sf.hi = 100; } else if (k === 'q') { state.sq = ''; $('#srQ').value = ''; setQ(''); return; } else if (Array.isArray(sf[k])) sf[k] = sf[k].filter(function (x) { return x !== v; }); else if (k === 'all') { clearSF(); return; } else sf[k] = false;
+    srApply(); Sound.click();
+  });
+  $('#srFBtn').addEventListener('click', function () {
+    openSheet('فیلترها', box, '<button class="btn ghost" type="button" data-sfclear>پاک کردن</button><button class="btn primary" type="button" data-shclose id="shShow">نمایش نتایج</button>', null);
+    sheetEl.querySelector('.sh-f [data-sfclear]').addEventListener('click', function () { clearSF(); });
+    srApply(true);
+  });
+}
+function clearSF() { var s = state.sf.sort; state.sf = sfDefault(); state.sf.sort = s; srApply(); }
+function priceUI() {
+  var sf = state.sf, lo = $('#prLo'), hi = $('#prHi'); if (!lo) return;
+  lo.value = sf.lo; hi.value = sf.hi;
+  $('#prLoT').textContent = sf.lo > 0 ? shortT(t2p(sf.lo)) : 'کمترین';
+  $('#prHiT').textContent = sf.hi < 100 ? shortT(t2p(sf.hi)) : 'بیشترین';
+  var fl = $('#prFill'); fl.style.right = sf.lo + '%'; fl.style.left = (100 - sf.hi) + '%';
+  $$('#prHist i').forEach(function (b, k) { var mid = (k + .5) * 100 / 24; b.classList.toggle('in', mid >= sf.lo && mid <= sf.hi); });
+}
+function srApply(keepGrid) {
+  var sf = state.sf, q = state.sq, base = srBase(), grid = $('#srGrid'); if (!grid) return;
+  var list = base.filter(function (x) { return passF(x.p, sf); });
+  var srt = sf.sort === 'rel' && !q ? 'pop' : sf.sort;
+  list.sort(function (a, b) { return srt === 'rel' ? b.r - a.r : srt === 'cheap' ? priceNow(a.p) - priceNow(b.p) : srt === 'exp' ? priceNow(b.p) - priceNow(a.p) : srt === 'off' ? b.p.off - a.p.off || b.p.pop - a.p.pop : b.p.pop - a.p.pop; });
+  $('#srTitle').innerHTML = q ? 'نتایج «<span class="q">' + esc(q) + '</span>»' : 'همه‌ی کالاها';
+  $('#srCount').textContent = list.length ? fa(list.length) + ' کالا پیدا شد' + (q ? '، مرتب‌شده بر اساس ' + SRT.filter(function (s) { return s[0] === srt; })[0][1] : '') : 'نتیجه‌ای پیدا نشد';
+  $$('#srSort [data-srt]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.srt === srt ? 'true' : 'false'); b.hidden = b.dataset.srt === 'rel' && !q; });
+  // facets
+  var box = $('#srFilters');
+  $$('[data-cnt]', box).forEach(function (em) {
+    var kv = em.dataset.cnt.split(':'), k = kv[0], v = kv.slice(1).join(':');
+    var n = base.filter(function (x) { var p = x.p; if (!passF(p, sf, k)) return false; return k === 'cats' ? p.cat === v : k === 'plats' ? p.kind === 'game' && p.plat === v : brandOf(p) === v; }).length;
+    em.textContent = fa(n);
+    var inp = em.parentNode.querySelector('input'); inp.checked = sf[k].indexOf(v) >= 0; em.parentNode.classList.toggle('zero', !n && !inp.checked);
+  });
+  $$('[data-sft]', box).forEach(function (t) { t.setAttribute('aria-checked', String(!!sf[t.dataset.sft])); });
+  var hb = base.filter(function (x) { return passF(x.p, sf, 'price'); }), bins = []; for (var i = 0; i < 24; i++) bins.push(0);
+  hb.forEach(function (x) { bins[Math.min(23, Math.floor(p2t(priceNow(x.p)) / 100 * 24))]++; });
+  var mx = Math.max.apply(null, bins) || 1;
+  $('#prHist').innerHTML = bins.map(function (n) { return '<i style="--h:' + (n ? 12 + n / mx * 88 : 4) + '%"></i>'; }).join('');
+  priceUI();
+  // active chips
+  var act = [];
+  if (q) act.push(['q', '', '«' + esc(q) + '»']);
+  sf.cats.forEach(function (c) { act.push(['cats', c, CATBY[c].label]); });
+  sf.plats.forEach(function (c) { act.push(['plats', c, PLAT[c].name]); });
+  sf.brands.forEach(function (c) { act.push(['brands', c, esc(c)]); });
+  if (sf.lo > 0 || sf.hi < 100) act.push(['price', '', (sf.lo > 0 ? shortT(t2p(sf.lo)) : '۰') + ' تا ' + (sf.hi < 100 ? shortT(t2p(sf.hi)) : 'بیشترین')]);
+  SF_TOGS.forEach(function (t) { if (sf[t[0]]) act.push([t[0], '', t[1]]); });
+  var nf = act.filter(function (a) { return a[0] !== 'q'; }).length;
+  $('#srAct').innerHTML = act.length ? act.map(function (a) { return '<button class="chip act" type="button" data-rmf="' + a[0] + '" data-v="' + esc(a[1]) + '">' + a[2] + icon('close') + '</button>'; }).join('') + (nf > 1 ? '<button class="linkb" type="button" data-rmf="all">پاک کردن فیلترها</button>' : '') : '';
+  $('#srFCnt').textContent = nf ? fa(nf) : '';
+  var sb = $('#shShow'); if (sb) sb.textContent = list.length ? 'نمایش ' + fa(list.length) + ' کالا' : 'نتیجه‌ای نیست';
+  if (keepGrid === true) return;
+  if (!list.length) {
+    var sug = ALL.filter(function (p) { return !p.used; }).sort(function (a, b) { return b.pop - a.pop; }).slice(0, 4);
+    grid.className = 'sr-empty';
+    grid.innerHTML = '<div class="empty"><span class="ek">' + icon('search') + '</span><h3>چیزی با این ' + (nf ? 'فیلترها' : 'عبارت') + ' پیدا نشد</h3><p>' + (nf ? 'چند فیلتر را بردار یا محدوده‌ی قیمت را بازتر کن.' : 'املای عبارت را بررسی کن یا نام برند و دسته را امتحان کن.') + '</p>' + (nf ? '<button class="btn primary sm" type="button" data-rmf="all">پاک کردن فیلترها</button>' : '') + '</div><h3 class="h3 sr-sugh">شاید این‌ها را بخواهی</h3><div class="grid">' + sug.map(cardHTML).join('') + '</div>';
+    var cb = grid.querySelector('[data-rmf="all"]'); if (cb) cb.addEventListener('click', function () { clearSF(); });
+  } else {
+    grid.className = 'grid sr-grid';
+    grid.innerHTML = list.map(function (x, i) { return cardHTML(x.p, Math.min(i, 12)); }).join('');
+    grid.classList.remove('anim'); void grid.offsetWidth; grid.classList.add('anim');
+  }
+  syncCmp(true);
+}
+
+/* ================= v3 · compare ================= */
+state.cmp = []; state.cmpDiff = false;
+function inCmp(id) { return state.cmp.indexOf(id) >= 0; }
+function toggleCmp(id) {
+  if (inCmp(id)) state.cmp = state.cmp.filter(function (x) { return x !== id; });
+  else {
+    if (state.cmp.length >= 4) { toast({ ic: 'compare', tone: 'pink', title: 'حداکثر ۴ کالا', body: 'برای افزودن، یکی از کالاهای مقایسه را بردار.', ms: 3200 }); return; }
+    state.cmp.push(id);
+    if (state.cmp.length === 1) toast({ ic: 'compare', title: 'به مقایسه اضافه شد', body: 'یک کالای دیگر انتخاب کن تا کنار هم ببینی.', ms: 2800 });
+  }
+  syncCmp(); Sound.click();
+}
+function syncCmp(silent) {
+  $$('[data-cmp]').forEach(function (b) { var on = inCmp(b.dataset.cmp); b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
+  if (silent !== true) { renderTray(); if (state.view === 'compare') VIEW_FN.compare(); }
+}
+var trayEl = null;
+function renderTray() {
+  var n = state.cmp.length, show = n > 0 && state.view !== 'compare';
+  if (!trayEl) { trayEl = document.createElement('div'); trayEl.className = 'cmp-tray'; trayEl.setAttribute('role', 'region'); trayEl.setAttribute('aria-label', 'مقایسه‌ی کالاها'); document.body.appendChild(trayEl); }
+  trayEl.classList.toggle('open', show);
+  if (!n) return;
+  trayEl.innerHTML = '<div class="ct-slots">' + [0, 1, 2, 3].map(function (i) { var p = BY[state.cmp[i]]; return p ? '<div class="ct-s" style="--tint:' + p.tint + '"><span class="mini">' + miniArt(p) + '</span><button type="button" class="ct-x" data-cmprm="' + p.id + '" aria-label="برداشتن ' + esc(p.name) + ' از مقایسه">' + icon('close') + '</button></div>' : '<div class="ct-s none">' + icon('plus') + '</div>'; }).join('') + '</div>' +
+    '<div class="ct-tx"><b>مقایسه: ' + fa(n) + ' از ۴</b><span>' + (n < 2 ? 'یک کالای دیگر اضافه کن' : 'آماده‌ی مقایسه') + '</span></div>' +
+    '<button class="btn primary sm" type="button" data-go="compare"' + (n < 2 ? ' disabled' : '') + '>' + icon('compare') + 'مقایسه</button><button class="ib" type="button" data-cmpclear aria-label="پاک کردن مقایسه">' + icon('trash') + '</button>';
+}
+function specVal(d, v) {
+  return String(v).replace(/\{(\w)\}/g, function (m, k) { var g = d.vars.filter(function (x) { return x.key === k; })[0]; return g ? g.opts.map(function (o) { return o.v; }).join('، ') : '—'; });
+}
+function cmpRows(ps) {
+  var ds = ps.map(detailOf), rows = [];
+  var add = function (label, vals, opt) { opt = opt || {}; rows.push({ label: label, vals: vals, html: opt.html, best: opt.best, same: vals.every(function (v) { return String(v) === String(vals[0]); }) }); };
+  rows.push({ group: 'خلاصه' });
+  var prices = ps.map(priceNow), mn = Math.min.apply(null, prices);
+  add('قیمت', prices.map(toman), { best: prices.map(function (x) { return x === mn && prices.some(function (y) { return y !== mn; }) ? 'ارزان‌ترین' : ''; }) });
+  var rt = ds.map(function (d) { return d.rating; }), mx = Math.max.apply(null, rt);
+  add('امتیاز کاربران', rt.map(function (r) { return r.toFixed(1); }), { html: ds.map(function (d) { return stars(d.rating, 14) + ' <b>' + fa(d.rating.toFixed(1)) + '</b> <small>(' + fa(d.reviews) + ' دیدگاه)</small>'; }), best: rt.map(function (r) { return r === mx && rt.some(function (y) { return y !== mx; }) ? 'محبوب‌ترین' : ''; }) });
+  add('برند', ds.map(function (d) { return d.brand; }));
+  add('دسته', ps.map(function (p) { return CATBY[p.cat].label + ' · ' + (p.kind === 'game' ? PLAT[p.plat].name : p.sub); }));
+  add('تخفیف', ps.map(function (p) { return p.off ? fa(p.off) + '٪' : '—'; }));
+  add('تحویل فوری', ps.map(function (p) { return p.fast ? 'دارد' : '—'; }), { html: ps.map(function (p) { return p.fast ? '<span class="yes">' + icon('check') + 'دارد</span>' : '<span class="no">—</span>'; }) });
+  add('وضعیت', ps.map(function (p) { return p.used ? 'کارکرده · در حد نو' : p.pre ? 'پیش‌خرید' : 'نو و پلمب'; }));
+  add('گزینه‌های خرید', ds.map(function (d) { return d.vars.map(function (g) { return g.label + ': ' + fa(g.opts.length); }).join(' · ') || '—'; }));
+  var order = [], groupOf = {};
+  ds.forEach(function (d) { d.specs.forEach(function (g) { g[1].forEach(function (r) { if (order.indexOf(r[0]) < 0) { order.push(r[0]); groupOf[r[0]] = g[0]; } }); }); });
+  var lastG = null;
+  order.forEach(function (label) {
+    if (label === 'برند' || label === 'دسته‌بندی') return;
+    if (groupOf[label] !== lastG) { lastG = groupOf[label]; rows.push({ group: lastG }); }
+    add(label, ds.map(function (d) { var v = '—'; d.specs.forEach(function (g) { g[1].forEach(function (r) { if (r[0] === label) v = specVal(d, r[1]); }); }); return v; }));
+  });
+  return rows;
+}
+VIEW_FN.compare = function () {
+  var ps = state.cmp.map(function (id) { return BY[id]; }).filter(Boolean);
+  renderTray();
+  var head = '<section class="sec"><div class="lib-h"><div><span class="eyebrow">COMPARE</span><h1>مقایسه‌ی کالاها</h1><p class="sec-sub">' + (ps.length > 1 ? fa(ps.length) + ' کالا کنار هم؛ ردیف‌های متفاوت پررنگ‌ترند.' : 'تا ۴ کالا را کنار هم ببین.') + '</p></div>';
+  if (ps.length < 2) {
+    var base = ps[0], sug = ALL.filter(function (p) { return !p.used && (!base || (p.cat === base.cat && p.id !== base.id)); }).sort(function (a, b) { return b.pop - a.pop; }).slice(0, 8);
+    view.innerHTML = head + '</div><div class="empty"><span class="ek">' + icon('compare') + '</span><h3>' + (ps.length ? 'یک کالای دیگر لازم است' : 'هنوز کالایی انتخاب نکرده‌ای') + '</h3><p>روی آیکون ترازو در کارت هر کالا بزن تا به مقایسه اضافه شود.</p></div></section><section class="sec"><div class="sec-h"><div><h2 class="h3">' + (base ? 'هم‌دسته‌های ' + esc(base.name) : 'پیشنهاد برای مقایسه') + '</h2></div></div><div class="grid">' + sug.map(cardHTML).join('') + '</div></section>';
+    syncCmp(true); return;
+  }
+  var rows = cmpRows(ps), mixed = ps.some(function (p) { return p.cat !== ps[0].cat; });
+  view.innerHTML = head + '<div class="set-row diff-tog"><span>فقط تفاوت‌ها</span><button class="tog" type="button" role="switch" id="cmpDiff" aria-checked="' + state.cmpDiff + '" aria-label="فقط تفاوت‌ها"></button></div></div>' +
+    (mixed ? '<p class="pd-note">' + icon('info') + 'کالاها از دسته‌های مختلف‌اند؛ برای مقایسه‌ی دقیق‌تر کالاهای هم‌دسته را کنار هم بگذار.</p>' : '') +
+    '<div class="cmp-wrap"><table class="cmp' + (state.cmpDiff ? ' diff' : '') + '" id="cmpT" style="--n:' + ps.length + '"><thead><tr><th scope="col" class="cmp-l"><span class="vh">ویژگی</span></th>' +
+    ps.map(function (p, i) { return '<th scope="col" style="--i:' + i + '"><div class="cmp-h" style="--tint:' + p.tint + '"><button type="button" class="ct-x" data-cmprm="' + p.id + '" aria-label="برداشتن ' + esc(p.name) + '">' + icon('close') + '</button><span class="cmp-art">' + miniArt(p) + '</span><button type="button" class="cmp-n" data-pid="' + p.id + '">' + esc(p.name) + '</button><span class="cmp-p">' + (p.off ? '<s>' + fa(p.price) + '</s>' : '') + '<b>' + toman(priceNow(p)) + '</b></span><button class="btn primary sm" type="button" data-add="' + p.id + '">' + icon('cart') + 'افزودن</button></div></th>'; }).join('') +
+    (ps.length < 4 ? '<th scope="col" class="cmp-addc"><button type="button" class="add-tile" data-go="search" data-q="' + esc(CATBY[ps[0].cat].label) + '">' + icon('plus') + 'افزودن کالا</button></th>' : '') + '</tr></thead><tbody>' +
+    rows.map(function (r) {
+      if (r.group) return '<tr class="grp"><th colspan="' + (ps.length + 2) + '" scope="rowgroup">' + r.group + '</th></tr>';
+      return '<tr class="' + (r.same ? 'same' : 'dif') + '"><th scope="row" class="cmp-l">' + r.label + '</th>' + r.vals.map(function (v, i) { var b = r.best && r.best[i]; return '<td' + (b ? ' class="best"' : '') + '>' + (r.html ? r.html[i] : esc(v)) + (b ? '<span class="bt">' + b + '</span>' : '') + '</td>'; }).join('') + (ps.length < 4 ? '<td class="cmp-addc"></td>' : '') + '</tr>';
+    }).join('') + '</tbody></table></div></section>';
+  $('#cmpDiff').addEventListener('click', function (e) { state.cmpDiff = !state.cmpDiff; e.currentTarget.setAttribute('aria-checked', String(state.cmpDiff)); $('#cmpT').classList.toggle('diff', state.cmpDiff); Sound.click(); });
+};
+document.addEventListener('click', function (e) {
+  var c = e.target.closest('[data-cmp]'); if (c) { e.preventDefault(); toggleCmp(c.dataset.cmp); return; }
+  var r = e.target.closest('[data-cmprm]'); if (r) { state.cmp = state.cmp.filter(function (x) { return x !== r.dataset.cmprm; }); syncCmp(); Sound.click(); return; }
+  if (e.target.closest('[data-cmpclear]')) { state.cmp = []; syncCmp(); Sound.click(); }
+});
+
+/* ================= v3 · PC builder ================= */
+var PARTS = {
+  cpu: { label: 'پردازنده', ic: 'cpu', opts: [
+    { id: 'i5', n: 'Intel Core i5-14400F', s: '۱۰ هسته · تا ۴٫۷ گیگاهرتز · LGA1700', price: 9800000, sock: 'LGA1700', w: 120, tdp: 150, sc: 62 },
+    { id: 'i7', n: 'Intel Core i7-14700K', s: '۲۰ هسته · تا ۵٫۶ گیگاهرتز · LGA1700', price: 21500000, sock: 'LGA1700', w: 200, tdp: 250, sc: 84 },
+    { id: 'i9', n: 'Intel Core i9-14900K', s: '۲۴ هسته · تا ۶ گیگاهرتز · LGA1700', price: 31900000, sock: 'LGA1700', w: 250, tdp: 300, sc: 95 },
+    { id: 'r5', n: 'AMD Ryzen 5 7600', s: '۶ هسته · تا ۵٫۱ گیگاهرتز · AM5', price: 10900000, sock: 'AM5', w: 90, tdp: 90, sc: 64 },
+    { id: 'r7', n: 'AMD Ryzen 7 7800X3D', s: '۸ هسته · 3D V-Cache · AM5', price: 23400000, sock: 'AM5', w: 110, tdp: 160, sc: 96 },
+    { id: 'r9', n: 'AMD Ryzen 9 7950X3D', s: '۱۶ هسته · 3D V-Cache · AM5', price: 36800000, sock: 'AM5', w: 140, tdp: 170, sc: 98 }] },
+  mb: { label: 'مادربرد', ic: 'library', opts: [
+    { id: 'b760d4', n: 'MSI PRO B760M-A DDR4', s: 'LGA1700 · DDR4 · mATX', price: 7900000, sock: 'LGA1700', ram: 'DDR4', ff: 'mATX' },
+    { id: 'b760', n: 'ASUS TUF B760M-PLUS', s: 'LGA1700 · DDR5 · mATX', price: 9600000, sock: 'LGA1700', ram: 'DDR5', ff: 'mATX' },
+    { id: 'z790', n: 'ASUS ROG STRIX Z790-E', s: 'LGA1700 · DDR5 · ATX', price: 21800000, sock: 'LGA1700', ram: 'DDR5', ff: 'ATX' },
+    { id: 'b650', n: 'Gigabyte B650 AORUS Elite', s: 'AM5 · DDR5 · ATX', price: 10900000, sock: 'AM5', ram: 'DDR5', ff: 'ATX' },
+    { id: 'x670', n: 'ASUS ROG Crosshair X670E', s: 'AM5 · DDR5 · ATX', price: 24500000, sock: 'AM5', ram: 'DDR5', ff: 'ATX' }] },
+  ram: { label: 'حافظه‌ی رم', ic: 'wave', opts: [
+    { id: 'd4', n: '۱۶ گیگ DDR4 · 3200', s: 'دو ماژول ۸ گیگ', price: 2600000, type: 'DDR4', gb: 16 },
+    { id: 'd16', n: '۱۶ گیگ DDR5 · 6000', s: 'دو ماژول ۸ گیگ · CL30', price: 3900000, type: 'DDR5', gb: 16 },
+    { id: 'd32', n: '۳۲ گیگ DDR5 · 6000', s: 'دو ماژول ۱۶ گیگ · CL30 · RGB', price: 7200000, type: 'DDR5', gb: 32 },
+    { id: 'd64', n: '۶۴ گیگ DDR5 · 6400', s: 'دو ماژول ۳۲ گیگ · CL32 · RGB', price: 14500000, type: 'DDR5', gb: 64 }] },
+  gpu: { label: 'کارت گرافیک', ic: 'monitor', opts: [
+    { id: 'g4060', n: 'GeForce RTX 4060 · 8GB', s: 'طول ۲۴۰ میلی‌متر · ۱۱۵ وات', price: 19500000, w: 115, len: 240, sc: 55 },
+    { id: 'g7800', n: 'Radeon RX 7800 XT · 16GB', s: 'طول ۲۶۷ میلی‌متر · ۲۶۳ وات', price: 41400000, w: 263, len: 267, sc: 74 },
+    { id: 'g4070', n: 'GeForce RTX 4070 Super · 12GB', s: 'طول ۳۰۰ میلی‌متر · ۲۲۰ وات', price: 49700000, w: 220, len: 300, sc: 78 },
+    { id: 'g4080', n: 'GeForce RTX 4080 Super · 16GB', s: 'طول ۳۱۰ میلی‌متر · ۳۲۰ وات', price: 98000000, w: 320, len: 310, sc: 90 },
+    { id: 'g4090', n: 'GeForce RTX 4090 · 24GB', s: 'طول ۳۳۶ میلی‌متر · ۴۵۰ وات', price: 175000000, w: 450, len: 336, sc: 100 }] },
+  ssd: { label: 'حافظه‌ی SSD', ic: 'disc', opts: [
+    { id: 's1', n: 'NVMe Gen4 · ۱ ترابایت', s: 'خواندن ۷۰۰۰ مگابایت بر ثانیه', price: 4200000 },
+    { id: 's2', n: 'NVMe Gen4 · ۲ ترابایت', s: 'خواندن ۷۴۰۰ مگابایت بر ثانیه', price: 7900000 },
+    { id: 's4', n: 'NVMe Gen4 · ۴ ترابایت', s: 'خواندن ۷۴۰۰ مگابایت بر ثانیه', price: 16800000 }] },
+  cool: { label: 'خنک‌کننده', ic: 'spark', opts: [
+    { id: 'air1', n: 'خنک‌کننده‌ی بادی ۱۲۰ میلی‌متری', s: 'مناسب پردازنده تا ۱۸۰ وات', price: 1900000, cap: 180, kind: 'air' },
+    { id: 'air2', n: 'خنک‌کننده‌ی بادی دوبرجه', s: 'مناسب پردازنده تا ۲۵۰ وات', price: 4300000, cap: 250, kind: 'air' },
+    { id: 'aio', n: 'خنک‌کننده‌ی مایع ۳۶۰ میلی‌متری', s: 'مناسب پردازنده تا ۳۲۰ وات · RGB', price: 9800000, cap: 320, kind: 'aio' }] },
+  psu: { label: 'منبع تغذیه', ic: 'power', opts: [
+    { id: 'w550', n: '۵۵۰ وات · 80+ Bronze', s: 'نیمه‌ماژولار', price: 3900000, watt: 550 },
+    { id: 'w750', n: '۷۵۰ وات · 80+ Gold', s: 'تمام‌ماژولار', price: 6900000, watt: 750 },
+    { id: 'w850', n: '۸۵۰ وات · 80+ Gold', s: 'تمام‌ماژولار · ATX 3.0', price: 8400000, watt: 850 },
+    { id: 'w1000', n: '۱۰۰۰ وات · 80+ Platinum', s: 'تمام‌ماژولار · ATX 3.0', price: 14900000, watt: 1000 }] },
+  case: { label: 'کیس', ic: 'box', opts: [
+    { id: 'mini', n: 'کیس mATX جمع‌وجور', s: 'کارت گرافیک تا ۲۸۰ میلی‌متر', price: 3500000, ff: 'mATX', gpuMax: 280 },
+    { id: 'mid', n: 'کیس Mid Tower با جریان هوای بالا', s: 'ATX · کارت گرافیک تا ۳۴۰ میلی‌متر', price: 5900000, ff: 'ATX', gpuMax: 340 },
+    { id: 'full', n: 'کیس Full Tower شیشه‌ای', s: 'ATX · کارت گرافیک تا ۴۲۰ میلی‌متر', price: 11800000, ff: 'ATX', gpuMax: 420 }] }
+};
+var SLOT_ORDER = ['cpu', 'mb', 'ram', 'gpu', 'ssd', 'cool', 'psu', 'case'];
+var B_PRESETS = [
+  ['p1', 'شروع · 1080p', { cpu: 'i5', mb: 'b760', ram: 'd16', gpu: 'g4060', ssd: 's1', cool: 'air1', psu: 'w550', case: 'mini' }],
+  ['p2', 'حرفه‌ای · 1440p', { cpu: 'r7', mb: 'b650', ram: 'd32', gpu: 'g4070', ssd: 's2', cool: 'air2', psu: 'w750', case: 'mid' }],
+  ['p3', 'افسانه‌ای · 4K', { cpu: 'i9', mb: 'z790', ram: 'd64', gpu: 'g4090', ssd: 's4', cool: 'aio', psu: 'w1000', case: 'full' }]
+];
+var B_EXTRAS = [['asm', 'مونتاژ، کابل‌کشی و تست ۲۴ ساعته', 1500000], ['win', 'نصب ویندوز و درایورها', 490000]];
+state.build = {}; state.bx = { asm: true, win: false }; state.bOpen = 'cpu';
+BY.pcb = P('pcb', 'pc', 'سیستم سفارشی سیستم‌ساز', 0, 0, 'pc', '#8B7CFF', { sub: 'سیستم اسمبل‌شده' });
+function bPart(slot) { var id = state.build[slot]; return id ? PARTS[slot].opts.filter(function (o) { return o.id === id; })[0] || null : null; }
+function bDraw() { var c = bPart('cpu'), g = bPart('gpu'); return (c ? c.w : 0) + (g ? g.w : 0) + 70; }
+function bNeed() { return Math.ceil(bDraw() * 1.25 / 50) * 50; }
+function bReason(slot, o) {
+  var cpu = bPart('cpu'), mb = bPart('mb'), ram = bPart('ram'), gpu = bPart('gpu'), cs = bPart('case');
+  if (slot === 'cpu' && mb && o.sock !== mb.sock) return ['err', 'سوکت ' + o.sock + ' با مادربرد ' + mb.sock + ' جور نیست'];
+  if (slot === 'mb') {
+    if (cpu && cpu.sock !== o.sock) return ['err', 'پردازنده‌ی انتخابی سوکت ' + cpu.sock + ' می‌خواهد'];
+    if (ram && ram.type !== o.ram) return ['err', 'رم انتخابی ' + ram.type + ' است؛ این مادربرد ' + o.ram];
+    if (cs && cs.ff === 'mATX' && o.ff === 'ATX') return ['err', 'مادربرد ATX در کیس انتخابی جا نمی‌شود'];
+  }
+  if (slot === 'ram' && mb && o.type !== mb.ram) return ['err', 'مادربرد انتخابی فقط ' + mb.ram + ' می‌پذیرد'];
+  if (slot === 'gpu' && cs && o.len > cs.gpuMax) return ['err', 'طول ' + fa(o.len) + ' میلی‌متر؛ کیس فقط تا ' + fa(cs.gpuMax)];
+  if (slot === 'case') {
+    if (mb && mb.ff === 'ATX' && o.ff === 'mATX') return ['err', 'مادربرد ATX در این کیس جا نمی‌شود'];
+    if (gpu && gpu.len > o.gpuMax) return ['err', 'کارت گرافیک ' + fa(gpu.len) + ' میلی‌متری جا نمی‌شود'];
+  }
+  if (slot === 'psu' && (cpu || gpu)) { var need = bNeed(); if (o.watt < bDraw()) return ['err', 'کمتر از مصرف سیستم (' + fa(bDraw()) + ' وات)']; if (o.watt < need) return ['warn', 'حاشیه‌ی امن کم است؛ پیشنهاد: ' + fa(need) + ' وات']; }
+  if (slot === 'cool' && cpu && o.cap < cpu.tdp) return ['warn', 'برای ' + cpu.n.replace(/^(Intel|AMD) /, '') + ' کم است'];
+  return null;
+}
+function bIssues() {
+  var out = [];
+  SLOT_ORDER.forEach(function (s) { var o = bPart(s); if (!o) return; var r = bReason(s, o); if (r) out.push({ lvl: r[0], t: PARTS[s].label + ': ' + r[1], slot: s }); });
+  var seen = {}; return out.filter(function (x) { if (seen[x.t]) return false; seen[x.t] = 1; return true; });
+}
+function bTotal() { var t = 0; SLOT_ORDER.forEach(function (s) { var o = bPart(s); if (o) t += o.price; }); B_EXTRAS.forEach(function (x) { if (state.bx[x[0]]) t += x[2]; }); return t; }
+function bCount() { return SLOT_ORDER.filter(function (s) { return state.build[s]; }).length; }
+function bToken() { return SLOT_ORDER.map(function (s) { return state.build[s] || '-'; }).join('.') + '.' + (state.bx.asm ? 1 : 0) + (state.bx.win ? 1 : 0); }
+function bLoad(tok) {
+  var a = String(tok || '').split('.'); if (a.length < 8) return false;
+  SLOT_ORDER.forEach(function (s, i) { var id = a[i]; state.build[s] = PARTS[s].opts.some(function (o) { return o.id === id; }) ? id : undefined; });
+  if (a[8]) { state.bx.asm = a[8][0] === '1'; state.bx.win = a[8][1] === '1'; }
+  return true;
+}
+function bSync() { if (state.view !== 'builder') return; try { history.replaceState({ v: 'builder', p: { b: bToken() } }, '', '#builder=' + bToken()); } catch (e) {} }
+function pcSVG() {
+  var fan = function (cx, cy, r, cls) { return '<g class="fan ' + (cls || '') + '" style="transform-origin:' + cx + 'px ' + cy + 'px"><circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" class="fan-ring"/><path d="M' + cx + ' ' + cy + 'm0 -' + (r * .8) + 'q' + (r * .5) + ' ' + (r * .4) + ' 0 ' + (r * .8) + 'M' + cx + ' ' + cy + 'm' + (r * .8) + ' 0q-' + (r * .4) + ' ' + (r * .5) + ' -' + (r * .8) + ' 0M' + cx + ' ' + cy + 'm0 ' + (r * .8) + 'q-' + (r * .5) + ' -' + (r * .4) + ' 0 -' + (r * .8) + 'M' + cx + ' ' + cy + 'm-' + (r * .8) + ' 0q' + (r * .4) + ' -' + (r * .5) + ' ' + (r * .8) + ' 0" class="fan-bl"/><circle cx="' + cx + '" cy="' + cy + '" r="' + (r * .22) + '" class="fan-hub"/></g>'; };
+  return '<svg viewBox="0 0 360 440" class="pcsvg" role="img" aria-label="پیش‌نمایش کیس با قطعات انتخابی">' +
+    '<defs><linearGradient id="bdGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".07"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".05"/></linearGradient></defs>' +
+    '<g class="pp pp-case" data-slot="case"><rect x="14" y="10" width="332" height="420" rx="22" class="case-o"/><rect x="26" y="22" width="270" height="396" rx="14" class="case-in"/><rect x="304" y="22" width="30" height="396" rx="10" class="case-front"/>' + fan(319, 90, 11) + fan(319, 150, 11) + fan(319, 210, 11) + '<rect x="14" y="10" width="332" height="420" rx="22" fill="url(#bdGlass)"/><path class="rgb" d="M304 30v380"/></g>' +
+    '<g class="pp pp-mb" data-slot="mb"><rect x="42" y="38" width="230" height="250" rx="8" class="mb-b"/><path d="M58 60h40M58 72h28M230 260h28M230 248h20" class="mb-tr"/><rect x="58" y="230" width="60" height="40" rx="4" class="mb-chip"/></g>' +
+    '<g class="pp pp-cpu" data-slot="cpu"><rect x="110" y="72" width="56" height="56" rx="6" class="cpu-b"/><rect x="122" y="84" width="32" height="32" rx="3" class="cpu-d"/></g>' +
+    '<g class="pp pp-cool" data-slot="cool"><g class="cool-air"><rect x="98" y="62" width="80" height="78" rx="10" class="cool-b"/>' + fan(138, 101, 30) + '</g><g class="cool-aio"><rect x="40" y="24" width="236" height="14" rx="5" class="aio-rad"/>' + fan(80, 31, 6, 'mini') + fan(158, 31, 6, 'mini') + fan(236, 31, 6, 'mini') + '<rect x="114" y="76" width="48" height="48" rx="24" class="aio-pump"/><circle cx="138" cy="100" r="12" class="aio-ring"/><path d="M128 76 C 120 50, 110 46, 100 38M148 76 C 156 50, 170 46, 180 38" class="aio-tube"/></g></g>' +
+    '<g class="pp pp-ram" data-slot="ram"><rect x="196" y="56" width="9" height="88" rx="2" class="ram-s"/><rect x="210" y="56" width="9" height="88" rx="2" class="ram-s"/><rect x="224" y="56" width="9" height="88" rx="2" class="ram-s dim"/><rect x="238" y="56" width="9" height="88" rx="2" class="ram-s dim"/><path class="rgb" d="M198 58h47"/></g>' +
+    '<g class="pp pp-ssd" data-slot="ssd"><rect x="110" y="150" width="86" height="16" rx="3" class="ssd-b"/><rect x="118" y="154" width="20" height="8" rx="1.5" class="ssd-c"/><rect x="144" y="154" width="20" height="8" rx="1.5" class="ssd-c"/></g>' +
+    '<g class="pp pp-gpu" data-slot="gpu"><rect x="48" y="184" width="236" height="48" rx="9" class="gpu-b"/>' + fan(96, 208, 18) + fan(164, 208, 18) + '<g class="g3">' + fan(232, 208, 18) + '</g><path class="rgb" d="M54 230h224"/></g>' +
+    '<g class="pp pp-psu" data-slot="psu"><rect x="26" y="330" width="270" height="88" rx="12" class="psu-sh"/><rect x="40" y="346" width="110" height="58" rx="8" class="psu-b"/>' + fan(95, 375, 20) + '<text x="216" y="382" text-anchor="middle" class="psu-t" id="bdPsuT">PSU</text></g>' +
+    '</svg>';
+}
+VIEW_FN.builder = function (p) {
+  if (p && p.b) bLoad(p.b);
+  view.innerHTML = '<section class="pg-hero bd-hero"><span class="eyebrow">PC BUILDER</span><h1>سیستم‌ساز</h1><p>قطعه به قطعه سیستمت را بچین؛ سازگاری قطعه‌ها، توان منبع تغذیه و فریم تخمینی را همین‌جا می‌بینی.</p><div class="chips bd-pre" id="bdPre"><span class="sr-pl">شروع سریع:</span>' + B_PRESETS.map(function (x) { return '<button class="chip" type="button" data-bpre="' + x[0] + '">' + x[1] + '</button>'; }).join('') + '<button class="chip" type="button" data-bpre="clear">' + icon('trash') + 'از صفر</button></div></section>' +
+    '<div class="bd"><div class="bd-slots" id="bdSlots"></div><aside class="bd-side"><div class="bd-stage" id="bdStage"><div class="floor"></div>' + pcSVG() + '<span class="bd-prog" id="bdProg"></span></div><div class="bd-sum card-p" id="bdSum"></div></aside></div>';
+  bRender(true);
+  bindBuilder();
+};
+function bRender(first) {
+  var slots = $('#bdSlots'); if (!slots) return;
+  slots.innerHTML = SLOT_ORDER.map(function (s, i) {
+    var P_ = PARTS[s], o = bPart(s), r = o ? bReason(s, o) : null, open = state.bOpen === s;
+    return '<div class="slot' + (open ? ' open' : '') + (o ? ' has' : '') + (r ? ' ' + r[0] : '') + '" data-slot="' + s + '" style="--i:' + i + '"><button class="slot-h" type="button" data-bslot="' + s + '" aria-expanded="' + open + '"><span class="slot-ic">' + icon(P_.ic) + '</span><span class="slot-tx"><small>' + P_.label + '</small><b>' + (o ? esc(o.n) : 'انتخاب نشده') + '</b>' + (o ? '<em>' + (r ? r[1] : o.s) + '</em>' : '<em>' + fa(P_.opts.length) + ' گزینه</em>') + '</span><span class="slot-pr">' + (o ? toman(o.price) : '') + '</span><span class="slot-st" aria-hidden="true"></span>' + icon('chevL', 'chev') + '</button>' +
+      '<div class="slot-b"><div><div class="vg-cards" role="radiogroup" aria-label="' + P_.label + '">' + P_.opts.map(function (x) { var rr = bReason(s, x), sel = state.build[s] === x.id; return '<button class="vc' + (rr ? ' ' + rr[0] : '') + '" type="button" role="radio" data-bpick="' + s + ':' + x.id + '" aria-checked="' + sel + '"><b>' + esc(x.n) + '</b><small>' + x.s + '</small>' + (rr ? '<small class="why">' + icon(rr[0] === 'err' ? 'close' : 'info') + rr[1] + '</small>' : '') + '<span class="dl">' + toman(x.price) + '</span></button>'; }).join('') + '</div>' + (o ? '<button class="linkb" type="button" data-bclear="' + s + '">' + icon('trash') + 'برداشتن این قطعه</button>' : '') + '</div></div></div>';
+  }).join('');
+  // stage
+  var stage = $('#bdStage');
+  SLOT_ORDER.forEach(function (s) { var g = stage.querySelector('.pp-' + s); if (!g) return; var o = bPart(s), r = o ? bReason(s, o) : null; g.classList.toggle('on', !!o); g.classList.toggle('bad', !!(r && r[0] === 'err')); });
+  var cl = bPart('cool'); stage.classList.toggle('aio', !!(cl && cl.kind === 'aio'));
+  var gp = bPart('gpu'); stage.classList.toggle('g2', !!(gp && gp.sc < 70));
+  var psu = bPart('psu'); $('#bdPsuT').textContent = psu ? psu.watt + 'W' : 'PSU';
+  var n = bCount(), iss = bIssues(), errs = iss.filter(function (x) { return x.lvl === 'err'; }).length;
+  stage.classList.toggle('done', n === 8 && !errs);
+  $('#bdProg').innerHTML = '<b>' + fa(n) + '</b> از ۸ قطعه' + (n ? ' · ' + shortT(bTotal()) + ' تومان' : '');
+  // summary
+  var draw = bDraw(), cpu = bPart('cpu'), need = bNeed(), pw = psu ? Math.min(100, draw / psu.watt * 100) : 0, pcls = !psu ? '' : draw > psu.watt ? 'bad' : psu.watt < need ? 'warn' : 'ok';
+  var fps = cpu && gp ? [['1080p', 260], ['1440p', 190], ['4K', 105]].map(function (x) { return [x[0], Math.round(x[1] * gp.sc / 100 * (.75 + .25 * cpu.sc / 100))]; }) : null;
+  var total = bTotal();
+  $('#bdSum').innerHTML = '<div class="bs-top"><div><small>جمع سیستم</small><b id="bdTot" data-v="' + total + '">' + toman(total) + '</b></div><div class="bs-ring" style="--p:' + (n / 8 * 100) + '%"><span>' + fa(n) + '/۸</span></div></div>' +
+    '<div class="bs-pw ' + pcls + '"><div class="bs-l"><span>' + icon('power') + 'مصرف تخمینی</span><span><b>' + fa(cpu || gp ? draw : 0) + '</b> وات' + (psu ? ' از ' + fa(psu.watt) : '') + '</span></div><div class="bs-bar"><i style="--w:' + (psu ? pw : 0) + '%"></i>' + (psu ? '<em style="--x:' + Math.min(100, need / psu.watt * 100) + '%" title="حد پیشنهادی"></em>' : '') + '</div>' + (cpu || gp ? '<span class="hint">منبع تغذیه‌ی پیشنهادی: دست‌کم ' + fa(need) + ' وات</span>' : '') + '</div>' +
+    '<div class="bs-iss">' + (iss.length ? iss.slice(0, 4).map(function (x) { return '<button type="button" class="iss ' + x.lvl + '" data-bslot="' + x.slot + '">' + icon(x.lvl === 'err' ? 'close' : 'info') + '<span>' + x.t + '</span></button>'; }).join('') : n ? '<div class="iss ok">' + icon('check') + '<span>' + (n === 8 ? 'همه‌ی قطعه‌ها با هم سازگارند' : 'تا این‌جا همه‌چیز سازگار است') + '</span></div>' : '<div class="iss mute">' + icon('info') + '<span>از پردازنده شروع کن یا یکی از سیستم‌های آماده را بردار.</span></div>') + '</div>' +
+    (fps ? '<div class="bs-fps"><span class="bs-h">فریم تخمینی در بازی‌های سنگین · Ultra</span>' + fps.map(function (f) { return '<div class="fps"><span>' + f[0] + '</span><span class="fb"><i style="--w:' + Math.min(100, f[1] / 2.6) + '%"></i></span><b>' + fa(f[1]) + ' FPS</b></div>'; }).join('') + '<span class="hint">عددها تخمینی و نمونه‌اند.</span></div>' : '') +
+    '<div class="bs-x">' + B_EXTRAS.map(function (x) { return '<div class="set-row"><span>' + x[1] + '<small>+' + toman(x[2]) + '</small></span><button class="tog" type="button" role="switch" data-bx="' + x[0] + '" aria-checked="' + !!state.bx[x[0]] + '" aria-label="' + x[1] + '"></button></div>'; }).join('') + '</div>' +
+    '<button class="btn primary" type="button" data-bbuy data-magnet' + (n < 8 || errs ? ' disabled' : '') + '>' + icon('cart') + 'افزودن سیستم به سبد</button>' +
+    '<p class="pd-note">' + icon(n < 8 ? 'info' : errs ? 'close' : 'shield') + (n < 8 ? fa(8 - n) + ' قطعه‌ی دیگر مانده تا سیستم کامل شود.' : errs ? 'ناسازگاری‌ها را برطرف کن تا بتوانی سفارش بدهی.' : 'گارانتی هر قطعه جداگانه و ۷ روز ضمانت بازگشت.') + '</p>' +
+    '<button class="linkb" type="button" data-bshare>' + icon('copy') + 'کپی لینک این سیستم</button>';
+  var tt = $('#bdTot'), prev = +(state.bLastTot || 0); state.bLastTot = total;
+  if (!first && prev !== total) countTo(tt, prev, total, 700, toman);
+  bSync();
+}
+function bindBuilder() {
+  var root = view;
+  $('#bdPre').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-bpre]'); if (!b) return;
+    if (b.dataset.bpre === 'clear') { state.build = {}; state.bOpen = 'cpu'; }
+    else { var pr = B_PRESETS.filter(function (x) { return x[0] === b.dataset.bpre; })[0]; state.build = Object.assign({}, pr[2]); state.bOpen = null; }
+    bRender(); bInstallAll(); Sound.success();
+  });
+  root.addEventListener('click', bClick);
+  cleanups.push(function () { root.removeEventListener('click', bClick); });
+  root.addEventListener('pointerover', bHover);
+  cleanups.push(function () { root.removeEventListener('pointerover', bHover); });
+}
+function bHover(e) {
+  var s = e.target.closest && e.target.closest('.slot'); var st = $('#bdStage'); if (!st) return;
+  $$('.pp.hl', st).forEach(function (g) { g.classList.remove('hl'); });
+  if (s) { var g = st.querySelector('.pp-' + s.dataset.slot); if (g) g.classList.add('hl'); }
+}
+function bInstall(slot) { var g = $('#bdStage .pp-' + slot); if (!g || calm()) return; g.classList.remove('inst'); void g.getBoundingClientRect(); g.classList.add('inst'); }
+function bInstallAll() { SLOT_ORDER.forEach(function (s, i) { setTimeout(function () { bInstall(s); }, i * 90); }); }
+function bClick(e) {
+  if (state.view !== 'builder') return;
+  var t = e.target, b;
+  if ((b = t.closest('[data-bpick]'))) {
+    var kv = b.dataset.bpick.split(':'), s = kv[0], id = kv[1], had = state.build[s];
+    state.build[s] = id;
+    var nx = SLOT_ORDER.filter(function (x) { return !state.build[x]; })[0];
+    if (!had && nx) state.bOpen = nx; else if (!had) state.bOpen = null;
+    bRender(); bInstall(s); Sound.click();
+    var r = bReason(s, bPart(s)); if (r && r[0] === 'err') Sound.blip(220, .12, 'square', .03);
+    if (!had && nx && mqMobile.matches) { var el = $('.slot[data-slot="' + nx + '"]'); if (el) setTimeout(function () { var top = el.getBoundingClientRect().top - main.getBoundingClientRect().top + main.scrollTop - 80; main.scrollTo({ top: top, behavior: calm() ? 'auto' : 'smooth' }); }, 60); }
+    if (bCount() === 8 && !bIssues().some(function (x) { return x.lvl === 'err'; }) && !had) { toast({ ic: 'cpu', tone: 'ok', title: 'سیستمت کامل شد', body: 'همه‌ی قطعه‌ها سازگارند. ' + toman(bTotal()), ms: 3600 }); Sound.success(); }
+    return;
+  }
+  if ((b = t.closest('[data-bslot]'))) { var sl = b.dataset.bslot; state.bOpen = state.bOpen === sl && b.classList.contains('slot-h') ? null : sl; bRender(); Sound.hover(); if (!b.classList.contains('slot-h')) { var se = $('.slot[data-slot="' + sl + '"]'); if (se) { var tp = se.getBoundingClientRect().top - main.getBoundingClientRect().top + main.scrollTop - 80; main.scrollTo({ top: tp, behavior: calm() ? 'auto' : 'smooth' }); } } return; }
+  if ((b = t.closest('[data-bclear]'))) { delete state.build[b.dataset.bclear]; bRender(); Sound.click(); return; }
+  if ((b = t.closest('[data-bx]'))) { var k = b.dataset.bx; state.bx[k] = !state.bx[k]; bRender(); Sound.click(); return; }
+  if ((b = t.closest('[data-bshare]'))) {
+    var url = location.href.split('#')[0] + '#builder=' + bToken(), done = function () { toast({ ic: 'copy', tone: 'ok', title: 'لینک سیستم کپی شد', body: 'هر کس باز کند همین قطعه‌ها را می‌بیند.', ms: 2800 }); };
+    try { navigator.clipboard.writeText(url).then(done, done); } catch (er) { done(); }
+    return;
+  }
+  if ((b = t.closest('[data-bbuy]'))) {
+    if (b.disabled) return;
+    var cpu = bPart('cpu'), gpu = bPart('gpu'), ram = bPart('ram'), tot = bTotal();
+    addToCart('pcb', b, { key: 'pcb-' + bToken(), price: tot, full: tot, vlabel: cpu.n.replace(/^(Intel|AMD) /, '') + ' · ' + gpu.n.replace(/^(GeForce|Radeon) /, '') + ' · ' + ram.n + (state.bx.asm ? ' · مونتاژ و تست' : '') });
+  }
+}
 
 /* ================= start ================= */
 renderRail(); renderTop(); renderStatus(); initMega(); syncSoundUI();

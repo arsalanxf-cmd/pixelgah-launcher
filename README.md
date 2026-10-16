@@ -7,3 +7,4 @@ All products, prices, reviews and codes are sample content.
 ## Hokm
 
 `hokm/` holds a separate project: a four-player Hokm card game against three bots (Persian, RTL). Single self-contained `hokm/index.html`, served at `/hokm/` on GitHub Pages.
+

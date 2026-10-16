@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}img{max-width:100%}</style>
 <title>لانچر پیکسل‌گاه</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Noto+Kufi+Arabic:wght@600;700;800;900&family=Vazirmatn:wght@400;500;600;700;800&display=swap">
+<link rel="preload" href="fonts/vazirmatn-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-kufi-arabic-arabic-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 @property --amb { syntax: '<color>'; inherits: true; initial-value: #F7A65A; }
 @property --ang { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
@@ -1685,6 +1687,240 @@ button.iss { cursor: pointer; }
   .bd-pre .chip, .bd-pre .sr-pl { flex: none; }
 }
 
+/* ================= v3 · services ================= */
+.sv-hero { min-height: 300px; padding-left: clamp(20px, 34%, 460px); }
+.sv-hero.sv-tradein { background: radial-gradient(60% 120% at 10% 50%, rgba(225, 76, 255, .2), transparent 70%), radial-gradient(70% 120% at 85% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 65%), var(--ink-2); }
+.sv-hero.sv-uae { background: radial-gradient(60% 120% at 10% 50%, rgba(69, 196, 137, .2), transparent 70%), radial-gradient(70% 120% at 85% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 65%), var(--ink-2); }
+.sv-hero.sv-custom { background: radial-gradient(60% 120% at 10% 50%, rgba(255, 92, 138, .2), transparent 70%), radial-gradient(70% 120% at 85% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 65%), var(--ink-2); }
+.sv-art { position: absolute; z-index: -1; left: 3%; top: 50%; width: min(32%, 420px); aspect-ratio: 2 / 1.2; transform: translateY(-50%); pointer-events: none; }
+.sv-art > svg { width: 100%; height: 100%; overflow: visible; }
+.sv-art text { fill: var(--fg-3); font: 600 13px var(--f-body); }
+.sv-art .used-stack { inset-inline-end: auto; left: 10%; width: 70%; }
+.sv-art .alive { position: absolute; inset: -10% 10%; }
+.sv-art .alive .illu { width: 100%; height: 100%; }
+.sv-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; animation: wordUp .8s var(--ease) backwards .3s; }
+.sv-tabs button { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 16px; border-radius: 14px; border: 1px solid var(--line-2); background: rgba(255, 255, 255, .04); color: var(--fg-2); font-weight: 700; font-size: 13.5px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.sv-tabs button:hover { color: var(--fg); border-color: var(--fg-3); }
+.sv-tabs button[aria-current="page"] { background: var(--accent); border-color: transparent; color: var(--accent-ink); }
+.sv-tabs .i { width: 18px; height: 18px; }
+.sv-body { margin-top: -30px; display: flex; flex-direction: column; gap: 40px; }
+.sv-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 22px; align-items: start; }
+.sv-main { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.sv-side { position: sticky; top: 12px; }
+.sv-side h3 { margin: 0; font-family: var(--f-display); font-size: 17px; }
+.sv-side .btn.primary { min-height: 52px; }
+.sv-side .btn:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }
+.stepn { display: inline-grid; place-items: center; width: 28px; height: 28px; margin-left: 10px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); font-size: 14px; vertical-align: 1px; }
+.ti-games { display: grid; grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 12px; }
+.ti-g { display: flex; flex-direction: column; gap: 4px; padding: 0 0 10px; border: 1px solid var(--line); border-radius: 16px; background: var(--ink-3); color: inherit; cursor: pointer; text-align: right; overflow: hidden; animation: rise .5s var(--ease) backwards; animation-delay: calc(var(--i) * 40ms); transition: border-color .2s, transform .35s var(--spring), box-shadow .3s; }
+.ti-g:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--tint) 50%, var(--line)); }
+.ti-g.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 16px 34px -18px var(--accent); }
+.ti-cv { position: relative; display: block; aspect-ratio: 3 / 3.4; overflow: hidden; }
+.ti-cv svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ti-cv .cv-band { position: absolute; top: 0; inset-inline: 0; height: 20px; font-size: 9px; }
+.ti-ck { position: absolute; bottom: 8px; left: 8px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 14px; background: var(--accent); color: var(--accent-ink); transform: scale(0); transition: transform .4s var(--spring); }
+.ti-ck .i { width: 16px; height: 16px; stroke-width: 3; }
+.ti-g.on .ti-ck { transform: none; }
+.ti-g b { padding: 4px 10px 0; font-size: 13px; line-height: 1.5; }
+.ti-g > span:last-child { padding: 0 10px; font-size: 12px; color: var(--ok); font-weight: 700; }
+.ti-other { display: flex; gap: 8px; }
+.ti-other .btn { min-height: 48px; }
+.ti-items { display: flex; flex-direction: column; gap: 10px; }
+.ti-it { display: flex; flex-direction: column; gap: 10px; padding: 12px; border-radius: 16px; background: var(--ink-3); border: 1px solid var(--line); animation: linkIn .4s var(--ease) backwards; animation-delay: calc(var(--i) * 50ms); }
+.ti-ih { display: flex; align-items: center; gap: 12px; }
+.ti-ih > div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.ti-ih b { font-size: 14px; }
+.ti-ih small { font-size: 12px; color: var(--fg-3); }
+.ti-mini { position: relative; width: 44px; height: 54px; flex: none; border-radius: 10px; overflow: hidden; }
+.ti-mini svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ti-mini.none { display: grid; place-items: center; background: var(--ink-4); color: var(--fg-3); }
+.ti-mini.none svg { position: static; width: 22px; height: 22px; }
+.ti-q { font-size: 14px; color: var(--ok); white-space: nowrap; }
+.ti-it .chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.ti-box { margin-right: auto; font-size: 13px; align-items: center; }
+.ti-meter { height: 6px; border-radius: 3px; background: var(--ink-5); overflow: hidden; }
+.ti-meter i { display: block; height: 100%; width: var(--w); margin-right: 0; border-radius: 3px; background: linear-gradient(to left, var(--accent), #FF5C8A); transition: width .6s var(--ease); }
+.uae-q { align-self: flex-start; height: 48px; padding: 4px; }
+.uae-q button { width: 40px; height: 40px; }
+.uae-steps { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; position: relative; }
+.uae-steps::before { content: ""; position: absolute; top: 26px; inset-inline: 7%; height: 2px; background: repeating-linear-gradient(to left, var(--line-2) 0 8px, transparent 8px 14px); }
+.uae-steps li { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; animation: rise .6s var(--ease) backwards; animation-delay: calc(var(--i) * 80ms); }
+.us-i { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 18px; background: var(--ink-2); border: 1px solid var(--line-2); color: var(--accent); }
+.us-i .i { width: 22px; height: 22px; }
+.uae-steps b { font-size: 13px; }
+.uae-steps small { font-size: 11.5px; color: var(--fg-3); }
+.sv-plane path { filter: drop-shadow(0 0 6px #fff); }
+.cp { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+.cp-stage { --tint: var(--cp-shell); position: sticky; top: 12px; display: flex; flex-direction: column; align-items: center; gap: 14px; min-height: 460px; padding: 30px 24px 22px; border-radius: 28px; overflow: hidden; background: radial-gradient(60% 55% at 50% 45%, color-mix(in srgb, var(--cp-trim) 22%, transparent), transparent 70%), var(--ink-1); border: 1px solid var(--line); transition: background .6s; }
+.cp-stage .floor { opacity: .5; }
+.cp-tilt { position: relative; width: min(100%, 520px); transition: transform .5s var(--ease); animation: cpFloat 6s ease-in-out infinite; }
+.cp-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.cp-p { transition: fill .45s var(--ease); }
+.cp-shell { fill: var(--cp-shell); }
+.cp-grip { fill: var(--cp-grip); }
+.cp-btn { fill: var(--cp-btn); }
+.cp-stick { fill: var(--cp-stick); }
+.cp-dpad { fill: var(--cp-dpad); }
+.cp-trim { fill: var(--cp-trim); }
+.cp-pad { stroke: rgba(0, 0, 0, .25); stroke-width: 1.5; }
+.cp-light { stroke: var(--cp-trim); stroke-width: 4; stroke-linecap: round; filter: drop-shadow(0 0 8px var(--cp-trim)); transition: stroke .45s; animation: cpGlow 2.4s ease-in-out infinite; }
+.cp-ring { fill: rgba(0, 0, 0, .35); }
+.cp-sym { fill: none; stroke: rgba(0, 0, 0, .45); stroke-width: 2.2; stroke-linecap: round; }
+.cp-shadow { fill: rgba(0, 0, 0, .55); filter: blur(6px); }
+.cp-txt { fill: rgba(0, 0, 0, .55); font: 700 13px var(--f-tech); letter-spacing: .14em; }
+.cp-gl { fill: url(#cpGloss); opacity: 0; transition: opacity .4s; pointer-events: none; }
+.cp-clear { fill: url(#cpCirc); opacity: 0; transition: opacity .4s; pointer-events: none; }
+.cp-stage[data-fin="gloss"] .cp-gl { opacity: .55; }
+.cp-stage[data-fin="clear"] .cp-shell, .cp-stage[data-fin="clear"] .cp-grip { fill-opacity: .55; }
+.cp-stage[data-fin="clear"] .cp-clear { opacity: 1; }
+.cp-stage[data-fin="clear"] .cp-gl { opacity: .3; }
+.cp-p.flash { animation: cpFlash .6s ease; }
+.cp-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.cp-chips span { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 10px; background: rgba(255, 255, 255, .05); font-size: 12px; color: var(--fg-2); }
+.cp-chips i, .cp-parts i { width: 12px; height: 12px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, .25); flex: none; transition: background .4s; }
+.cp-rand { position: absolute; top: 14px; left: 14px; }
+.cp-side { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.cp-parts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.cp-parts button { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 10px; border-radius: 12px; border: 1px solid var(--line-2); background: var(--ink-3); color: var(--fg-2); font-size: 13px; font-weight: 700; cursor: pointer; transition: border-color .2s, background .2s, color .2s; }
+.cp-parts button[aria-selected="true"] { border-color: var(--accent); color: var(--fg); background: color-mix(in srgb, var(--accent) 12%, var(--ink-3)); }
+.cp-sw { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.cp-sw button { position: relative; aspect-ratio: 1; border-radius: 50%; border: 0; background: var(--c); cursor: pointer; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .12), 0 6px 16px -8px var(--c); transition: transform .35s var(--spring), box-shadow .3s; animation: popIn .4s var(--spring) backwards; }
+.cp-sw button:nth-child(2n) { animation-delay: .04s; } .cp-sw button:nth-child(3n) { animation-delay: .08s; }
+.cp-sw button:hover { transform: scale(1.1); }
+.cp-sw button[aria-checked="true"] { transform: scale(1.08); box-shadow: 0 0 0 3px var(--ink-2), 0 0 0 5px var(--accent), 0 8px 20px -8px var(--c); }
+.cp-sw button[aria-checked="true"]::after { content: ""; position: absolute; left: 32%; top: 34%; width: 36%; height: 18%; border: solid #fff; border-width: 0 0 3px 3px; transform: rotate(-45deg); mix-blend-mode: difference; }
+.cp-buy .btn.primary { min-height: 52px; }
+
+/* ================= v3 · news ================= */
+.nw-tabs { align-self: flex-start; }
+.nw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+.nw-grid.home { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.nw { display: flex; flex-direction: column; border-radius: 22px; overflow: hidden; background: var(--ink-2); border: 1px solid var(--line); cursor: pointer; animation: rise .55s var(--ease) backwards; animation-delay: calc(var(--i) * 60ms); transition: transform .4s var(--ease), border-color .3s, box-shadow .4s; }
+.nw:hover, .nw:focus-visible { transform: translateY(-5px); border-color: var(--line-2); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .8); }
+.nw-cv { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: radial-gradient(circle at 50% 60%, color-mix(in srgb, var(--tint) 40%, transparent), transparent 70%), var(--ink-3); }
+.nw-cv > svg { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform 1.2s var(--ease); }
+.nw-cv::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, .14) 50%, transparent 60%); transform: translateX(-120%); }
+.nw:hover .nw-cv::after, .nw-feat:hover .nw-cv::after { transform: translateX(120%); transition: transform 1s var(--ease); }
+.nw:hover .nw-cv > svg { transform: scale(1.07); }
+.nw-cv.ill .floor { opacity: .4; }
+.nw-it { position: absolute; width: 46%; aspect-ratio: 1; top: 8%; }
+.nw-it .illu { width: 100%; height: 100%; }
+.nw-it0 { right: 12%; z-index: 2; }
+.nw-it1 { left: 12%; top: 16%; width: 40%; opacity: .9; }
+.nw:hover .nw-it0 { transform: translateY(-6px) rotate(-3deg); transition: transform .6s var(--spring); }
+.nw-b { display: flex; flex-direction: column; gap: 8px; padding: 16px 18px 18px; flex: 1; }
+.nw-b h3 { margin: 0; font-family: var(--f-display); font-size: 16px; line-height: 1.7; }
+.nw-b p { margin: 0; color: var(--fg-2); font-size: 13.5px; line-height: 1.9; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.nw-t { display: inline-flex; align-items: center; gap: 6px; width: fit-content; padding: 3px 10px; border-radius: 9px; font-size: 12px; font-weight: 800; }
+.nw-t .i { width: 14px; height: 14px; }
+.nw-t.t-news { background: color-mix(in srgb, #4C7DFF 18%, transparent); color: #8FB0FF; }
+.nw-t.t-review { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
+.nw-t.t-guide { background: color-mix(in srgb, var(--ok) 16%, transparent); color: var(--ok); }
+.nw-m { margin-top: auto; font-size: 12px; color: var(--fg-3); }
+.nw-feat { position: relative; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); border-radius: 28px; overflow: hidden; background: var(--ink-2); border: 1px solid var(--line); cursor: pointer; min-height: 340px; animation: rise .7s var(--ease) backwards; }
+.nw-feat .nw-cv { aspect-ratio: auto; height: 100%; order: 2; }
+.nw-feat:hover .nw-cv > svg { transform: scale(1.05); }
+.nw-fb { display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 34px 32px; position: relative; }
+.nw-fb h2 { margin: 0; font-family: var(--f-display); font-size: clamp(22px, 2.4vw, 30px); line-height: 1.6; }
+.nw-fb p { margin: 0; color: var(--fg-2); line-height: 1.9; }
+.nw-fb .nw-m { margin-top: 4px; }
+.nw-score { position: absolute; top: 24px; left: 24px; display: grid; place-items: center; width: 74px; height: 74px; border-radius: 50%; background: conic-gradient(var(--accent) var(--p, 88%), var(--ink-5) 0); }
+.nw-score::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: var(--ink-2); }
+.nw-score b, .nw-score small { position: relative; }
+.nw-score b { font-family: var(--f-display); font-size: 20px; line-height: 1; margin-top: 8px; }
+.nw-score small { font-size: 10px; color: var(--fg-3); margin-top: -14px; }
+.ar-prog { position: fixed; z-index: 70; top: 0; left: 0; right: 0; height: 3px; pointer-events: none; }
+.ar-prog i { position: absolute; inset: 0; background: linear-gradient(to left, var(--accent), #FF5C8A); transform: scaleX(0); transform-origin: right; box-shadow: 0 0 10px var(--accent); }
+.ar-hero { position: relative; min-height: clamp(300px, 42vw, 460px); border-radius: 30px; overflow: hidden; display: flex; align-items: flex-end; isolation: isolate; border: 1px solid var(--line); }
+.ar-cv { position: absolute; inset: 0; z-index: -2; will-change: transform; }
+.ar-cv .nw-cv { position: absolute; inset: 0; aspect-ratio: auto; }
+.ar-cv .nw-it { width: 34%; top: 6%; }
+.ar-cv .nw-it0 { right: 18%; } .ar-cv .nw-it1 { left: 20%; width: 30%; }
+.ar-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(5, 6, 10, .96) 8%, rgba(5, 6, 10, .55) 50%, rgba(5, 6, 10, .1)); }
+.ar-hc { display: flex; flex-direction: column; gap: 10px; padding: clamp(22px, 4vw, 44px); max-width: 820px; }
+.ar-hc h1 { margin: 0; font-family: var(--f-display); font-size: clamp(24px, 3.4vw, 40px); line-height: 1.5; animation: wordUp .9s var(--ease) backwards .1s; }
+.ar-hc .crumbs button { color: var(--fg-2); }
+.ar { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 30px; align-items: start; margin-top: -24px; }
+.ar-body { max-width: 74ch; font-size: 16px; }
+.ar-body p.lead { font-size: 1.12em; color: var(--fg); line-height: 2.1; padding-right: 16px; border-right: 3px solid color-mix(in srgb, var(--accent) 60%, transparent); }
+.ar-body .h3 { margin-top: 18px; }
+.ar-q { margin: 14px 0; padding: 18px 24px; border-right: 4px solid var(--accent); border-radius: 4px 16px 16px 4px; background: color-mix(in srgb, var(--accent) 8%, var(--ink-2)); font-family: var(--f-display); font-size: 19px; line-height: 1.8; color: var(--fg); }
+.ar-l { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.ar-l li { display: flex; gap: 10px; align-items: flex-start; }
+.ar-l .i { width: 18px; height: 18px; flex: none; margin-top: 6px; color: var(--ok); stroke-width: 2.4; }
+.ar-rev { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 18px 24px; margin: 20px 0 10px; padding: 24px; border-radius: 24px; background: radial-gradient(80% 120% at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%), var(--ink-2); border: 1px solid var(--line-2); }
+.ar-ring { position: relative; width: 140px; height: 140px; }
+.ar-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ar-ring .rbg { fill: none; stroke: var(--ink-5); stroke-width: 10; }
+.ar-ring .rfg { fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.4s var(--ease); filter: drop-shadow(0 0 8px var(--accent)); }
+.ar-ring b { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--f-display); font-size: 36px; font-weight: 900; color: var(--fg); padding-bottom: 10px; }
+.ar-ring small { position: absolute; bottom: 36px; inset-inline: 0; text-align: center; font-size: 12px; color: var(--fg-3); }
+.ar-v { align-self: center; }
+.ar-v b { font-family: var(--f-display); font-size: 17px; color: var(--fg); }
+.ar-v p { margin: 6px 0 0; }
+.ar-pc { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.ar-pros, .ar-cons { padding: 14px 16px; border-radius: 16px; background: var(--ink-3); }
+.ar-pros b, .ar-cons b { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+.ar-pros b { color: var(--ok); } .ar-cons b { color: var(--bad); }
+.ar-pros .i, .ar-cons .i { width: 16px; height: 16px; stroke-width: 2.6; }
+.ar-pros ul, .ar-cons ul { margin: 8px 0 0; padding-right: 18px; font-size: 14px; line-height: 2; color: var(--fg-2); }
+.ar-share { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--fg-3); }
+.ar-side { position: sticky; top: 16px; }
+.ar-rel { display: flex; flex-direction: column; gap: 8px; }
+.ar-ri { display: flex; align-items: center; gap: 12px; width: 100%; padding: 8px; border: 1px solid var(--line); border-radius: 16px; background: var(--ink-3); color: inherit; cursor: pointer; text-align: right; transition: border-color .2s, transform .35s var(--spring); }
+.ar-ri:hover { border-color: var(--line-2); transform: translateX(-3px); }
+.ar-ri .mini { position: relative; width: 54px; height: 54px; flex: none; border-radius: 12px; overflow: hidden; background: radial-gradient(circle, color-mix(in srgb, var(--tint) 45%, transparent), transparent 70%), var(--ink-4); }
+.ar-ri .mini svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ar-ri .mini .illu { inset: 8%; width: 84%; height: 84%; }
+.ar-ri > span:nth-child(2) { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.ar-ri b { font-size: 13px; line-height: 1.6; }
+.ar-ri small { font-size: 12px; color: var(--fg-3); }
+.ar-ri > .i { color: var(--fg-3); }
+
+@keyframes cpFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+@keyframes cpGlow { 50% { opacity: .55; } }
+@keyframes cpFlash { 40% { filter: brightness(1.8) drop-shadow(0 0 10px #fff); } }
+.calm .cp-tilt, .calm .cp-light, .calm .sv-plane { animation: none !important; }
+
+@media (max-width: 1240px) {
+  .sv-grid { grid-template-columns: minmax(0, 1fr) 320px; }
+  .ar { grid-template-columns: minmax(0, 1fr) 280px; }
+  .uae-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 20px; }
+  .uae-steps::before { display: none; }
+}
+@media (max-width: 980px) {
+  .sv-hero { padding-left: clamp(20px, 4vw, 48px); padding-bottom: 150px; }
+  .sv-art { top: auto; bottom: 6px; left: 50%; transform: translateX(-50%); width: min(70%, 340px); height: 150px; aspect-ratio: auto; }
+  .sv-grid, .cp, .ar { grid-template-columns: minmax(0, 1fr); }
+  .sv-side, .cp-stage, .ar-side { position: static; }
+  .cp-stage { min-height: 0; }
+  .nw-grid.home { grid-template-columns: minmax(0, 1fr); }
+  .nw-grid.home .nw:nth-child(n+2) { flex-direction: row; }
+  .nw-grid.home .nw:nth-child(n+2) .nw-cv { width: 38%; aspect-ratio: auto; flex: none; }
+  .nw-grid.home .nw:nth-child(n+2) .nw-b p { display: none; }
+  .nw-feat { grid-template-columns: minmax(0, 1fr); }
+  .nw-feat .nw-cv { order: 0; aspect-ratio: 16 / 9; height: auto; }
+  .r-item[data-v="news"] { display: none; }
+}
+@media (max-width: 620px) {
+  .ti-games { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .ti-g b { font-size: 12px; padding-inline: 8px; }
+  .ti-g > span:last-child { font-size: 11px; padding-inline: 8px; }
+  .uae-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cp-parts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cp-stage { padding: 52px 14px 16px; }
+  .ar-rev { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; }
+  .ar-pc { grid-template-columns: minmax(0, 1fr); text-align: right; }
+  .nw-fb { padding: 22px 20px; }
+  .nw-score { top: auto; bottom: 20px; width: 60px; height: 60px; }
+  .ar-body { font-size: 15px; }
+  .sv-hero { padding-bottom: clamp(26px, 6vw, 48px); }
+  .sv-art { display: none; }
+  .sv-tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -20px; padding-inline: 20px; }
+  .sv-tabs button { flex: none; }
+  .nw-score { top: -44px; bottom: auto; left: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, .6); }
+}
+
 /* keyframes */
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes bob { 50% { transform: translateY(-8px); } }
@@ -2318,6 +2554,7 @@ function renderRail() {
     '<button class="r-item" type="button" data-go="wishlist" data-v="wishlist" data-sfx>' + icon('heart') + '<span class="lbl">علاقه‌مندی‌ها</span><span class="r-badge" id="wishBadge"></span></button>' +
     '<button class="r-item" type="button" data-go="cat" data-cat="games" data-sub="بازارچه بازی‌های کارکرده" data-v="used" data-sfx>' + icon('recycle') + '<span class="lbl">بازارچه کارکرده</span></button>' +
     '<button class="r-item" type="button" data-go="account" data-v="account" data-sfx>' + icon('user') + '<span class="lbl">حساب کاربری</span></button>' +
+    '<button class="r-item" type="button" data-go="news" data-v="news" data-sfx>' + icon('news') + '<span class="lbl">اخبار و نقد</span></button>' +
     '</div><div class="r-sep"></div><div class="r-quick"><span class="r-cap lbl">دسترسی سریع</span>' +
     ['qo', 'gc1', 'a1'].map(function (id) { var p = BY[id]; return '<button class="r-q" type="button" data-go="library" data-sfx style="--tint:' + p.tint + '"><span class="mini">' + miniArt(p) + '</span><span class="lbl">' + esc(p.name.length > 22 ? p.name.slice(0, 22) + '…' : p.name) + '<small>' + (p.kind === 'game' ? 'آماده‌ی بازی' : 'کد آماده است') + '</small></span></button>'; }).join('') +
     '</div><div class="r-fill"></div>' +
@@ -2473,6 +2710,8 @@ var firstRender = true;
 function go(v, params, opts) {
   params = params || {}; opts = opts || {};
   closeMega(); closePop();
+  if (v === 'cat' && params.sub === 'خرید از امارات') { v = 'service'; params = { kind: 'uae' }; }
+  else if (v === 'cat' && params.sub === 'سفارشی') { v = 'service'; params = { kind: 'custom' }; }
   if (v === 'cat' && !CATBY[params.cat]) v = '404';
   if (v === 'product' && !BY[params.pid]) v = '404';
   if (['home', 'cat', 'library', 'wishlist', 'product'].indexOf(v) < 0 && !VIEW_FN[v]) v = '404';
@@ -2581,9 +2820,9 @@ function renderHome() {
 
     '<section class="sec reveal" aria-label="خدمات ویژه"><div class="promos">' +
       '<article class="promo"><div class="pr-art" style="background:radial-gradient(70% 90% at 15% 50%, rgba(225,76,255,.22), transparent 70%), var(--ink-2)"><div class="used-stack">' + USED.slice(0, 3).map(function (g) { return '<div class="uc"><svg ' + SVGA + '>' + skyInner(g.a, false) + '<path d="' + g.a.p1 + '" fill="' + g.a.c1 + '"/><path d="' + g.a.p2 + '" fill="' + g.a.c2 + '"/><path d="' + g.a.p3 + '" fill="' + g.a.c3 + '"/></svg><span class="cv-band" style="--band:' + PLAT[g.plat].band + '">' + PLAT[g.plat].label + '</span></div>'; }).join('') + '</div></div>' +
-        '<div class="pr-copy"><span class="eyebrow">TRADE-IN</span><h3>بازارچه بازی‌های کارکرده</h3><p>بازی‌هایی که تمام کرده‌ای را بفروش و اعتبار کیف پول بگیر، یا کارکرده‌ی سالم را ارزان‌تر بخر.</p><button class="btn primary sm" type="button" data-go="cat" data-cat="games" data-sub="بازارچه بازی‌های کارکرده">ورود به بازارچه' + icon('arrowL') + '</button></div></article>' +
+        '<div class="pr-copy"><span class="eyebrow">TRADE-IN</span><h3>بازارچه بازی‌های کارکرده</h3><p>بازی‌هایی که تمام کرده‌ای را بفروش و اعتبار کیف پول بگیر، یا کارکرده‌ی سالم را ارزان‌تر بخر.</p><button class="btn primary sm" type="button" data-go="cat" data-cat="games" data-sub="بازارچه بازی‌های کارکرده">ورود به بازارچه' + icon('arrowL') + '</button> <button class="btn glass sm" type="button" data-go="service" data-kind="tradein">' + icon('recycle') + 'فروش بازی‌هایم</button></div></article>' +
       '<article class="promo promo-uae"><div class="pr-art"><svg viewBox="0 0 600 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="direction:ltr"><path id="route" d="M50 212 C 90 90, 210 40, 300 84" fill="none" stroke="#45C489" stroke-opacity=".35" stroke-width="2"/><path d="M50 212 C 90 90, 210 40, 300 84" fill="none" stroke="#45C489" stroke-width="3" class="route-dash" stroke-linecap="round"/><circle cx="50" cy="212" r="7" fill="#45C489"/><circle cx="50" cy="212" r="16" fill="#45C489" opacity=".2" class="pulse"/><circle cx="300" cy="84" r="7" fill="#F5B83D"/><circle cx="300" cy="84" r="16" fill="#F5B83D" opacity=".2" class="pulse"/><text x="50" y="244" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="14" font-weight="700" fill="#B0B6C4" letter-spacing="2">DXB</text><text x="300" y="120" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="14" font-weight="700" fill="#B0B6C4" letter-spacing="2">THR</text><g><path d="M-9 -3l6 0 7-8 3 0-3 8 6 0 3-3 2 0-2 6 2 6-2 0-3-3-6 0 3 8-3 0-7-8-6 0z" fill="#F2F3F7"/>' + (calm() ? '' : '<animateMotion dur="5s" repeatCount="indefinite" rotate="auto"><mpath href="#route" xlink:href="#route"/></animateMotion>') + '</g></svg></div>' +
-        '<div class="pr-copy"><span class="eyebrow">IMPORT</span><h3>خرید از امارات</h3><p>کالایی که این‌جا نیست را از فروشگاه‌های امارات برایت سفارش می‌دهیم، با قیمت مشخص و پیگیری مرحله به مرحله.</p><button class="btn ghost sm" type="button" data-go="cat" data-cat="more" data-sub="خرید از امارات">ثبت درخواست' + icon('arrowL') + '</button></div></article>' +
+        '<div class="pr-copy"><span class="eyebrow">IMPORT</span><h3>خرید از امارات</h3><p>کالایی که این‌جا نیست را از فروشگاه‌های امارات برایت سفارش می‌دهیم، با قیمت مشخص و پیگیری مرحله به مرحله.</p><button class="btn ghost sm" type="button" data-go="service" data-kind="uae">ثبت درخواست' + icon('arrowL') + '</button></div></article>' +
     '</div></section>' +
 
     '<section class="sec reveal" aria-labelledby="h-gift"><div class="gifts" id="gifts" style="--gt:' + BY[gl].tint + '"><div class="fan" id="fan">' +
@@ -2592,9 +2831,10 @@ function renderHome() {
       '<div class="chips" id="giftChips">' + GIFT_IDS.map(function (id) { return '<button class="chip" type="button" data-gift="' + id + '" aria-pressed="' + (id === gl) + '">' + GIFT_LABEL[id] + '</button>'; }).join('') + '</div>' +
       '<div class="g-buy"><div><small id="giftName">' + esc(BY[gl].name) + '</small><b id="giftPrice">' + toman(priceNow(BY[gl])) + '</b></div><button class="btn primary" type="button" data-add="' + gl + '" id="giftAdd" data-magnet>خرید و دریافت کد' + icon('bolt') + '</button></div></div></div></section>' +
 
+    homeNewsHTML() +
     '<section class="sec reveal" aria-label="چرا پیکسل‌گاه"><div class="trust">' +
       [['shield', 'ضمانت اصالت کالا', 'همه‌ی کالاها اورجینال و پلمب'], ['bolt', 'تحویل فوری کدها', 'گیفت کارت و اکانت در چند ثانیه'], ['truck', 'ارسال به سراسر کشور', 'پیگیری لحظه‌ای مرسوله'], ['headset', 'پشتیبانی هر روز هفته', 'گفتگو با گیمرهای واقعی']].map(function (t) { return '<div class="tr"><span class="tk">' + icon(t[0]) + '</span><div><b>' + t[1] + '</b><span>' + t[2] + '</span></div></div>'; }).join('') +
-    '</div><div class="foot"><span>© ۱۴۰۵ پیکسل‌گاه · نسخه‌ی نمایشی طرح</span><nav aria-label="لینک‌های پایانی"><button type="button" data-go="account">حساب کاربری</button><button type="button" data-go="page" data-page="guide">راهنمای فعال‌سازی کد</button><button type="button" data-go="page" data-page="faq">سؤالات متداول</button><button type="button" data-go="page" data-page="warranty">گارانتی و بازگشت</button><button type="button" data-go="page" data-page="terms">قوانین</button><button type="button" data-go="page" data-page="about">درباره‌ی ما</button><button type="button" data-go="page" data-page="contact">تماس با ما</button></nav></div></section>';
+    '</div><div class="foot"><span>© ۱۴۰۵ پیکسل‌گاه · نسخه‌ی نمایشی طرح</span><nav aria-label="لینک‌های پایانی"><button type="button" data-go="account">حساب کاربری</button><button type="button" data-go="news">اخبار و نقد</button><button type="button" data-go="service" data-kind="tradein">فروش بازی کارکرده</button><button type="button" data-go="page" data-page="guide">راهنمای فعال‌سازی کد</button><button type="button" data-go="page" data-page="faq">سؤالات متداول</button><button type="button" data-go="page" data-page="warranty">گارانتی و بازگشت</button><button type="button" data-go="page" data-page="terms">قوانین</button><button type="button" data-go="page" data-page="about">درباره‌ی ما</button><button type="button" data-go="page" data-page="contact">تماس با ما</button></nav></div></section>';
 
   initHero();
   initCountdown();
@@ -2962,7 +3202,7 @@ function openQuick(id) {
 var palOpen = false;
 function palIndex() {
   var out = [];
-  [['library', 'کتابخانه‌ی من', 'کدهای دیجیتال و سفارش‌ها', function () { go('library'); }], ['heart', 'علاقه‌مندی‌ها', 'کالاهای نشان‌شده', function () { go('wishlist'); }], ['cart', 'سبد خرید', 'مشاهده و تکمیل خرید', function () { openCart(); }], ['wallet', 'شارژ کیف پول', '۵٪ اعتبار هدیه', function () { requireLogin(openWallet); }], ['user', 'حساب کاربری', 'سفارش‌ها، آدرس‌ها و اطلاعات', function () { go('account'); }], ['wrench', 'سیستم‌ساز', 'سیستم دلخواهت را قطعه به قطعه بچین', function () { go('builder'); }], ['compare', 'مقایسه‌ی کالاها', 'تا ۴ کالا کنار هم', function () { go('compare'); }], ['filter', 'جستجوی پیشرفته', 'همه‌ی کالاها با فیلتر قیمت، برند و پلتفرم', function () { go('search'); }], ['receipt', 'پیگیری سفارش', 'وضعیت مرسوله‌ها و مرجوعی', function () { go('account', { tab: 'orders' }); }], ['info', 'سؤالات متداول', 'ارسال، پرداخت، گارانتی', function () { go('page', { page: 'faq' }); }], ['key', 'راهنمای فعال‌سازی کد', 'PSN، Xbox، eShop، Steam', function () { go('page', { page: 'guide' }); }], ['shield', 'گارانتی و بازگشت کالا', 'شرایط و مراحل مرجوعی', function () { go('page', { page: 'warranty' }); }], ['phone', 'تماس با ما', 'آدرس، تلفن و فرم پیام', function () { go('page', { page: 'contact' }); }], ['sliders', 'تنظیمات لانچر', 'رنگ، صدا و حرکت', function () { openSettings(mqMobile.matches ? $('#profileBtn') : $('.rail [data-action="settings"]')); }], ['replay', 'پخش دوباره‌ی انیمیشن ورود', 'لانچر را از نو باز کن', function () { boot(true); }]].forEach(function (a) { out.push({ type: 'act', ic: a[0], label: a[1], sub: a[2], run: a[3] }); });
+  [['library', 'کتابخانه‌ی من', 'کدهای دیجیتال و سفارش‌ها', function () { go('library'); }], ['heart', 'علاقه‌مندی‌ها', 'کالاهای نشان‌شده', function () { go('wishlist'); }], ['cart', 'سبد خرید', 'مشاهده و تکمیل خرید', function () { openCart(); }], ['wallet', 'شارژ کیف پول', '۵٪ اعتبار هدیه', function () { requireLogin(openWallet); }], ['user', 'حساب کاربری', 'سفارش‌ها، آدرس‌ها و اطلاعات', function () { go('account'); }], ['wrench', 'سیستم‌ساز', 'سیستم دلخواهت را قطعه به قطعه بچین', function () { go('builder'); }], ['compare', 'مقایسه‌ی کالاها', 'تا ۴ کالا کنار هم', function () { go('compare'); }], ['filter', 'جستجوی پیشرفته', 'همه‌ی کالاها با فیلتر قیمت، برند و پلتفرم', function () { go('search'); }], ['recycle', 'فروش بازی کارکرده', 'قیمت فوری، اعتبار کیف پول', function () { go('service', { kind: 'tradein' }); }], ['plane', 'خرید از امارات', 'استعلام و سفارش کالا از دبی', function () { go('service', { kind: 'uae' }); }], ['pad', 'کنترلر سفارشی', 'رنگ و نوشته‌ی دلخواه روی DualSense', function () { go('service', { kind: 'custom' }); }], ['news', 'اخبار و نقد', 'نقد بازی‌ها و راهنمای خرید', function () { go('news'); }], ['receipt', 'پیگیری سفارش', 'وضعیت مرسوله‌ها و مرجوعی', function () { go('account', { tab: 'orders' }); }], ['info', 'سؤالات متداول', 'ارسال، پرداخت، گارانتی', function () { go('page', { page: 'faq' }); }], ['key', 'راهنمای فعال‌سازی کد', 'PSN، Xbox، eShop، Steam', function () { go('page', { page: 'guide' }); }], ['shield', 'گارانتی و بازگشت کالا', 'شرایط و مراحل مرجوعی', function () { go('page', { page: 'warranty' }); }], ['phone', 'تماس با ما', 'آدرس، تلفن و فرم پیام', function () { go('page', { page: 'contact' }); }], ['sliders', 'تنظیمات لانچر', 'رنگ، صدا و حرکت', function () { openSettings(mqMobile.matches ? $('#profileBtn') : $('.rail [data-action="settings"]')); }], ['replay', 'پخش دوباره‌ی انیمیشن ورود', 'لانچر را از نو باز کن', function () { boot(true); }]].forEach(function (a) { out.push({ type: 'act', ic: a[0], label: a[1], sub: a[2], run: a[3] }); });
   CATS.forEach(function (c) {
     out.push({ type: 'cat', ic: c.icon, label: c.label, sub: 'دسته‌بندی', run: function () { go('cat', { cat: c.id }); } });
     c.groups.forEach(function (g) {
@@ -4865,6 +5105,253 @@ function bClick(e) {
     var cpu = bPart('cpu'), gpu = bPart('gpu'), ram = bPart('ram'), tot = bTotal();
     addToCart('pcb', b, { key: 'pcb-' + bToken(), price: tot, full: tot, vlabel: cpu.n.replace(/^(Intel|AMD) /, '') + ' · ' + gpu.n.replace(/^(GeForce|Radeon) /, '') + ' · ' + ram.n + (state.bx.asm ? ' · مونتاژ و تست' : '') });
   }
+}
+
+/* ================= v3 · services ================= */
+var SERVICES = [['tradein', 'فروش بازی کارکرده', 'recycle', 'TRADE-IN'], ['uae', 'خرید از امارات', 'plane', 'IMPORT'], ['custom', 'کنترلر سفارشی', 'pad', 'CUSTOM']];
+var SV_INTRO = { tradein: 'بازی‌هایی که تمام کرده‌ای را بفروش؛ قیمت را همین حالا می‌بینی و پولش را به کیف پول یا کارتت می‌گیری.', uae: 'کالایی که این‌جا نیست را از فروشگاه‌های امارات برایت می‌خریم؛ قیمت تخمینی را همین‌جا ببین.', custom: 'کنترلر DualSense را با رنگ‌ها و نوشته‌ی دلخواهت بساز؛ ساخت و تست در کارگاه ما، ارسال ظرف ۵ روز کاری.' };
+function svCode(p) { return p + '-' + faD(genDigits(5)); }
+VIEW_FN.service = function (p) {
+  var k = SERVICES.some(function (s) { return s[0] === p.kind; }) ? p.kind : 'tradein', sv = SERVICES.filter(function (s) { return s[0] === k; })[0];
+  view.innerHTML = '<section class="pg-hero sv-hero sv-' + k + '"><span class="eyebrow">' + sv[3] + '</span><h1>' + sv[1] + '</h1><p>' + SV_INTRO[k] + '</p><nav class="sv-tabs" aria-label="خدمات">' + SERVICES.map(function (s) { return '<button type="button" data-go="service" data-kind="' + s[0] + '" aria-current="' + (s[0] === k ? 'page' : 'false') + '">' + icon(s[2]) + s[1] + '</button>'; }).join('') + '</nav><div class="sv-art" aria-hidden="true">' + svArt(k) + '</div></section><div id="svBody" class="sv-body"></div>';
+  ({ tradein: tradeIn, uae: uaeForm, custom: customPad })[k]();
+};
+function svArt(k) {
+  if (k === 'uae') return '<svg viewBox="0 0 400 200" style="direction:ltr"><path id="svRoute" d="M330 150 C 280 40, 140 30, 70 80" fill="none" stroke="#45C489" stroke-opacity=".3" stroke-width="2"/><path d="M330 150 C 280 40, 140 30, 70 80" fill="none" stroke="#45C489" stroke-width="3" stroke-linecap="round" class="route-dash"/><circle cx="330" cy="150" r="7" fill="#F5B83D"/><circle cx="330" cy="150" r="16" fill="#F5B83D" opacity=".2" class="pulse"/><circle cx="70" cy="80" r="7" fill="#45C489"/><circle cx="70" cy="80" r="16" fill="#45C489" opacity=".2" class="pulse"/><text x="330" y="182" text-anchor="middle">دبی</text><text x="70" y="112" text-anchor="middle">تهران</text><g class="sv-plane"><path d="M-12 0l24-6-6 6 6 6z" fill="#fff"/><animateMotion dur="5s" repeatCount="indefinite" rotate="auto"><mpath href="#svRoute" xlink:href="#svRoute"/></animateMotion></g></svg>';
+  if (k === 'custom') return '<div class="alive">' + ILLU.pad('#FF5C8A', true) + '</div>';
+  return '<div class="used-stack">' + USED.slice(0, 3).map(function (g) { return '<div class="uc"><svg ' + SVGA + '>' + skyInner(g.a, false) + '<path d="' + g.a.p1 + '" fill="' + g.a.c1 + '"/><path d="' + g.a.p2 + '" fill="' + g.a.c2 + '"/><path d="' + g.a.p3 + '" fill="' + g.a.c3 + '"/></svg><span class="cv-band" style="--band:' + PLAT[g.plat].band + '">' + PLAT[g.plat].label + '</span></div>'; }).join('') + '</div>';
+}
+function svSuccess(title, code, text, steps) {
+  $('#svBody').innerHTML = '<section class="sec"><div class="result"><div class="success"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><path d="M30 52l13 13 27-29"/></svg></div><h2>' + title + '</h2><div class="ono">' + code + '</div><p>' + text + '</p><div class="next3">' + steps.map(function (s) { return '<div>' + icon(s[0]) + '<b>' + s[1] + '</b><span>' + s[2] + '</span></div>'; }).join('') + '</div><div class="qv-ctas"><button class="btn primary" type="button" data-go="account">' + icon('user') + 'حساب کاربری</button><button class="btn ghost" type="button" data-go="home">بازگشت به فروشگاه</button></div></div></section>';
+  main.scrollTo({ top: 0, behavior: calm() ? 'auto' : 'smooth' }); Sound.success(); confetti();
+}
+
+/* trade-in */
+var TI_COND = [['new', 'در حد نو', 'دیسک بدون خط، جعبه سالم', 1], ['good', 'سالم با خط جزئی', 'خط سطحی که در اجرا اثری ندارد', .8], ['fair', 'خط‌دار ولی سالم', 'خط‌های واضح، بازی بدون مشکل اجرا می‌شود', .55]];
+var TI_PAY = [['wallet', 'اعتبار کیف پول', '۱۰٪ بیشتر، فوری', 1.1], ['card', 'واریز به کارت بانکی', 'تا ۲۴ ساعت کاری', 1]];
+var TI_SHIP = [['store', 'تحویل حضوری در فروشگاه', 'رایگان'], ['courier', 'پیک در تهران', 'رایگان برای ۲ بازی و بیشتر'], ['post', 'ارسال پستی', 'هزینه با خودت']];
+state.ti = { plat: 'ps5', items: [], pay: 'wallet', ship: 'store' };
+function tiQuote(it) { var g = BY[it.id], base = g ? g.price : it.est || 1200000; var v = base * .42 * (TI_COND.filter(function (c) { return c[0] === it.cond; })[0] || TI_COND[0])[3] * (it.box ? 1.05 : 1); return Math.round(v / 10000) * 10000; }
+function tradeIn() {
+  var ti = state.ti, body = $('#svBody');
+  var games = GAMES.filter(function (g) { return g.plat === ti.plat; });
+  var sum = ti.items.reduce(function (s, it) { return s + tiQuote(it); }, 0), pay = TI_PAY.filter(function (x) { return x[0] === ti.pay; })[0], total = Math.round(sum * pay[3] / 10000) * 10000;
+  body.innerHTML = '<div class="sv-grid"><div class="sv-main">' +
+    '<div class="card-p"><div class="sec-h2"><h3><span class="stepn">۱</span>بازی‌هایت را انتخاب کن</h3><div class="chips" id="tiPlat">' + Object.keys(PLAT).map(function (k) { return '<button class="chip" type="button" data-tiplat="' + k + '" aria-pressed="' + (k === ti.plat) + '">' + PLAT[k].name + '</button>'; }).join('') + '</div></div>' +
+    '<div class="ti-games">' + games.map(function (g, i) { var on = ti.items.some(function (x) { return x.id === g.id; }); return '<button class="ti-g' + (on ? ' on' : '') + '" type="button" data-tig="' + g.id + '" aria-pressed="' + on + '" style="--i:' + i + ';--tint:' + g.tint + '"><span class="ti-cv">' + artSVG(g.a) + '<span class="cv-band" style="--band:' + PLAT[g.plat].band + '">' + PLAT[g.plat].label + '</span><i class="ti-ck">' + icon('check') + '</i></span><b>' + esc(g.name) + '</b><span>تا ' + toman(Math.round(g.price * .42 / 10000) * 10000) + '</span></button>'; }).join('') + '</div>' +
+    '<form class="ti-other" id="tiOther" novalidate><label for="tiOtherIn" class="vh">نام بازی دیگر</label><input class="inp" id="tiOtherIn" placeholder="بازی‌ات در فهرست نیست؟ نامش را بنویس" autocomplete="off"><button class="btn ghost sm" type="submit">' + icon('plus') + 'افزودن</button></form></div>' +
+    '<div class="card-p"><h3><span class="stepn">۲</span>وضعیت هر بازی</h3>' + (ti.items.length ? '<div class="ti-items">' + ti.items.map(function (it, i) { var g = BY[it.id]; return '<div class="ti-it" style="--i:' + i + '"><div class="ti-ih">' + (g ? '<span class="ti-mini">' + artSVG(g.a) + '</span>' : '<span class="ti-mini none">' + icon('disc') + '</span>') + '<div><b>' + esc(g ? g.name : it.name) + '</b><small>' + (g ? PLAT[g.plat].name : PLAT[it.plat].name + ' · قیمت پس از بررسی') + '</small></div><b class="ti-q">' + toman(tiQuote(it)) + '</b><button class="ib" type="button" data-tirm="' + i + '" aria-label="حذف">' + icon('trash') + '</button></div><div class="chips" role="radiogroup" aria-label="وضعیت">' + TI_COND.map(function (c) { return '<button class="chip" type="button" role="radio" data-ticond="' + i + ':' + c[0] + '" aria-checked="' + (it.cond === c[0]) + '" aria-pressed="' + (it.cond === c[0]) + '" title="' + c[2] + '">' + c[1] + '</button>'; }).join('') + '<label class="check ti-box"><input type="checkbox" data-tibox="' + i + '"' + (it.box ? ' checked' : '') + '>جعبه و دفترچه دارد (+۵٪)</label></div></div>'; }).join('') + '</div>' : '<p class="pd-note">' + icon('info') + 'هنوز بازی‌ای انتخاب نکرده‌ای. از فهرست بالا روی کاور بازی بزن.</p>') + '</div>' +
+    '<div class="card-p"><h3><span class="stepn">۳</span>دریافت پول و تحویل بازی</h3><div class="vg-cards" role="radiogroup" aria-label="دریافت پول">' + TI_PAY.map(function (x) { return '<button class="vc" type="button" role="radio" data-tipay="' + x[0] + '" aria-checked="' + (ti.pay === x[0]) + '"><b>' + icon(x[0] === 'wallet' ? 'wallet' : 'card') + x[1] + '</b><small>' + x[2] + '</small></button>'; }).join('') + '</div><div class="vg-cards" role="radiogroup" aria-label="تحویل بازی">' + TI_SHIP.map(function (x) { return '<button class="vc" type="button" role="radio" data-tiship="' + x[0] + '" aria-checked="' + (ti.ship === x[0]) + '"><b>' + icon(x[0] === 'store' ? 'store' : 'truck') + x[1] + '</b><small>' + x[2] + '</small></button>'; }).join('') + '</div></div>' +
+    '</div><aside class="sv-side card-p"><h3>پیشنهاد قیمت</h3>' + (ti.items.length ? ti.items.map(function (it) { var g = BY[it.id]; return '<div class="sum"><span>' + esc(g ? g.name : it.name) + '</span><span>' + toman(tiQuote(it)) + '</span></div>'; }).join('') : '<p class="pd-note">بازی‌ها را انتخاب کن تا قیمت را ببینی.</p>') +
+    (ti.pay === 'wallet' && sum ? '<div class="sum"><span>هدیه‌ی کیف پول ۱۰٪</span><span class="save">+' + toman(total - sum) + '</span></div>' : '') +
+    '<div class="sum tot"><span>دریافتی تو</span><span id="tiTot">' + toman(total) + '</span></div><div class="ti-meter"><i style="--w:' + Math.min(100, ti.items.length / 5 * 100) + '%"></i></div><span class="hint">' + (ti.items.length >= 5 ? 'برای ۵ بازی یا بیشتر، کارشناس با پیشنهاد ویژه تماس می‌گیرد.' : fa(Math.max(0, 5 - ti.items.length)) + ' بازی دیگر تا پیشنهاد ویژه‌ی عمده') + '</span>' +
+    '<button class="btn primary" type="button" id="tiSubmit"' + (ti.items.length ? '' : ' disabled') + ' data-magnet>' + icon('recycle') + 'ثبت درخواست فروش</button><p class="pd-note">' + icon('shield') + 'قیمت نهایی بعد از بررسی کارشناس تأیید می‌شود. نمونه‌ی نمایشی.</p></aside></div>';
+  bindTradeIn();
+}
+function bindTradeIn() {
+  var ti = state.ti, body = $('#svBody');
+  var rr = function () { var y = main.scrollTop; tradeIn(); main.scrollTop = y; };
+  body.onclick = function (e) {
+    var t = e.target, b;
+    if ((b = t.closest('[data-tiplat]'))) { ti.plat = b.dataset.tiplat; rr(); Sound.click(); return; }
+    if ((b = t.closest('[data-tig]'))) { var id = b.dataset.tig, ix = ti.items.map(function (x) { return x.id; }).indexOf(id); if (ix >= 0) ti.items.splice(ix, 1); else ti.items.push({ id: id, cond: 'new', box: true }); rr(); Sound.click(); return; }
+    if ((b = t.closest('[data-tirm]'))) { ti.items.splice(+b.dataset.tirm, 1); rr(); Sound.click(); return; }
+    if ((b = t.closest('[data-ticond]'))) { var kv = b.dataset.ticond.split(':'); ti.items[+kv[0]].cond = kv[1]; rr(); Sound.tap(); return; }
+    if ((b = t.closest('[data-tipay]'))) { ti.pay = b.dataset.tipay; rr(); Sound.tap(); return; }
+    if ((b = t.closest('[data-tiship]'))) { ti.ship = b.dataset.tiship; rr(); Sound.tap(); return; }
+    if (t.closest('#tiSubmit')) {
+      requireLogin(function () {
+        var n = ti.items.length, sum = ti.items.reduce(function (s, it) { return s + tiQuote(it); }, 0), pay = TI_PAY.filter(function (x) { return x[0] === ti.pay; })[0], tot = Math.round(sum * pay[3] / 10000) * 10000;
+        state.ti.items = [];
+        svSuccess('درخواست فروش ثبت شد', svCode('TR'), fa(n) + ' بازی با پیشنهاد ' + toman(tot) + ' ثبت شد. ' + (ti.ship === 'courier' ? 'پیک برای هماهنگی تماس می‌گیرد.' : ti.ship === 'post' ? 'آدرس ارسال پستی پیامک می‌شود.' : 'هر روز ۱۰ تا ۲۱ بازی‌ها را به فروشگاه بیاور.'), [['box', 'تحویل بازی‌ها', TI_SHIP.filter(function (x) { return x[0] === ti.ship; })[0][1]], ['eye', 'بررسی کارشناس', 'حداکثر ۲۴ ساعت'], ['wallet', ti.pay === 'wallet' ? 'شارژ کیف پول' : 'واریز به کارت', toman(tot)]]);
+      });
+    }
+  };
+  body.onchange = function (e) { var c = e.target.closest('[data-tibox]'); if (!c) return; ti.items[+c.dataset.tibox].box = c.checked; rr(); };
+  $('#tiOther').addEventListener('submit', function (e) { e.preventDefault(); var v = $('#tiOtherIn').value.trim(); if (v.length < 2) { $('#tiOtherIn').focus(); return; } ti.items.push({ id: null, name: v, plat: ti.plat, cond: 'new', box: true, est: 1200000 }); rr(); Sound.click(); });
+}
+
+/* UAE import */
+var UAE_RATE = 16800, UAE_W = [['s', 'سبک', 'تا ۱ کیلو', 450000], ['m', 'متوسط', '۱ تا ۵ کیلو', 1400000], ['l', 'سنگین', 'بیش از ۵ کیلو', 3200000]];
+state.uae = { qty: 1, w: 's', aed: '' };
+function uaeForm() {
+  var u = state.uae;
+  $('#svBody').innerHTML = '<div class="sv-grid"><form class="sv-main card-p form" id="uaeForm" novalidate><h3>مشخصات کالا</h3>' +
+    fld('uaLink', 'لینک کالا در فروشگاه اماراتی', '<input class="inp" id="uaLink" type="url" dir="ltr" placeholder="https://www.example.ae/product/..." autocomplete="off">', '<span class="hint">لینک صفحه‌ی کالا از هر فروشگاه آنلاین امارات.</span>') +
+    '<div class="row2">' + fld('uaName', 'نام کالا', '<input class="inp" id="uaName" placeholder="مثلاً هدست Meta Quest 3S">') + fld('uaCat', 'دسته', '<select class="inp" id="uaCat">' + ['کنسول و لوازم جانبی', 'قطعات کامپیوتر', 'تجهیزات گیمینگ', 'فیگور و کالکشن', 'سایر'].map(function (c) { return '<option>' + c + '</option>'; }).join('') + '</select>') + '</div>' +
+    '<div class="row2">' + fld('uaAed', 'قیمت در سایت (درهم)', '<input class="inp" id="uaAed" inputmode="decimal" dir="ltr" placeholder="1299" value="' + esc(u.aed) + '">', '<span class="hint">اختیاری؛ برای قیمت تخمینی.</span>') + '<div class="fld"><label>تعداد</label><div class="qty uae-q" role="group" aria-label="تعداد"><button type="button" data-uq="+" aria-label="یکی بیشتر">' + icon('plus') + '</button><output id="uaQty">' + fa(u.qty) + '</output><button type="button" data-uq="-" aria-label="یکی کمتر">' + icon('minus') + '</button></div></div></div>' +
+    '<div class="fld"><label>وزن تقریبی</label><div class="vg-cards" role="radiogroup" aria-label="وزن">' + UAE_W.map(function (x) { return '<button class="vc" type="button" role="radio" data-uw="' + x[0] + '" aria-checked="' + (u.w === x[0]) + '"><b>' + x[1] + '</b><small>' + x[2] + '</small><span class="dl">ارسال ' + toman(x[3]) + '</span></button>'; }).join('') + '</div></div>' +
+    fld('uaNote', 'توضیحات (اختیاری)', '<textarea class="inp" id="uaNote" placeholder="رنگ، مدل، ظرفیت یا هر نکته‌ی دیگر"></textarea>') +
+    '<button class="btn primary" type="submit" data-magnet style="align-self:flex-start">' + icon('send') + 'ثبت درخواست خرید</button></form>' +
+    '<aside class="sv-side card-p" id="uaSum"></aside></div>' +
+    '<section class="sec"><div class="sec-h"><div><h2 class="h3">مسیر سفارش از امارات</h2></div></div><ol class="uae-steps">' + [['send', 'ثبت درخواست', 'همین فرم'], ['receipt', 'استعلام قیمت نهایی', 'تا ۲۴ ساعت، پیامک'], ['card', 'پرداخت', 'آنلاین یا کیف پول'], ['store', 'خرید در امارات', '۱ تا ۲ روز'], ['plane', 'ارسال هوایی', '۴ تا ۷ روز'], ['shield', 'ترخیص و بررسی', '۲ تا ۳ روز'], ['truck', 'تحویل به تو', 'سراسر کشور']].map(function (s, i) { return '<li style="--i:' + i + '"><span class="us-i">' + icon(s[0]) + '</span><b>' + s[1] + '</b><small>' + s[2] + '</small></li>'; }).join('') + '</ol></section>';
+  uaeSum(); bindUae();
+}
+function uaeSum() {
+  var u = state.uae, aed = parseFloat(normDigits(u.aed).replace(/[^\d.]/g, '')) || 0, w = UAE_W.filter(function (x) { return x[0] === u.w; })[0];
+  var goods = Math.round(aed * UAE_RATE * u.qty / 10000) * 10000, ship = w[3] * u.qty, fee = Math.round((goods + ship) * .09 / 10000) * 10000, tot = goods + ship + fee;
+  $('#uaSum').innerHTML = '<h3>قیمت تخمینی</h3>' + (aed ? '<div class="sum"><span>کالا (' + fa(u.qty) + ' × ' + fa(aed) + ' درهم)</span><span>' + toman(goods) + '</span></div><div class="sum"><span>ارسال هوایی · ' + w[1] + '</span><span>' + toman(ship) + '</span></div><div class="sum"><span>کارمزد و ترخیص ۹٪</span><span>' + toman(fee) + '</span></div><div class="sum tot"><span>جمع تخمینی</span><span>' + toman(tot) + '</span></div>' : '<p class="pd-note">' + icon('info') + 'قیمت کالا به درهم را بنویس تا تخمین را ببینی؛ وگرنه کارشناس قیمت را استعلام می‌کند.</p>') +
+    '<div class="sum"><span>زمان تحویل</span><span>۱۰ تا ۱۴ روز کاری</span></div><p class="pd-note">' + icon('clock') + 'نرخ درهم در این نسخه نمونه است (' + fa(UAE_RATE) + ' تومان) و قیمت نهایی پیش از پرداخت تأیید می‌شود.</p>';
+}
+function bindUae() {
+  var u = state.uae, f = $('#uaeForm');
+  $('#uaAed').addEventListener('input', function (e) { u.aed = e.target.value; uaeSum(); });
+  f.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-uq]'); if (b) { u.qty = Math.max(1, Math.min(5, u.qty + (b.dataset.uq === '+' ? 1 : -1))); $('#uaQty').textContent = fa(u.qty); uaeSum(); Sound.tap(); return; }
+    var w = e.target.closest('[data-uw]'); if (w) { u.w = w.dataset.uw; $$('[data-uw]', f).forEach(function (x) { x.setAttribute('aria-checked', x === w ? 'true' : 'false'); }); uaeSum(); Sound.tap(); }
+  });
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var link = $('#uaLink').value.trim(), name = $('#uaName').value.trim(), ok = true;
+    ok = setErr('uaLink', link && !/^https?:\/\/[^\s.]+\.[^\s]{2,}/i.test(link) ? 'لینک باید با https:// شروع شود.' : '') && ok;
+    ok = setErr('uaName', name.length < 2 ? 'نام کالا را بنویس.' : '') && ok;
+    if (!ok) { Sound.blip(220, .12, 'square', .03); return; }
+    requireLogin(function () { svSuccess('درخواست خرید ثبت شد', svCode('UAE'), 'برای «' + esc(name) + '» قیمت نهایی را تا ۲۴ ساعت دیگر پیامک می‌کنیم. پرداخت فقط بعد از تأیید تو انجام می‌شود.', [['receipt', 'استعلام قیمت', 'تا ۲۴ ساعت'], ['card', 'پرداخت', 'بعد از تأیید تو'], ['plane', 'ارسال از دبی', '۱۰ تا ۱۴ روز کاری']]); state.uae = { qty: 1, w: 's', aed: '' }; });
+  });
+}
+
+/* custom controller */
+var CP_COLORS = [['#1E222C', 'مشکی کربنی'], ['#E9ECF2', 'سفید یخی'], ['#D7263D', 'قرمز آتشین'], ['#2F55C9', 'آبی کبالتی'], ['#2ECC71', 'سبز نئونی'], ['#7B5CFF', 'بنفش کهکشانی'], ['#FF7A3D', 'نارنجی غروب'], ['#D4A537', 'طلایی'], ['#FF5C8A', 'صورتی'], ['#2EC4B6', 'فیروزه‌ای']];
+var CP_PARTS = [['shell', 'بدنه'], ['grip', 'دسته‌ها'], ['btn', 'دکمه‌ها'], ['stick', 'آنالوگ‌ها'], ['dpad', 'D-pad'], ['trim', 'نوار نور و تاچ‌پد']];
+var CP_FIN = [['matte', 'مات', 0], ['gloss', 'براق', 300000], ['clear', 'شفاف', 650000]];
+state.cp = { shell: '#1E222C', grip: '#1E222C', btn: '#D4A537', stick: '#1E222C', dpad: '#E9ECF2', trim: '#D4A537', fin: 'matte', text: '', part: 'shell' };
+BY.cst = P('cst', 'accessories', 'کنترلر DualSense سفارشی', 0, 0, 'pad', '#FF5C8A', { sub: 'کنترلر سفارشی' });
+function cpName(c) { var x = CP_COLORS.filter(function (k) { return k[0] === c; })[0]; return x ? x[1] : c; }
+function cpPrice() { var cp = state.cp, f = CP_FIN.filter(function (x) { return x[0] === cp.fin; })[0]; return priceNow(BY.a1) + 1200000 + f[2] + (cp.text.trim() ? 250000 : 0); }
+function cpSVG() {
+  return '<svg viewBox="0 0 400 300" class="cp-svg" role="img" aria-label="پیش‌نمایش کنترلر سفارشی"><defs><linearGradient id="cpGloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient><pattern id="cpCirc" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 9h6l3-3h9M9 18v-5l3-3" fill="none" stroke="#9AA6C4" stroke-opacity=".5" stroke-width="1"/><circle cx="6" cy="9" r="1.4" fill="#9AA6C4" fill-opacity=".6"/></pattern></defs>' +
+    '<ellipse cx="200" cy="276" rx="130" ry="10" class="cp-shadow"/>' +
+    '<rect x="96" y="46" width="62" height="22" rx="10" class="cp-p cp-grip"/><rect x="242" y="46" width="62" height="22" rx="10" class="cp-p cp-grip"/>' +
+    '<path d="M116 64h168c44 0 68 26 78 66l18 80c6 34-22 54-50 38l-44-28c-10-6-18-8-30-8H144c-12 0-20 2-30 8l-44 28c-28 16-56-4-50-38l18-80c10-40 34-66 78-66z" class="cp-p cp-grip"/>' +
+    '<path d="M132 64h136c32 0 50 20 58 50l6 28c-30 10-60 18-132 18s-102-8-132-18l6-28c8-30 26-50 58-50z" class="cp-p cp-shell"/>' +
+    '<path d="M132 64h136c32 0 50 20 58 50l6 28c-30 10-60 18-132 18s-102-8-132-18l6-28c8-30 26-50 58-50z" class="cp-clear"/>' +
+    '<path d="M116 64h168c44 0 68 26 78 66l18 80c6 34-22 54-50 38l-44-28c-10-6-18-8-30-8H144c-12 0-20 2-30 8l-44 28c-28 16-56-4-50-38l18-80c10-40 34-66 78-66z" class="cp-gl"/>' +
+    '<rect x="162" y="78" width="76" height="46" rx="10" class="cp-p cp-trim cp-pad"/><path d="M150 72h100" class="cp-light"/>' +
+    '<text x="200" y="108" text-anchor="middle" class="cp-txt" id="cpTxt"></text>' +
+    '<path d="M110 104h18v16h16v18h-16v16h-18v-16H94v-18h16z" class="cp-p cp-dpad"/>' +
+    '<circle cx="290" cy="98" r="11" class="cp-p cp-btn"/><circle cx="312" cy="120" r="11" class="cp-p cp-btn"/><circle cx="290" cy="142" r="11" class="cp-p cp-btn"/><circle cx="268" cy="120" r="11" class="cp-p cp-btn"/>' +
+    '<path d="M286 98h8M290 94v8" class="cp-sym"/><circle cx="312" cy="120" r="4.5" class="cp-sym"/><path d="M286 138l8 8M294 138l-8 8" class="cp-sym"/><rect x="264" y="116" width="8" height="8" class="cp-sym"/>' +
+    '<circle cx="160" cy="178" r="24" class="cp-ring"/><circle cx="160" cy="178" r="16" class="cp-p cp-stick"/><circle cx="240" cy="178" r="24" class="cp-ring"/><circle cx="240" cy="178" r="16" class="cp-p cp-stick"/>' +
+    '<circle cx="200" cy="150" r="6" class="cp-p cp-trim"/></svg>';
+}
+function customPad() {
+  var cp = state.cp;
+  $('#svBody').innerHTML = '<div class="cp"><div class="cp-stage" id="cpStage"><div class="floor"></div><div class="cp-tilt" id="cpTilt">' + cpSVG() + '</div><div class="cp-chips" id="cpChips"></div><button class="btn glass sm cp-rand" type="button" id="cpRand">' + icon('spark') + 'ترکیب تصادفی</button></div>' +
+    '<div class="cp-side"><div class="card-p"><h3>رنگ قطعه‌ها</h3><div class="cp-parts" role="tablist" id="cpParts">' + CP_PARTS.map(function (p) { return '<button type="button" role="tab" data-cpp="' + p[0] + '" aria-selected="' + (cp.part === p[0]) + '"><i style="background:' + cp[p[0]] + '"></i>' + p[1] + '</button>'; }).join('') + '</div>' +
+    '<div class="cp-sw" id="cpSw" role="radiogroup" aria-label="رنگ"></div></div>' +
+    '<div class="card-p"><h3>جنس رویه</h3><div class="chips" role="radiogroup" aria-label="رویه">' + CP_FIN.map(function (f) { return '<button class="chip" type="button" role="radio" data-cpf="' + f[0] + '" aria-checked="' + (cp.fin === f[0]) + '" aria-pressed="' + (cp.fin === f[0]) + '">' + f[1] + (f[2] ? ' · +' + shortT(f[2]) : '') + '</button>'; }).join('') + '</div>' +
+    fld('cpText', 'حک نوشته روی تاچ‌پد (اختیاری · +۲۵۰ هزار)', '<input class="inp" id="cpText" maxlength="12" dir="auto" placeholder="مثلاً PIXEL یا اسم خودت" value="' + esc(cp.text) + '">', '<span class="hint">حداکثر ۱۲ حرف.</span>') + '</div>' +
+    '<div class="card-p cp-buy"><div class="sum"><span>کنترلر DualSense اورجینال</span><span>' + toman(priceNow(BY.a1)) + '</span></div><div class="sum"><span>ساخت و رنگ سفارشی</span><span>' + toman(1200000) + '</span></div><div class="sum" id="cpFinRow"></div><div class="sum" id="cpTxtRow"></div><div class="sum tot"><span>جمع</span><span id="cpTot"></span></div><button class="btn primary" type="button" id="cpAdd" data-magnet>' + icon('cart') + 'افزودن به سبد</button><p class="pd-note">' + icon('clock') + 'ساخت و تست در کارگاه، ارسال ظرف ۵ روز کاری · گارانتی ۶ ماهه‌ی فروشگاه</p></div></div></div>';
+  cpPaint(true); bindCustom();
+}
+function cpPaint(first) {
+  var cp = state.cp, st = $('#cpStage'); if (!st) return;
+  CP_PARTS.forEach(function (p) { st.style.setProperty('--cp-' + p[0], cp[p[0]]); });
+  st.dataset.fin = cp.fin;
+  $('#cpTxt').textContent = cp.text.trim();
+  $$('#cpParts [data-cpp]').forEach(function (b) { b.setAttribute('aria-selected', b.dataset.cpp === cp.part ? 'true' : 'false'); b.querySelector('i').style.background = cp[b.dataset.cpp]; });
+  $('#cpSw').innerHTML = CP_COLORS.map(function (c) { return '<button type="button" role="radio" data-cpc="' + c[0] + '" aria-checked="' + (cp[cp.part] === c[0]) + '" aria-label="' + c[1] + '" title="' + c[1] + '" style="--c:' + c[0] + '"></button>'; }).join('');
+  $('#cpChips').innerHTML = CP_PARTS.map(function (p) { return '<span><i style="background:' + cp[p[0]] + '"></i>' + p[1] + ': ' + cpName(cp[p[0]]) + '</span>'; }).join('');
+  var f = CP_FIN.filter(function (x) { return x[0] === cp.fin; })[0];
+  $('#cpFinRow').innerHTML = '<span>رویه‌ی ' + f[1] + '</span><span>' + (f[2] ? toman(f[2]) : 'رایگان') + '</span>';
+  $('#cpTxtRow').innerHTML = cp.text.trim() ? '<span>حک «' + esc(cp.text.trim()) + '»</span><span>' + toman(250000) + '</span>' : '';
+  $('#cpTxtRow').hidden = !cp.text.trim();
+  var tot = $('#cpTot'), v = cpPrice(), pv = state.cpLast || v; state.cpLast = v;
+  if (first || pv === v) tot.textContent = toman(v); else countTo(tot, pv, v, 500, toman);
+}
+function bindCustom() {
+  var cp = state.cp, body = $('#svBody'), tilt = $('#cpTilt'), stage = $('#cpStage');
+  body.onclick = function (e) {
+    var t = e.target, b;
+    if ((b = t.closest('[data-cpp]'))) { cp.part = b.dataset.cpp; cpPaint(); var g = $$('.cp-' + cp.part, stage); g.forEach(function (x) { x.classList.remove('flash'); void x.getBoundingClientRect(); x.classList.add('flash'); }); Sound.tap(); return; }
+    if ((b = t.closest('[data-cpc]'))) { cp[cp.part] = b.dataset.cpc; cpPaint(); Sound.click(); return; }
+    if ((b = t.closest('[data-cpf]'))) { cp.fin = b.dataset.cpf; $$('[data-cpf]', body).forEach(function (x) { var on = x === b; x.setAttribute('aria-checked', String(on)); x.setAttribute('aria-pressed', String(on)); }); cpPaint(); Sound.click(); return; }
+    if (t.closest('#cpRand')) { CP_PARTS.forEach(function (p, i) { setTimeout(function () { cp[p[0]] = CP_COLORS[Math.random() * CP_COLORS.length | 0][0]; cpPaint(); Sound.tap(); }, calm() ? 0 : i * 90); }); return; }
+    if ((b = t.closest('#cpAdd'))) {
+      var v = cpPrice(), key = 'cst-' + CP_PARTS.map(function (p) { return cp[p[0]].slice(1); }).join('') + cp.fin + cp.text.trim();
+      BY.cst.tint = cp.shell;
+      addToCart('cst', b, { key: key, price: v, full: v, vlabel: 'بدنه ' + cpName(cp.shell) + ' · دکمه‌ها ' + cpName(cp.btn) + ' · رویه‌ی ' + CP_FIN.filter(function (x) { return x[0] === cp.fin; })[0][1] + (cp.text.trim() ? ' · حک «' + cp.text.trim() + '»' : '') });
+    }
+  };
+  $('#cpText').addEventListener('input', function (e) { cp.text = e.target.value.slice(0, 12); cpPaint(); });
+  if (!calm() && matchMedia('(hover: hover)').matches) {
+    var mv = function (e) { var r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; tilt.style.transform = 'perspective(900px) rotateY(' + (x * 18) + 'deg) rotateX(' + (-y * 14) + 'deg)'; };
+    stage.addEventListener('pointermove', mv);
+    stage.addEventListener('pointerleave', function () { tilt.style.transform = ''; });
+  }
+}
+
+/* ================= v3 · news & reviews ================= */
+var NEWS = [
+  { id: 'hm-review', type: 'review', title: 'نقد Hollow Meridian؛ کوه‌هایی که هر شب جابه‌جا می‌شوند', ex: 'ماجراجویی تنهایی که نقشه‌اش را خودت می‌کشی. آیا ایده‌ی کوه‌های متحرک تا آخر بازی تازه می‌ماند؟', date: '۲۳ مهر ۱۴۰۵', min: 9, game: 'hm', score: 8.8, pros: ['طراحی مرحله‌ی خلاقانه و همیشه غافلگیرکننده', 'موسیقی آرام و به‌یادماندنی', 'سیستم نقشه‌کشی دستی که واقعاً معنا دارد'], cons: ['چند ساعت میانی کمی تکراری می‌شود', 'افت فریم گاه‌به‌گاه در حالت کیفیت'], verdict: 'یکی از بهترین بازی‌های داستانی سال؛ اگر بازی‌های آرام و کشف‌محور را دوست داری، از دستش نده.', rel: ['hm', 'c1', 'a1'],
+    body: [['p', 'Hollow Meridian از همان دقیقه‌ی اول یک قانون ساده دارد: هر شب کوه‌ها جابه‌جا می‌شوند. مسیری که دیروز امن بود، امروز به دره‌ای عمیق ختم می‌شود و تنها ابزار تو نقشه‌ای است که با دست خودت می‌کشی.'], ['h', 'نقشه، قلب بازی'], ['p', 'برخلاف بیشتر بازی‌های جهان‌باز، این‌جا هیچ نقشه‌ی خودکاری وجود ندارد. هر نشانه را خودت ثبت می‌کنی و هر اشتباه در نقشه، شب بعد گرانت تمام می‌شود. همین ایده‌ی ساده باعث می‌شود به جزئیات محیط با دقتی نگاه کنی که کمتر بازی‌ای از تو می‌خواهد.'], ['q', 'هیچ بازی‌ای این‌قدر به حافظه و دقت خود بازیکن اعتماد نکرده است.'], ['h', 'جایی که ریتم کند می‌شود'], ['p', 'حدود ساعت دوازدهم، چرخه‌ی شب و روز کمی قابل پیش‌بینی می‌شود و چند مأموریت فرعی حس تکرار دارند. خوشبختانه فصل پایانی با یک چرخش هوشمندانه دوباره همه‌چیز را تازه می‌کند.'], ['p', 'در مجموع، Hollow Meridian تجربه‌ای است که بعد از تمام کردنش هم در ذهن می‌ماند.']] },
+  { id: 'ps5-vs-sw2', type: 'guide', title: 'PS5 Slim یا Nintendo Switch 2؟ کدام برای تو مناسب‌تر است', ex: 'دو کنسول با دو فلسفه‌ی متفاوت. بر اساس سبک بازی، بودجه و جایی که بازی می‌کنی انتخاب کن.', date: '۲۱ مهر ۱۴۰۵', min: 6, art: [['tower', '#4C7DFF', true], ['handheld', '#FF5C5C']], tint: '#4C7DFF', rel: ['c1', 'c3', 'a6'],
+    body: [['p', 'انتخاب بین این دو کنسول بیشتر از آن‌که به قدرت سخت‌افزار مربوط باشد، به سبک زندگی و نوع بازی‌هایی که دوست داری برمی‌گردد.'], ['h', 'اگر بازی‌های بزرگ داستانی دوست داری'], ['p', 'PS5 برای تلویزیون بزرگ و بازی‌های سینمایی پرجزئیات ساخته شده است. اگر بیشتر در خانه و روی مبل بازی می‌کنی، این انتخاب منطقی‌تر است.'], ['h', 'اگر قابل‌حمل بودن و بازی جمعی برایت مهم است'], ['p', 'Switch 2 هم به تلویزیون وصل می‌شود و هم در دست بازی می‌شود؛ بازی‌های خانوادگی و چندنفره‌ی محلی نقطه‌ی قوت اصلی آن است.'], ['list', ['بودجه و قیمت بازی‌ها را هم در نظر بگیر؛ کنار کنسول، دست‌کم دو بازی و یک کنترلر اضافه حساب کن.', 'اگر اشتراک آنلاین لازم داری، هزینه‌ی سالانه‌اش را هم به بودجه اضافه کن.', 'اگر هنوز مطمئن نیستی، از مشاوره‌ی آنلاین فروشگاه کمک بگیر.']], ['p', 'هر دو کنسول در پیکسل‌گاه با گارانتی و تحویل فوری موجودند.']] },
+  { id: 'nc-preorder', type: 'news', title: 'پیش‌خرید Neon Caravan آغاز شد؛ هدیه‌ی ویژه برای خریداران اول', ex: 'نسخه‌ی پیش‌خرید با یک بسته‌ی ظاهری اختصاصی همراه است و روز عرضه تحویل داده می‌شود.', date: '۱۹ مهر ۱۴۰۵', min: 3, game: 'nc', rel: ['nc', 'c1'],
+    body: [['p', 'پیش‌خرید Neon Caravan، بازی نقش‌آفرینی اکشن در صحرایی نئونی، از امروز در پیکسل‌گاه فعال شده است.'], ['p', 'خریداران پیش‌خرید یک بسته‌ی ظاهری اختصاصی برای کاروان خود دریافت می‌کنند. نسخه‌ی فیزیکی روز عرضه ارسال می‌شود و نسخه‌ی دیجیتال همان روز در کتابخانه فعال خواهد شد.'], ['q', 'هر شهر قانون خودش را دارد؛ و کاروان تو باید با همه‌شان کنار بیاید.'], ['p', 'تاریخ دقیق عرضه به‌زودی از طرف ناشر اعلام می‌شود. این خبر نمونه است.']] },
+  { id: 'gpu-1440', type: 'guide', title: 'بهترین کارت گرافیک برای گیمینگ 1440p در پاییز ۱۴۰۵', ex: 'از RTX 4070 Super تا RX 7800 XT؛ مقایسه‌ی ساده بر اساس قیمت، مصرف برق و نیاز بازی‌های امروز.', date: '۱۷ مهر ۱۴۰۵', min: 8, art: [['gpu', '#8B7CFF'], ['monitor', '#E14CFF']], tint: '#8B7CFF', rel: ['p4', 'p5', 'p2'],
+    body: [['p', 'رزولوشن 1440p نقطه‌ی تعادل کیفیت تصویر و قیمت است. برای این رزولوشن به کارتی نیاز داری که هم حافظه‌ی گرافیکی کافی داشته باشد و هم مصرف برقش با منبع تغذیه‌ات جور باشد.'], ['h', 'چه چیزهایی مهم است؟'], ['list', ['حافظه‌ی گرافیکی دست‌کم ۱۲ گیگابایت برای بافت‌های باکیفیت', 'مصرف برق و توان منبع تغذیه؛ سیستم‌ساز پیکسل‌گاه این را برایت حساب می‌کند', 'طول کارت و جا شدن آن در کیس']], ['h', 'جمع‌بندی'], ['p', 'اگر فناوری‌های بازسازی تصویر و ری‌تریسینگ برایت مهم است، RTX 4070 Super انتخاب امن‌تری است؛ اگر حافظه‌ی بیشتر با قیمت کمتر می‌خواهی، RX 7800 XT را ببین.'], ['p', 'این راهنما نمونه است و عددهای واقعی بنچمارک در نسخه‌ی نهایی اضافه می‌شوند.']] },
+  { id: 'qo-review', type: 'review', title: 'نقد Quiet Orbit؛ تنهایی در مدار', ex: 'بازی کوتاه و تأثیرگذاری درباره‌ی فضانوردی که فقط با رادیو با زمین حرف می‌زند.', date: '۱۴ مهر ۱۴۰۵', min: 7, game: 'qo', score: 8.1, pros: ['داستان‌گویی مینیمال و عمیق', 'صداگذاری عالی'], cons: ['کوتاه؛ حدود ۵ ساعت', 'معماها گاهی خیلی ساده‌اند'], verdict: 'تجربه‌ای کوتاه اما ماندگار؛ برای یک آخر هفته‌ی آرام عالی است.', rel: ['qo', 'a5'],
+    body: [['p', 'Quiet Orbit همه‌چیز را به حداقل رسانده است: یک ایستگاه فضایی کوچک، یک رادیو و صدایی از زمین که هر روز ضعیف‌تر می‌شود.'], ['h', 'قدرت سکوت'], ['p', 'بازی جسارت این را دارد که دقیقه‌ها هیچ اتفاقی نیفتد و همین سکوت، لحظه‌های کوتاه گفت‌وگو را ارزشمند می‌کند.'], ['q', 'گاهی شنیدن یک صدای آشنا از آن طرف رادیو، از هر انفجاری هیجان‌انگیزتر است.'], ['p', 'اگر دنبال اکشن هستی، این بازی برای تو نیست؛ اما اگر بازی‌ها را برای حس و داستانشان دوست داری، Quiet Orbit را امتحان کن.']] },
+  { id: 'psn-guide', type: 'guide', title: 'راهنمای کامل خرید و فعال‌سازی گیفت کارت PSN', ex: 'کدام ریجن را بخری، کد را کجا وارد کنی و اگر فعال نشد چه کنی.', date: '۱۱ مهر ۱۴۰۵', min: 5, art: [['giftcard', '#2D5BFF', false, '$20'], ['giftcard', '#C9A13B', false, '12 MO']], tint: '#2D5BFF', rel: ['gc1', 'gc7'],
+    body: [['p', 'گیفت کارت PSN ساده‌ترین راه شارژ کیف پول اکانت پلی‌استیشن است؛ فقط باید ریجن کارت با ریجن اکانتت یکی باشد.'], ['h', 'ریجن را درست انتخاب کن'], ['p', 'اگر اکانتت آمریکا است، کارت آمریکا بخر. کد ریجن دیگر روی اکانت تو فعال نمی‌شود.'], ['h', 'مراحل فعال‌سازی'], ['list', ['وارد PlayStation Store شو', 'از منوی پروفایل گزینه‌ی Redeem Code را بزن', 'کد را از کتابخانه‌ی پیکسل‌گاه کپی و وارد کن']], ['p', 'اگر کد فعال نشد، از کتابخانه با پشتیبانی گفت‌وگو کن تا بررسی و در صورت مشکل جایگزین شود.']] },
+  { id: 'sc-review', type: 'review', title: 'نقد Saffron Circuit؛ مسابقه در شهری زعفرانی', ex: 'بازی ماشینی آرکید با پیست‌های شهری رنگارنگ و حس سرعتی که کم پیدا می‌شود.', date: '۷ مهر ۱۴۰۵', min: 6, game: 'sc', score: 7.6, pros: ['حس سرعت عالی', 'پیست‌های شهری خوش‌رنگ'], cons: ['حالت داستانی ضعیف', 'تعداد ماشین‌ها کم است'], verdict: 'برای مسابقه‌های سریع و چندنفره‌ی آخر هفته انتخاب خوبی است.', rel: ['sc', 'a3'],
+    body: [['p', 'Saffron Circuit سراغ واقع‌گرایی نمی‌رود؛ هدفش این است که در هر پیچ لبخند بزنی.'], ['h', 'شهر، شخصیت اصلی است'], ['p', 'پیست‌ها از دل بازارها و کوچه‌های رنگارنگ می‌گذرند و هر میان‌بر، داستان کوچکی دارد.'], ['p', 'حالت داستانی کوتاه و کم‌جان است، اما بخش چندنفره آن‌قدر سرگرم‌کننده است که این ضعف را جبران کند.']] },
+  { id: 'pad-care', type: 'guide', title: 'نگهداری از کنترلر: چطور جلوی دریفت آنالوگ را بگیریم', ex: 'چند عادت ساده که عمر کنترلرت را بیشتر می‌کند.', date: '۳ مهر ۱۴۰۵', min: 4, art: [['pad', '#4C7DFF', true], ['pad', '#45C489']], tint: '#2EC4B6', rel: ['a1', 'a3', 'a2'],
+    body: [['p', 'دریفت آنالوگ یعنی حرکت ناخواسته‌ی شخصیت یا دوربین بدون این‌که به استیک دست بزنی. بیشتر وقت‌ها گرد و غبار و فشار زیاد عامل آن است.'], ['list', ['کنترلر را در جای بسته و بدون گرد و غبار نگه دار', 'با دست چرب یا خوراکی بازی نکن', 'استیک‌ها را بیش از حد فشار نده و نپیچان', 'به‌روزرسانی‌های کنترلر را نصب کن']], ['p', 'اگر دریفت شروع شده، با گارانتی پیکسل‌گاه می‌توانی کنترلر را برای بررسی بفرستی.']] }
+];
+var NTYPE = { news: ['خبر', 'news'], review: ['نقد', 'star'], guide: ['راهنما', 'info'] };
+var NBY = {}; NEWS.forEach(function (n) { NBY[n.id] = n; });
+function newsCover(n, big) {
+  if (n.game) { var g = BY[n.game]; return '<div class="nw-cv" style="--tint:' + g.tint + '">' + artSVG(g.a) + '</div>'; }
+  return '<div class="nw-cv ill" style="--tint:' + n.tint + '"><div class="floor"></div>' + n.art.map(function (d, j) { return '<div class="nw-it nw-it' + j + ' alive">' + ILLU[d[0]](d[1], d[2], d[3]) + '</div>'; }).join('') + '</div>';
+}
+function newsCard(n, i) {
+  var t = NTYPE[n.type];
+  return '<article class="nw" data-go="article" data-id="' + n.id + '" style="--i:' + (i || 0) + '" tabindex="0" role="link" aria-label="' + esc(n.title) + '">' + newsCover(n) + '<div class="nw-b"><span class="nw-t t-' + n.type + '">' + icon(t[1]) + t[0] + (n.score ? ' · <b>' + fa(n.score.toFixed(1)) + '</b>' : '') + '</span><h3>' + esc(n.title) + '</h3><p>' + esc(n.ex) + '</p><span class="nw-m">' + n.date + ' · ' + fa(n.min) + ' دقیقه مطالعه</span></div></article>';
+}
+state.nwType = 'all';
+VIEW_FN.news = function () {
+  var f = NEWS[0], tp = state.nwType;
+  view.innerHTML = '<section class="sec"><div class="lib-h"><div><span class="eyebrow">NEWS & REVIEWS</span><h1>اخبار و نقد</h1><p class="sec-sub">تازه‌ترین خبرها، نقد بازی‌ها و راهنمای خرید از تحریریه‌ی پیکسل‌گاه.</p></div></div>' +
+    '<article class="nw-feat" data-go="article" data-id="' + f.id + '" tabindex="0" role="link" aria-label="' + esc(f.title) + '">' + newsCover(f, true) + '<div class="nw-fb"><span class="nw-t t-' + f.type + '">' + icon(NTYPE[f.type][1]) + NTYPE[f.type][0] + ' ویژه</span><h2>' + esc(f.title) + '</h2><p>' + esc(f.ex) + '</p><span class="nw-m">' + f.date + ' · ' + fa(f.min) + ' دقیقه مطالعه</span>' + (f.score ? '<span class="nw-score" style="--p:' + (f.score * 10) + '%"><b>' + fa(f.score.toFixed(1)) + '</b><small>از ۱۰</small></span>' : '') + '</div></article></section>' +
+    '<section class="sec"><div class="tabs nw-tabs" role="tablist" id="nwTabs"><span class="tab-ind"></span>' + [['all', 'همه'], ['news', 'خبر'], ['review', 'نقد'], ['guide', 'راهنمای خرید']].map(function (x) { return '<button class="tab" type="button" role="tab" data-nwt="' + x[0] + '" aria-selected="' + (tp === x[0]) + '">' + x[1] + '</button>'; }).join('') + '</div><div class="nw-grid" id="nwGrid"></div></section>';
+  var draw = function () { var l = NEWS.slice(1).filter(function (n) { return state.nwType === 'all' || n.type === state.nwType; }); if (state.nwType !== 'all' && f.type === state.nwType) l.unshift(f); $('#nwGrid').innerHTML = l.map(newsCard).join(''); };
+  draw();
+  var tabs = $('#nwTabs'); requestAnimationFrame(function () { placeInd(tabs); });
+  tabs.addEventListener('click', function (e) { var b = e.target.closest('[data-nwt]'); if (!b) return; state.nwType = b.dataset.nwt; $$('.tab', tabs).forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); }); placeInd(tabs); draw(); Sound.click(); });
+};
+VIEW_FN.article = function (p) {
+  var n = NBY[p.id]; if (!n) { VIEW_FN['404'](); return; }
+  var t = NTYPE[n.type], more = NEWS.filter(function (x) { return x.id !== n.id; }).slice(0, 3);
+  var body = n.body.map(function (b, i) {
+    if (b[0] === 'h') return '<h2 class="h3">' + b[1] + '</h2>';
+    if (b[0] === 'q') return '<blockquote class="ar-q">' + b[1] + '</blockquote>';
+    if (b[0] === 'list') return '<ul class="ar-l">' + b[1].map(function (x) { return '<li>' + icon('check') + '<span>' + x + '</span></li>'; }).join('') + '</ul>';
+    return '<p' + (i === 0 ? ' class="lead"' : '') + '>' + b[1] + '</p>';
+  }).join('');
+  var prog = document.createElement('div'); prog.className = 'ar-prog'; prog.setAttribute('aria-hidden', 'true'); prog.innerHTML = '<i></i>'; document.body.appendChild(prog);
+  cleanups.push(function () { prog.remove(); });
+  view.innerHTML = '<section class="ar-hero"><div class="ar-cv" id="arCv">' + newsCover(n, true) + '</div><div class="ar-hc"><nav class="crumbs" aria-label="مسیر"><button type="button" data-go="news">اخبار و نقد</button>' + icon('chevL') + '<span>' + t[0] + '</span></nav><span class="nw-t t-' + n.type + '">' + icon(t[1]) + t[0] + '</span><h1>' + esc(n.title) + '</h1><span class="nw-m">تحریریه‌ی پیکسل‌گاه · ' + n.date + ' · ' + fa(n.min) + ' دقیقه مطالعه</span></div></section>' +
+    '<div class="ar"><article class="ar-body prose">' + body +
+      (n.score ? '<div class="ar-rev"><div class="ar-ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="rbg"/><circle cx="60" cy="60" r="52" class="rfg" id="arRing" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg><b id="arScore">۰</b><small>از ۱۰</small></div><div class="ar-v"><b>جمع‌بندی</b><p>' + n.verdict + '</p></div><div class="ar-pc"><div class="ar-pros"><b>' + icon('plus') + 'نقاط قوت</b><ul>' + n.pros.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div><div class="ar-cons"><b>' + icon('minus') + 'نقاط ضعف</b><ul>' + n.cons.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div></div></div>' : '') +
+      '<p class="pd-note">' + icon('edit') + 'این مطلب نمونه است و در نسخه‌ی نهایی از پنل محتوا خوانده می‌شود.</p><div class="ar-share"><span>به اشتراک بگذار:</span><button class="btn ghost sm" type="button" id="arCopy">' + icon('copy') + 'کپی لینک</button></div></article>' +
+      '<aside class="ar-side"><div class="card-p"><h3>کالاهای این مطلب</h3><div class="ar-rel">' + n.rel.map(function (id) { var q = BY[id]; return '<button type="button" class="ar-ri" data-pid="' + id + '" style="--tint:' + q.tint + '"><span class="mini">' + miniArt(q) + '</span><span><b>' + esc(q.name) + '</b><small>' + toman(priceNow(q)) + '</small></span>' + icon('chevL') + '</button>'; }).join('') + '</div></div></aside></div>' +
+    '<section class="sec"><div class="sec-h"><div><h2 class="h3">مطالب بیشتر</h2></div><button class="btn ghost sm" type="button" data-go="news">همه‌ی مطالب' + icon('arrowL') + '</button></div><div class="nw-grid">' + more.map(newsCard).join('') + '</div></section>';
+  var bar = prog.querySelector('i'), cv = $('#arCv');
+  var onS = function () { var h = main.scrollHeight - main.clientHeight; bar.style.transform = 'scaleX(' + (h > 0 ? main.scrollTop / h : 0) + ')'; if (!calm()) cv.style.transform = 'translateY(' + Math.min(140, main.scrollTop * .35) + 'px) scale(' + (1 + Math.min(.08, main.scrollTop / 4000)) + ')'; };
+  main.addEventListener('scroll', onS, { passive: true });
+  cleanups.push(function () { main.removeEventListener('scroll', onS); });
+  $('#arCopy').addEventListener('click', function (e) { var b = e.currentTarget, done = function () { b.innerHTML = icon('check') + 'کپی شد'; setTimeout(function () { b.innerHTML = icon('copy') + 'کپی لینک'; }, 1600); }; try { navigator.clipboard.writeText(location.href).then(done, done); } catch (er) { done(); } });
+  if (n.score) {
+    var ring = $('#arRing'), sc = $('#arScore'), fired = false;
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting && !fired) { fired = true; ring.style.strokeDashoffset = String(326.7 * (1 - n.score / 10)); countTo(sc, 0, n.score * 10, 1400, function (v) { return fa((v / 10).toFixed(1)); }); io.disconnect(); } }); }, { root: main, threshold: .4 });
+    io.observe(ring); cleanups.push(function () { io.disconnect(); });
+  }
+};
+document.addEventListener('keydown', function (e) { if (e.key !== 'Enter') return; var a = e.target.closest && e.target.closest('.nw[data-go], .nw-feat[data-go]'); if (a) { e.preventDefault(); a.click(); } });
+function homeNewsHTML() {
+  return '<section class="sec reveal" aria-labelledby="h-news"><div class="sec-h"><div><span class="eyebrow">NEWS & REVIEWS</span><h2 class="h2" id="h-news">اخبار و نقد</h2><p class="sec-sub">تازه‌ترین نقدها و راهنمای خرید از تحریریه‌ی پیکسل‌گاه.</p></div><button class="btn ghost sm" type="button" data-go="news">همه‌ی مطالب' + icon('arrowL') + '</button></div><div class="nw-grid home">' + NEWS.slice(0, 3).map(newsCard).join('') + '</div></section>';
 }
 
 /* ================= start ================= */

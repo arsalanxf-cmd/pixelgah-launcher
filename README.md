@@ -17,3 +17,7 @@ All products, prices, reviews and codes are sample content.
 - Solitaire (پاسیانس): Klondike with draw 1 or 3, undo, hints and auto-finish
 
 Play: https://arsalanxf-cmd.github.io/pixelgah-launcher/hokm/
+
+## Online server (card-server)
+
+`card-server/` is the online server for the card hall (Node.js + WebSocket). It serves the game page and runs every online table: rooms with invite codes, quick match, bots in empty seats, reconnecting mid-hand, move timers, leaderboards and a daily solitaire deal. Cards are dealt on the server, so each player only receives their own hand. Deploy guide (Persian) in `card-server/README.md`; with Docker it is `docker compose up -d --build` inside that folder.

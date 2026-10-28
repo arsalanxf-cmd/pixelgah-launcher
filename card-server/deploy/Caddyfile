@@ -1,0 +1,6 @@
+# Replace cards.example.com with your domain. Caddy gets the HTTPS certificate by itself
+# and passes WebSocket connections through without extra settings.
+cards.example.com {
+	encode gzip
+	reverse_proxy 127.0.0.1:3000
+}

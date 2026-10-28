@@ -1,0 +1,10 @@
+services:
+  cards:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - cards-data:/data
+volumes:
+  cards-data:

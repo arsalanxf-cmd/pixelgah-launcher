@@ -1,0 +1,16 @@
+# systemd service for running without Docker: copy to /etc/systemd/system/, then
+#   sudo systemctl daemon-reload && sudo systemctl enable --now mize-varagh
+[Unit]
+Description=Mize Varagh card game server
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/card-server
+ExecStart=/usr/bin/node server.js
+Environment=PORT=3000
+Environment=DB_FILE=/opt/card-server/data/db.json
+Restart=always
+User=www-data
+
+[Install]
+WantedBy=multi-user.target
